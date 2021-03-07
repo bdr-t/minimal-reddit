@@ -1,0 +1,104 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;700&display=swap');
+
+
+body{
+    background-color: #dce1e3;
+}
+
+.flex {
+  display: flex;
+  justify-content: center;
+}
+
+.container-home {
+  max-width: 1000px;
+}
+
+.icon {
+  width: 20px;
+  height: 20px;
+}
+
+* {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+
+}
+
+.home-nav {
+  display: flex;
+  align-items: center;
+  margin: 0 auto;
+  justify-content: space-between;
+  border-bottom: 1px solid #f2f2f2;
+  margin-bottom: 2em;
+}
+
+.logo{
+    font-weight: 700;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.searcher{
+    width: 25em;
+    height: 2em;
+}
+
+.login{
+    border: none;
+    border-radius: 1em;
+    padding: 0.75em;
+    cursor: pointer;
+    outline: none;
+    font-weight: 700;
+    background-color: #dce1e3;
+}
+
+.login:hover{
+    background-color: #D1DBDF;
+}
+
+a { color: inherit; }
+
+.content-container{
+    width: 750px;
+    background-color: #D1DBDF;
+    border-radius: 8px;
+    margin-bottom: 2em;
+}
+
+.content-title{
+    padding: 1em;
+}
+
+.save-icon{
+    margin-left: 10px;
+    margin-top: 5px;
+}
+
+.content-body{
+    padding-left: 24px;
+    padding-right: 24px;
+    padding-bottom: 24px;
+}
+
+.content-footer{
+    display: flex;
+    justify-content: space-between;
+    padding-left:24px;
+    padding-right: 24px;
+    padding-bottom: 24px;
+}
+
+.upvotes{
+    display: flex;
+}
+
+.subreddit{
+    display: flex;
+}
+
+.subreddit-text{
+    margin-right: 5px;
+}
