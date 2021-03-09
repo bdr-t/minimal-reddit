@@ -10,7 +10,7 @@ import {
   fetchPosts,
   selectAllPosts,
   selectPostById,
-} from "../../redux/reducers/postsSlice";
+} from "../../redux/slices/postsSlice";
 
 const PostExcerpt = ({ postId }) => {
   const post = useSelector((state) => selectPostById(state, postId));

@@ -1,3 +1,4 @@
+import '../homePage/HomePage.css'
 const NavBar = () => {
     return ( 
         <div className="home-nav">

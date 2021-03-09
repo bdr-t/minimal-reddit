@@ -1,10 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;700&display=swap");
 
-
-
-
-body{
-    background-color: #dce1e3;
+body {
+  background-color: #dce1e3;
 }
 
 .flex {
@@ -23,11 +20,11 @@ body{
 
 * {
   margin: 0;
-  font-family: 'Poppins', sans-serif;
-
+  font-family: "Poppins", sans-serif;
 }
 
 .home-nav {
+  max-width: 750px;
   display: flex;
   align-items: center;
   margin: 0 auto;
@@ -36,81 +33,84 @@ body{
   margin-bottom: 2em;
 }
 
-.logo{
-    font-weight: 700;
-    text-decoration: none;
-    cursor: pointer;
+.logo {
+  font-weight: 700;
+  text-decoration: none;
+  cursor: pointer;
 }
 
-.searcher{
-    width: 25em;
-    height: 2em;
+.searcher {
+  width: 25em;
+  height: 2em;
 }
 
-.login{
-    border: none;
-    border-radius: 1em;
-    padding: 0.75em;
-    cursor: pointer;
-    outline: none;
-    font-weight: 700;
-    background-color: #dce1e3;
+.login {
+  border: none;
+  border-radius: 1em;
+  padding: 0.75em;
+  cursor: pointer;
+  outline: none;
+  font-weight: 700;
+  background-color: #dce1e3;
 }
 
-.login:hover{
-    background-color: #D1DBDF;
+.login:hover {
+  background-color: #d1dbdf;
 }
 
-a { color: inherit; }
-
-.content-container{
-    background-color: #D1DBDF;
-    border-radius: 8px;
-    margin-bottom: 2em;
+a {
+  color: inherit;
 }
 
-.content-title{
-    padding: 1em;
+.content-container {
+  max-width: 750px;
+  background-color: #d1dbdf;
+  border-radius: 8px;
+  margin-bottom: 2em;
 }
 
-.save-icon{
-    margin-left: 10px;
-    margin-top: 5px;
+.content-title {
+  padding: 1em;
 }
 
-.content-body{
-    padding-left: 24px;
-    padding-right: 24px;
-    padding-bottom: 24px;
+.save-icon {
+  margin-left: 10px;
+  margin-top: 5px;
 }
 
-.content-footer{
-    display: flex;
-    justify-content: space-between;
-    padding-left:24px;
-    padding-right: 24px;
-    padding-bottom: 24px;
+.content-body {
+  padding-left: 24px;
+  padding-right: 24px;
+  padding-bottom: 24px;
 }
 
-.upvotes{
-    display: flex;
+.content-footer {
+  display: flex;
+  justify-content: space-between;
+  padding-left: 24px;
+  padding-right: 24px;
+  padding-bottom: 24px;
 }
 
-.subreddit{
-    display: flex;
+.upvotes {
+  display: flex;
 }
 
-.subreddit-text{
-    margin-right: 5px;
+.subreddit {
+  display: flex;
 }
 
-.content-img{
-    max-width:100%;
-    max-height:auto; 
-    display: block;
-    margin: auto;
+.subreddit-text {
+  margin-right: 5px;
 }
 
-a{
-    word-wrap: break-word;
+.content-img {
+  max-width: 100%;
+  max-height: auto;
+  display: block;
+  margin: auto;
+}
+
+a {
+  word-wrap: break-word;
 }
