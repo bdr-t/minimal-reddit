@@ -70,7 +70,12 @@ const PostExcerpt = ({ postId }) => {
   );
 };
 
-const PostList = () => {
+const PostList = ({match}) => {
+  let subReddit
+  if(match){
+    subReddit = match.params.subReddit
+  } 
+  console.log(match)
   const dispatch = useDispatch();
 
   const postStatus = useSelector((state) => state.posts.status);
@@ -78,7 +83,7 @@ const PostList = () => {
 
   useEffect(() => {
     if (postStatus === "idle") {
-      dispatch(fetchPosts());
+      dispatch(fetchPosts(subReddit));
     }
   }, [postStatus, dispatch]);
 

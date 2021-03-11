@@ -1,6 +1,7 @@
-import HomePage from "./components/homePage/HomePage";
 import React from "react";
-import SubReddit from "../src/components/subreddit/SubReddit";
+// import './App.css'
+import './App.css'
+
 import {
   BrowserRouter as Router,
   Switch,
@@ -8,6 +9,7 @@ import {
   Redirect,
 } from "react-router-dom";
 import NavBar from "./components/navBar/NavBar";
+import PostList from "./components/postlist/PostList";
 
 function App() {
   return (
@@ -20,11 +22,11 @@ function App() {
             path="/"
             render={() => (
               <React.Fragment>
-                <HomePage />
+                <PostList />
               </React.Fragment>
             )}
           />
-          <Route exact path="/r/:subReddit" component={SubReddit} />
+          <Route exact path="/r/:subReddit" component={PostList} />
 
           <Redirect to="/" />
         </Switch>
