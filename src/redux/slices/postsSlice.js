@@ -13,8 +13,14 @@ const initialState = postsAdapter.getInitialState({
   error: null,
 });
 
-export const fetchPosts = createAsyncThunk("posts/fetchPosts", async () => {
-  const response = await axios.get('https://www.reddit.com/hot/.json')
+export const fetchPosts = createAsyncThunk("posts/fetchPosts", async (subreddit) => {
+  let sub 
+  if (subreddit){
+    sub = 'r/'+subreddit
+  } else{
+    sub = 'hot'
+  }
+  const response = await axios.get('https://www.reddit.com/'+sub+'/.json')
   .then((response) => response.data.data.children);
     let list = [];
     for (let num in response) {
