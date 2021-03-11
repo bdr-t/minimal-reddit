@@ -6,7 +6,7 @@ import {
 
 import axios from "axios";
 
-const postsAdapter = createEntityAdapter;
+const postsAdapter = createEntityAdapter();
 const initialState = postsAdapter.getInitialState({
   status: "idle",
   error: null,
@@ -46,9 +46,9 @@ const subPostsSlice = createSlice({
 });
 
 export const {
-    selectAll: selectAllPosts,
-    selectById: selectPostById,
-    selectIds: selectPostIds
-  } = postsAdapter.getSelectors(state => state.posts)
+  selectAll: selectAllPosts,
+  selectById: selectPostById,
+  selectIds: selectPostIds,
+} = postsAdapter.getSelectors((state) => state.subredditPosts);
 
 export default subPostsSlice.reducer;

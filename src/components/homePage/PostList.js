@@ -4,7 +4,7 @@ import upvote from "../../images/upvote.svg";
 import downvote from "../../images/downvote.svg";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import ReactPlayer from "react-player";
+import ReactHlsPlayer from "react-hls-player";
 
 import {
   fetchPosts,
@@ -29,14 +29,13 @@ const PostExcerpt = ({ postId }) => {
 
   if (post.is_video) {
     video = (
-      <ReactPlayer
-        url={post.media.reddit_video.fallback_url}
-        width="75%"
-        height="auto"
-        playing="false"
-        loop="true"
-        controls="true"
-      />
+      <ReactHlsPlayer
+      url={"https://proxy-bt.herokuapp.com/" + post.media.reddit_video.hls_url}
+      autoplay={false}
+      controls={true}
+      width="300px"
+      height="auto"
+    />
     );
   }
 
