@@ -85,7 +85,7 @@ const PostList = ({match}) => {
     if (postStatus === "idle") {
       dispatch(fetchPosts(subReddit));
     }
-  }, [postStatus, dispatch]);
+  }, [postStatus, dispatch, subReddit]);
 
   const posts = useSelector(selectAllPosts);
 

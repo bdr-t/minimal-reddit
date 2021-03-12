@@ -10,6 +10,7 @@ import {
 } from "react-router-dom";
 import NavBar from "./components/navBar/NavBar";
 import PostList from "./components/postlist/PostList";
+import Callback from "./components/callback/CallBack";
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
             )}
           />
           <Route exact path="/r/:subReddit" component={PostList} />
+          <Route exact path="/callback" component={Callback} />
 
           <Redirect to="/" />
         </Switch>
