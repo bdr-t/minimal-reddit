@@ -100,9 +100,11 @@ const PostList = ({match}) => {
   } else if (postStatus === "error") {
     content = <div>{error}</div>;
   }
+  console.log(process.env)
 
   return (
     <section className="posts-list">
+      
       {content}
     </section>
   );
