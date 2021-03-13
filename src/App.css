@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;700&display=swap");
 
 body {
-  background-color: #dce1e3;
+  background-color: #E9EAED;
 }
 
 .flex {
@@ -24,16 +24,18 @@ body {
 }
 
 .home-nav {
-  max-width: 750px;
+  max-width: 100%;
   display: flex;
   align-items: center;
   margin: 0 auto;
   justify-content: space-between;
   border-bottom: 1px solid #f2f2f2;
   margin-bottom: 2em;
+  background-color: black;
 }
 
 .logo {
+  color: white;
   font-weight: 700;
   text-decoration: none;
   cursor: pointer;
@@ -51,11 +53,11 @@ body {
   cursor: pointer;
   outline: none;
   font-weight: 700;
-  background-color: #dce1e3;
+  background-color: #E9EAED;
 }
 
 .login:hover {
-  background-color: #d1dbdf;
+  background-color: black;
 }
 
 a {
@@ -64,7 +66,7 @@ a {
 
 .content-container {
   max-width: 750px;
-  background-color: #d1dbdf;
+  background-color: white;
   border-radius: 8px;
   margin-bottom: 2em;
 }
@@ -113,4 +115,16 @@ a {
 
 a {
   word-wrap: break-word;
+}
+
+
+.posts-list{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.post-excerpt{
+  min-width: 750px;
 }
