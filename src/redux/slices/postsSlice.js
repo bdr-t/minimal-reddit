@@ -15,15 +15,9 @@ const initialState = postsAdapter.getInitialState({
 
 export const fetchPosts = createAsyncThunk(
   "posts/fetchPosts",
-  async (subreddit) => {
-    let sub;
-    if (subreddit) {
-      sub = "r/" + subreddit;
-    } else {
-      sub = "hot";
-    }
+  async (link) => {
     const response = await axios
-      .get("https://www.reddit.com/" + sub + "/.json")
+      .get(link)
       .then((response) => response.data.data.children);
     let list = [];
     for (let x in response) {
