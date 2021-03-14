@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import PostExcerpt from '../PostExcerpt'
 
 import {
@@ -13,10 +13,9 @@ import Sort from "../sort";
 
 
 const PostList = ({match}) => {
-  const [sort, setSort] = useState('hot')
  
-  let linkHome = `https://www.reddit.com/${sort}/.json`
-  let linkSub = `https://www.reddit.com/${match ? match.url : null }/${sort}/.json`
+  let linkHome = `https://www.reddit.com/.json`
+  let linkSub = `https://www.reddit.com/${match ? match.url : null }/.json`
   let link = match ? linkSub : linkHome
 
 
@@ -29,7 +28,7 @@ const PostList = ({match}) => {
     if (postStatus === "idle" ) {
       dispatch(fetchPosts(link));
     }
-  }, [postStatus, dispatch, link, sort]);
+  }, [postStatus, dispatch, link]);
 
   useEffect(()=>{
     dispatch(fetchPosts(link))
