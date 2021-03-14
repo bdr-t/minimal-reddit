@@ -28,6 +28,10 @@ function App() {
             )}
           />
           <Route exact path="/r/:subReddit" component={PostList} />
+          <Route exact path="/hot" component={PostList} />
+          <Route exact path="/new" component={PostList} />
+          <Route exact path="/top" component={PostList} />
+          <Route exact path="/rising" component={PostList} />
           <Route exact path="/callback" component={Callback} />
 
           <Redirect to="/" />
