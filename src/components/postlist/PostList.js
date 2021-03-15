@@ -2,6 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import PostExcerpt from '../PostExcerpt'
 
+
 import {
   fetchPosts,
   selectAllPosts,
@@ -13,7 +14,9 @@ import Sort from "../sort";
 
 
 const PostList = ({match}) => {
- 
+  let path = match ? match.params.subReddit : null
+  
+
   let linkHome = `https://www.reddit.com/.json`
   let linkSub = `https://www.reddit.com/${match ? match.url : null }/.json`
   let link = match ? linkSub : linkHome
@@ -50,7 +53,7 @@ const PostList = ({match}) => {
 
   return (
     <section className="posts-list">
-      <Sort/>
+      <Sort url={path}/>
       {content}
     </section>
   );
