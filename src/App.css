@@ -4,6 +4,13 @@ body {
   background-color: #E9EAED;
 }
 
+.App{
+  display: flex;
+  flex-direction: column;
+}
+
+
+
 .flex {
   display: flex;
   justify-content: center;
@@ -23,46 +30,10 @@ body {
   font-family: "Poppins", sans-serif;
 }
 
-.home-nav {
-  max-width: 100%;
-  display: flex;
-  align-items: center;
-  margin: 0 auto;
-  justify-content: space-between;
-  border-bottom: 1px solid #f2f2f2;
-  margin-bottom: 2em;
-  background-color: black;
-}
 
-.logo {
-  color: white;
-  font-weight: 700;
-  text-decoration: none;
-  cursor: pointer;
-}
 
-.searcher {
-  width: 25em;
-  height: 2em;
-}
 
-.login {
-  border: none;
-  border-radius: 1em;
-  padding: 0.75em;
-  cursor: pointer;
-  outline: none;
-  font-weight: 700;
-  background-color: #E9EAED;
-}
 
-.login:hover {
-  background-color: black;
-}
-
-a {
-  color: inherit;
-}
 
 .content-container {
   max-width: 750px;
