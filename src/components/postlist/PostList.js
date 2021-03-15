@@ -9,6 +9,7 @@ import {
 } from "../../redux/slices/postsSlice";
 
 import Sort from "../sort";
+import TextContainer from "../TextContainer";
 
 
 
@@ -33,9 +34,6 @@ const PostList = ({match}) => {
     }
   }, [postStatus, dispatch, link]);
 
-  useEffect(()=>{
-    dispatch(fetchPosts(link))
-  },[link, dispatch])
 
   const posts = useSelector(selectAllPosts);
 
@@ -45,6 +43,7 @@ const PostList = ({match}) => {
     content = <div className="loader">Loading...</div>;
   } else if (postStatus === "succeeded") {
     content = posts.map((post) => (
+      // <TextContainer key={post.id} postId={post.id} />
       <PostExcerpt key={post.id} postId={post.id} />
     ));
   } else if (postStatus === "error") {
