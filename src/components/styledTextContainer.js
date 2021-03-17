@@ -10,8 +10,8 @@ export const ArrowDown = styled(TiArrowDownThick)`
   width: 20px;
   height: auto;
   cursor: pointer;
-  &:hover{
-      color: red;
+  &:hover {
+    color: red;
   }
 `;
 
@@ -20,12 +20,13 @@ export const ArrowUp = styled(TiArrowUpThick)`
   width: 20px;
   height: auto;
   cursor: pointer;
-  &:hover{
-      color: blue;
+  &:hover {
+    color: blue;
   }
 `;
 
 export const Open = styled(TiArrowSortedDown)`
+  justify-self: center;
   width: 30px;
   height: auto;
   cursor: pointer;
@@ -48,7 +49,6 @@ export const SubReddit = styled.a`
 
 export const Container = styled.div`
   display: flex;
-  flex-direction: column;
   justify-self: center;
   margin: auto;
   width: 750px;
@@ -59,13 +59,14 @@ export const Container = styled.div`
   margin-bottom: 2em;
   display: hidden;
   @media (max-width: 768px) {
-      max-width: 750px;
+    width: 90%;
     margin-left: 2em;
     margin-right: 2em;
   }
 `;
 
 export const Title = styled.h2`
+  font-size: 16px;
   text-align: center;
   font-weight: 400;
   color: black;
@@ -77,6 +78,7 @@ export const Footer = styled.div`
   display: flex;
   justify-content: space-between;
   height: 40px;
+  justify-self: flex-end;
 `;
 
 export const Upvotes = styled(Footer)`
@@ -91,4 +93,36 @@ export const Content = styled.p`
   display: ${(props) => (props.visible ? "none" : "block")};
   overflow: hidden;
   transition: all 0.3s ease-out;
+`;
+
+export const Thumbnail = styled.img`
+  flex: 1;
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  display: ${(props) => (props.visible ? "none" : "block")};
+`;
+export const PostHeader = styled.div`
+  display: flex;
+`;
+
+export const ContentImage = styled.img`
+  margin: auto;
+  object-fit: contain;
+  width: 75%;
+  height: auto;
+  display: block;
+  margin: auto;
+`;
+
+export const ContentContainer = styled.div`
+  max-width: 100%;
+  flex: 5.25;
+  display: flex;
+  flex-direction: column;
+`;
+
+export const NailContainer = styled.div`
+  flex: ${(props) => (props.visible ? "0" : "1")};
+  max-height: 100px;
 `;
