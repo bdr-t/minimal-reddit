@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import PostExcerpt from '../PostExcerpt'
+import Post from '../Post'
 
 
 import {
@@ -43,8 +43,7 @@ const PostList = ({match}) => {
     content = <div className="loader">Loading...</div>;
   } else if (postStatus === "succeeded") {
     content = posts.map((post) => (
-      // <TextContainer key={post.id} postId={post.id} />
-      <PostExcerpt key={post.id} postId={post.id} />
+      <Post key={post.id} postId={post.id} />
     ));
   } else if (postStatus === "error") {
     content = <div>{error}</div>;
