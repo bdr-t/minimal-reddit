@@ -103,11 +103,6 @@ export const ContentImage = styled.img`
   background-color: black;
 `;
 
-export const FooterContainer = styled.div`
-  text-align: center;
-  flex: 1;
-  font-family: Segoe UI Semibold;
-`;
 
 export const SubTitle = styled.div`
   font-family: Segoe UI Light;
@@ -135,11 +130,6 @@ export const Enlace = styled.a`
   font-size: 15px;
 `;
 
-export const EnlaceSubreddit = styled(Enlace)`
-  font-family: Segoe UI Semibold;
-  font-size: 15px;
-  color: #65676b;
-`;
 
 export const UpvotesNum = styled.p`
   font-family: Segoe UI SemiBold;

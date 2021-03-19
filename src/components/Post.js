@@ -1,12 +1,9 @@
-import { useState } from "react";
+
 import { useSelector } from "react-redux";
 import { selectPostById } from "../redux/slices/postsSlice";
-import ReactHlsPlayer from "react-hls-player";
 import {
   Comments,
   UpvotesNum,
-  EnlaceSubreddit,
-  TextFooter,
   Container,
   Title,
   Enlace,
@@ -17,7 +14,6 @@ import {
   ArrowUp,
   SubReddit,
   ContentImage,
-  FooterContainer,
   SubTitle,
   Video,
 } from "./styledTextContainer";
