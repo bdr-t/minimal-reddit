@@ -16,7 +16,7 @@ import {
   ContentImage,
   SubTitle,
   Video,
-} from "./styledTextContainer";
+} from "../styledComponents";
 
 const ImageContainer = ({ postId }) => {
   const post = useSelector((state) => selectPostById(state, postId));

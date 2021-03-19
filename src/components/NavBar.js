@@ -1,11 +1,22 @@
-import {Nav} from '../../styledComponents/Nav'
-import {NavContainer} from '../../styledComponents/NavContainer'
-import {Logo} from '../../styledComponents/Logo'
-import {Login} from '../../styledComponents/Login'
-import {Input} from '../../styledComponents/Input'
+import {useSelector} from 'react-redux'
+
+import {Nav, NavContainer, Logo, Login, Input} from '../styledComponents'
+ 
+import styled from 'styled-components'
+
+
+const AvatarImg = styled.img`
+width: 45px;
+height: auto;
+border-radius: 50%;
+margin: auto 0 auto auto;
+`
 
 
 const NavBar = () => {
+  const avatar = 'https://www.redditstatic.com/avatars/avatar_default_05_7193FF.png'
+  const authorization = useSelector(state => state.authorization.authorization)
+  console.log(authorization)
   const TYPE = "code";
   const RANDOM_STRING = "hdiudou9083jkdsa";
   const URI = "http://localhost:3000/callback/";
@@ -18,11 +29,14 @@ const NavBar = () => {
       <NavContainer className="nav-container">
         <Logo href="/">
           MinimalReddit
+
         </Logo>
         <Input type="text" placeholder="Search.." />
-        <Login href={url}>
+        {!authorization && <Login href={url}>
           Log in
-        </Login>
+        </Login>}
+        {authorization && 
+          <AvatarImg src={avatar} alt=""/>}
       </NavContainer>
     </Nav>
   );

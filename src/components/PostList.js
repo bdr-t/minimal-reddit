@@ -1,15 +1,15 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import Post from '../Post'
+import Post from './Post'
 
 
 import {
   fetchPosts,
   selectAllPosts,
-} from "../../redux/slices/postsSlice";
+} from "../redux/slices/postsSlice";
 
-import Sort from "../sort";
-import TextContainer from "../TextContainer";
+import Sort from "./sort";
+
 
 
 

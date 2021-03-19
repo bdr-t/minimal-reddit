@@ -8,9 +8,9 @@ import {
   Route,
   Redirect,
 } from "react-router-dom";
-import NavBar from "./components/navBar/NavBar";
-import PostList from "./components/postlist/PostList";
-import Callback from "./components/callback/CallBack";
+import NavBar from "./components/NavBar";
+import PostList from "./components/PostList";
+import Callback from "./components/CallBack";
 
 function App() {
   return (

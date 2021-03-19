@@ -103,7 +103,6 @@ export const ContentImage = styled.img`
   background-color: black;
 `;
 
-
 export const SubTitle = styled.div`
   font-family: Segoe UI Light;
   padding-left: 1em;
@@ -130,7 +129,6 @@ export const Enlace = styled.a`
   font-size: 15px;
 `;
 
-
 export const UpvotesNum = styled.p`
   font-family: Segoe UI SemiBold;
   font-size: 15px;
@@ -139,4 +137,55 @@ export const UpvotesNum = styled.p`
 
 export const Comments = styled(UpvotesNum)`
   margin: auto;
+`;
+
+export const Input = styled.input`
+  border-radius: 8px;
+  height: 30px;
+  align-self: center;
+  outline: none;
+  border: none;
+`;
+
+export const Login = styled.a`
+  width: 60px;
+  justify-self: end;
+  border: none;
+  align-self: center;
+  border-radius: 1em;
+  padding: 0.75em;
+  cursor: pointer;
+  outline: none;
+  font-weight: 700;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  &:hover {
+    background-color: white;
+    color: black;
+  }
+`;
+
+export const Logo = styled.a`
+  color: white;
+  font-weight: 700;
+  text-decoration: none;
+  align-self: center;
+  cursor: pointer;
+`;
+
+export const Nav = styled.div`
+  width: 100%;
+  display: flex;
+  margin: 0;
+  height: 55px;
+  justify-content: center;
+  margin-bottom: 2em;
+  background-color: black;
+`;
+
+export const NavContainer = styled.div`
+  width: 750px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
 `;
