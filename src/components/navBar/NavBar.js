@@ -2,6 +2,8 @@ import {Nav} from '../../styledComponents/Nav'
 import {NavContainer} from '../../styledComponents/NavContainer'
 import {Logo} from '../../styledComponents/Logo'
 import {Login} from '../../styledComponents/Login'
+import {Input} from '../../styledComponents/Input'
+
 
 const NavBar = () => {
   const TYPE = "code";
@@ -17,7 +19,7 @@ const NavBar = () => {
         <Logo href="/">
           MinimalReddit
         </Logo>
-        <input type="text" placeholder="Search.." />
+        <Input type="text" placeholder="Search.." />
         <Login href={url}>
           Log in
         </Login>

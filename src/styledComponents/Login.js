@@ -4,6 +4,7 @@ export const Login = styled.a`
   width: 60px;
   justify-self: end;
   border: none;
+  align-self: center;
   border-radius: 1em;
   padding: 0.75em;
   cursor: pointer;
