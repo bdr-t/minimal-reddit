@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import ReactHlsPlayer from "react-hls-player";
 import {
   TiArrowDownThick,
   TiArrowUpThick,
@@ -25,38 +26,28 @@ export const ArrowUp = styled(TiArrowUpThick)`
   }
 `;
 
-export const Open = styled(TiArrowSortedDown)`
-  justify-self: center;
-  width: 30px;
-  height: auto;
-  cursor: pointer;
-  &:hover {
-    width: 40px;
-    height: auto;
-  }
-`;
-
-export const Text = styled.p`
-  align-self: center;
-`;
 export const SubReddit = styled.a`
+  font-family: Segoe UI SemiBold;
+  font-size: 15px;
+  color: #65676b;
   text-decoration: none;
-  align-self: center;
-  padding-right: 2em;
   cursor: pointer;
-  color: inherit;
+  align-self: center;
+  margin-left: auto;
 `;
 
 export const Container = styled.div`
   display: flex;
+  flex-direction: column;
   justify-self: center;
   margin: auto;
-  width: 750px;
+  width: 680px;
   border-radius: 14px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 
   /* border: 1px solid black; */
   background-color: white;
-  margin-bottom: 2em;
+  margin-bottom: 1em;
   display: hidden;
   @media (max-width: 768px) {
     width: 90%;
@@ -66,23 +57,27 @@ export const Container = styled.div`
 `;
 
 export const Title = styled.h2`
-  font-size: 16px;
-  text-align: center;
-  font-weight: 400;
+  font-family: Segoe UI Semibold;
+  font-size: 15px;
   color: black;
-  padding: 0.5em 0.5em;
+  padding: 0.75em 1em 0 1em;
   /* border-bottom: 1px solid black; */
 `;
 
 export const Footer = styled.div`
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
   height: 40px;
   justify-self: flex-end;
+  padding-left: 1em;
+  padding-right: 1em;
 `;
 
-export const Upvotes = styled(Footer)`
-  padding-left: 2em;
+export const Upvotes = styled.div`
+  display: flex;
+  flex-direction: columns;
+  justify-self: start;
+  align-self: center;
 `;
 
 export const Content = styled.p`
@@ -90,18 +85,10 @@ export const Content = styled.p`
   padding: 1em 2em;
   font-size: 14px;
   /* border-bottom: 1px solid black; */
-  display: ${(props) => (props.visible ? "none" : "block")};
   overflow: hidden;
   transition: all 0.3s ease-out;
 `;
 
-export const Thumbnail = styled.img`
-  flex: 1;
-  object-fit: cover;
-  width: 100%;
-  height: 100%;
-  display: ${(props) => (props.visible ? "none" : "block")};
-`;
 export const PostHeader = styled.div`
   display: flex;
 `;
@@ -109,20 +96,57 @@ export const PostHeader = styled.div`
 export const ContentImage = styled.img`
   margin: auto;
   object-fit: contain;
-  width: 75%;
-  height: auto;
+  width: 100%;
+  max-height: 700px;
   display: block;
   margin: auto;
+  background-color: black;
 `;
 
-export const ContentContainer = styled.div`
+export const FooterContainer = styled.div`
+  text-align: center;
+  flex: 1;
+  font-family: Segoe UI Semibold;
+`;
+
+export const SubTitle = styled.div`
+  font-family: Segoe UI Light;
+  padding-left: 1em;
+  padding-bottom: 8px;
+  font-size: 13px;
+  color: #65676b;
+`;
+
+export const Video = styled(ReactHlsPlayer)`
+  max-height: 500px;
   max-width: 100%;
-  flex: 5.25;
-  display: flex;
-  flex-direction: column;
+  background-color: black;
+`;
+export const Text = styled.div`
+  padding: 4px 1em 1em 1em;
+  white-space: pre-line;
+  font-family: Segoe UI;
+  font-size: 15px;
 `;
 
-export const NailContainer = styled.div`
-  flex: ${(props) => (props.visible ? "0" : "1")};
-  max-height: 100px;
+export const Enlace = styled.a`
+  white-space: pre-line;
+  font-family: Segoe UI;
+  font-size: 15px;
+`;
+
+export const EnlaceSubreddit = styled(Enlace)`
+  font-family: Segoe UI Semibold;
+  font-size: 15px;
+  color: #65676b;
+`;
+
+export const UpvotesNum = styled.p`
+  font-family: Segoe UI SemiBold;
+  font-size: 15px;
+  color: #65676b;
+`;
+
+export const Comments = styled(UpvotesNum)`
+  margin: auto;
 `;

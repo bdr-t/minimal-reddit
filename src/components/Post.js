@@ -1,97 +1,88 @@
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import { selectPostById } from "../redux/slices/postsSlice";
-import  ReactHlsPlayer from 'react-hls-player'
+import ReactHlsPlayer from "react-hls-player";
 import {
+  Comments,
+  UpvotesNum,
+  EnlaceSubreddit,
+  TextFooter,
   Container,
   Title,
-  Content,
+  Enlace,
   Footer,
   Upvotes,
   ArrowDown,
   Text,
   ArrowUp,
-  Open,
   SubReddit,
-  NailContainer,
-  Thumbnail,
   ContentImage,
-  ContentContainer,
+  FooterContainer,
+  SubTitle,
+  Video,
 } from "./styledTextContainer";
 
 const ImageContainer = ({ postId }) => {
   const post = useSelector((state) => selectPostById(state, postId));
-  const [visible, setVisible] = useState(true);
-  // const [img, setImg] = useState('')
-  // const [link, setLink] = useState('')
-  // const [video, setVideo] = useState('')
 
-  const toggleOpen = () => {
-    setVisible(!visible);
-  };
-
-  let thumbnail
-  let content
-  
+  let content;
 
   if (post.url.includes("jpg") || post.url.includes("png")) {
-    thumbnail = post.thumbnail
-    content = <ContentImage src={post.url} alt="" />
+    content = <ContentImage src={post.url} alt="" />;
   } else if (!post.url.includes("redd")) {
-    thumbnail = 'https://i.imgur.com/GwlLmUe.png'
-    content = <a href={post.url}>{post.url}</a>;
-  } else if (post.is_video) {
-    thumbnail = post.thumbnail
     content = (
-      <ReactHlsPlayer
-      url={"https://proxy-bt.herokuapp.com/" + post.media.reddit_video.hls_url}
-      autoplay={false}
-      controls={true}
-      width="300px"
-      height="auto"
-    />
+      <Text>
+        <Enlace target="_blank" href={post.url}>
+          {post.url}
+        </Enlace>
+      </Text>
     );
-  } else if (post.url.includes("gif")){
-    thumbnail = post.url
-    content = (<ReactHlsPlayer
-      url={post.url}
-      autoplay={false}
-      controls={true}
-      width="300px"
-      height="auto"
-    />)
-  } else{
-    thumbnail = 'https://i.imgur.com/rHpDibs.png'
-    content = 'haha'
+  } else if (post.url.includes("gif")) {
+    content = (
+      <Video
+        url={"https://proxy-bt.herokuapp.com/" + post.url}
+        autoplay={true}
+        loop={true}
+        controls={true}
+        width="100%"
+      />
+    );
+  } else if (post.is_video) {
+    content = (
+      <Video
+        url={
+          "https://proxy-bt.herokuapp.com/" + post.media.reddit_video.hls_url
+        }
+        autoplay={false}
+        controls={true}
+      />
+    );
+  } else {
+    content = <Text>{post.selftext}</Text>;
   }
- 
-
-  
 
   return (
     <Container>
-      <NailContainer visible={!visible} >
-        <Thumbnail visible={!visible} src={thumbnail} alt="" />
-      </NailContainer>
-
-      <ContentContainer visible={visible}>
-        <Title>{post.title}</Title>
-        <Content visible={visible}>
-          {content}
-        </Content>
-        <Footer>
+      <Title>{post.title}</Title>
+      <SubTitle>Posted by me 9 hours ago</SubTitle>
+      {content}
+      <Footer>
+        <div style={{display:'flex', borderTop: '1px solid #65676b'}}>
           <Upvotes>
             <ArrowDown />
-            <Text>{post.ups}</Text>
+            <UpvotesNum>{post.ups}</UpvotesNum>
             <ArrowUp />
           </Upvotes>
-          <Open onClick={toggleOpen} />
+        </div>
+        <div style={{display:'flex', borderTop: '1px solid #65676b'}}>
+        <Comments>Comments</Comments>
+        </div>
+        <div style={{display:'flex', borderTop: '1px solid #65676b'}}>
           <SubReddit href={`/r/${post.subreddit}`}>
-            r/{post.subreddit}
+            <SubReddit>r/{post.subreddit}</SubReddit>
           </SubReddit>
-        </Footer>
-        
-      </ContentContainer>
+        </div>
+      </Footer>
     </Container>
   );
 };
