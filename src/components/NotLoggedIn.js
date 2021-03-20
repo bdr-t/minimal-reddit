@@ -1,40 +1,12 @@
-import { useDispatch, useSelector } from "react-redux";
-import { useEffect, useState} from "react";
-import Post from './Post'
-import useFetchPosts from './useFetchPosts'
+import Post from "./Post";
+import useFetchPosts from "./useFetchPosts";
 
+const PostList = ({ match }) => {
+  let linkHome = `https://www.reddit.com/.json`;
+  let linkSub = `https://www.reddit.com${match ? match.url : null}/.json`;
+  let link = match ? linkSub : linkHome;
 
-import {
-  fetchPosts,
-  selectAllPosts,
-} from "../redux/slices/postsSlice";
-
-import Sort from "./sort";
-
-
-
-
-
-const PostList = ({match}) => {
-
-    
-    
-  let path = match ? match.params.subReddit : null
-  
-
-  let linkHome = `https://www.reddit.com/.json`
-  let linkSub = `https://www.reddit.com${match ? match.url : null }/.json`
-  let link = match ? linkSub : linkHome
-
-  const {posts, status, error} = useFetchPosts(link)
-
-  console.log(posts)
-
-//   const dispatch = useDispatch();
-
-//   const postStatus = useSelector((state) => state.posts.status);
-//   const error = useSelector((state) => state.posts.error);
-
+  const { posts, status, error } = useFetchPosts(link);
 
   let content;
 
@@ -48,12 +20,7 @@ const PostList = ({match}) => {
     content = <div>{error}</div>;
   }
 
-  return (
-    <section className="posts-list">
-      <Sort url={path}/>
-      {content}
-    </section>
-  );
+  return <section className="posts-list">{content}</section>;
 };
 
 export default PostList;
