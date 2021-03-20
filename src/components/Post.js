@@ -18,8 +18,11 @@ import {
   Video,
 } from "../styledComponents";
 
-const ImageContainer = ({ postId }) => {
-  const post = useSelector((state) => selectPostById(state, postId));
+const Post = ({ postId, postNotLeggedIn}) => {
+  let post = useSelector((state) => selectPostById(state, postId));
+  if(postNotLeggedIn){
+    post = postNotLeggedIn
+  }
 
   let content;
 
@@ -83,4 +86,4 @@ const ImageContainer = ({ postId }) => {
   );
 };
 
-export default ImageContainer;
+export default Post;
