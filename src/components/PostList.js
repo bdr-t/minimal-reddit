@@ -14,8 +14,8 @@ const PostList = ({match}) => {
   return (
     <section className="posts-list">
       <Sort url={path}/>
-      {authorization && <LoggedIn/>}
-      {!authorization && <NotLoggedIn/>}
+      {authorization && <LoggedIn match={match}/>}
+      {!authorization && <NotLoggedIn match={match}/>}
 
     </section>
   );
