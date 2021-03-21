@@ -78,7 +78,7 @@ const Post = ({ postId, postNotLeggedIn}) => {
         </div>
         <div style={{display:'flex', borderTop: '1px solid #65676b'}}>
           <SubReddit href={`/r/${post.subreddit}`}>
-            <SubReddit>r/{post.subreddit}</SubReddit>
+            r/{post.subreddit}
           </SubReddit>
         </div>
       </Footer>

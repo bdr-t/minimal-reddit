@@ -49,12 +49,7 @@ export const refreshToken = createAsyncThunk(
       }
       return response.json()})
       .catch((error) => console.log("error", error));
-    let authorization = {
-      authorization: true,
-      token: response.access_token,
-      refreshToken: response.refresh_token,
-    };
-    console.log(response)
+      console.log(response)
     return response;
   }
 );

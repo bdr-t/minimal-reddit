@@ -3,7 +3,6 @@ import ReactHlsPlayer from "react-hls-player";
 import {
   TiArrowDownThick,
   TiArrowUpThick,
-  TiArrowSortedDown,
 } from "react-icons/ti";
 
 export const ArrowDown = styled(TiArrowDownThick)`

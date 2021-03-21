@@ -16,7 +16,6 @@ margin: auto 0 auto auto;
 const NavBar = () => {
   const avatar = 'https://www.redditstatic.com/avatars/avatar_default_05_7193FF.png'
   const authorization = useSelector(state => state.authorization.authorization)
-  console.log(authorization)
   const TYPE = "code";
   const RANDOM_STRING = "hdiudou9083jkdsa";
   const URI = "http://localhost:3000/callback/";

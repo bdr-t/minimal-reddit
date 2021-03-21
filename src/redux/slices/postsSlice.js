@@ -15,10 +15,14 @@ const initialState = postsAdapter.getInitialState({
 
 export const fetchPosts = createAsyncThunk(
   "posts/fetchPosts",
-  async (link) => {
+  async ({link, token}) => {
+    const config = {
+      headers: { Authorization: `Bearer ${token}` }
+  };
     const response = await axios
-      .get(link)
+      .get(link, config)
       .then((response) => response.data.data.children);
+    console.log(response)
     let list = [];
     for (let x in response) {
       let post = {

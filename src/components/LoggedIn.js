@@ -16,21 +16,26 @@ import {
 const PostList = ({match}) => {
   
 
-  let linkHome = `https://www.reddit.com/.json`
-  let linkSub = `https://www.reddit.com/${match ? match.url : null }/.json`
-  let link = match ? linkSub : linkHome
-
+  const link = 'https://oauth.reddit.com/best'
 
   const dispatch = useDispatch();
 
   const postStatus = useSelector((state) => state.posts.status);
   const error = useSelector((state) => state.posts.error);
+  const token = useSelector((state) => state.authorization.token);
+  console.log(token)
+
+  
 
   useEffect(() => {
     if (postStatus === "idle" ) {
-      dispatch(fetchPosts(link));
+      const config = {
+        link,
+        token
+      }
+      dispatch(fetchPosts(config));
     }
-  }, [postStatus, dispatch, link]);
+  }, [postStatus, dispatch, link, token]);
 
 
   const posts = useSelector(selectAllPosts);
