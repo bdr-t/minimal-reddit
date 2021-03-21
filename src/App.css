@@ -4,98 +4,22 @@ body {
   background-color: #E9EAED;
 }
 
-.App{
-  display: flex;
-  flex-direction: column;
-}
 
 
 
-.flex {
-  display: flex;
-  justify-content: center;
-}
-
-.container-home {
-  max-width: 1000px;
-}
-
-.icon {
-  width: 20px;
-  height: 20px;
-}
-
-* {
+*{
   margin: 0;
-  font-family: "Poppins", sans-serif;
+  font-family: Segoe UI;
 }
 
-
-
-
-
-
-.content-container {
-  max-width: 750px;
-  background-color: white;
-  border-radius: 8px;
-  margin-bottom: 2em;
-}
-
-.content-title {
-  padding: 1em;
-}
-
-.save-icon {
-  margin-left: 10px;
-  margin-top: 5px;
-}
-
-.content-body {
-  padding-left: 24px;
-  padding-right: 24px;
-  padding-bottom: 24px;
-}
-
-.content-footer {
-  display: flex;
-  justify-content: space-between;
-  padding-left: 24px;
-  padding-right: 24px;
-  padding-bottom: 24px;
-}
-
-.upvotes {
-  display: flex;
-}
-
-.subreddit {
-  display: flex;
-}
-
-.subreddit-text {
-  margin-right: 5px;
-}
-
-.content-img {
-  max-width: 100%;
-  max-height: auto;
-  display: block;
-  margin: auto;
-}
 
 a {
   word-wrap: break-word;
 }
-
 
 .posts-list{
   display: flex;
   justify-content: center;
   flex-direction: column;
   align-items: center;
-}
-
-.post-excerpt{
-  min-width: 750px;
 }

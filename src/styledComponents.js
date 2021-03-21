@@ -80,7 +80,6 @@ export const Upvotes = styled.div`
 `;
 
 export const Content = styled.p`
-  white-space: pre-line;
   padding: 1em 2em;
   font-size: 14px;
   /* border-bottom: 1px solid black; */
@@ -117,9 +116,11 @@ export const Video = styled(ReactHlsPlayer)`
 `;
 export const Text = styled.div`
   padding: 4px 1em 1em 1em;
-  white-space: pre-line;
   font-family: Segoe UI;
   font-size: 15px;
+  p{
+    margin-bottom: 1em;
+  }
 `;
 
 export const Enlace = styled.a`
@@ -132,6 +133,7 @@ export const UpvotesNum = styled.p`
   font-family: Segoe UI SemiBold;
   font-size: 15px;
   color: #65676b;
+  margin:0;
 `;
 
 export const Comments = styled(UpvotesNum)`
@@ -171,6 +173,7 @@ export const Logo = styled.a`
   text-decoration: none;
   align-self: center;
   cursor: pointer;
+  font-family: Poppins;
 `;
 
 export const Nav = styled.div`
