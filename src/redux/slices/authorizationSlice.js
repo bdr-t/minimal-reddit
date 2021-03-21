@@ -15,18 +15,17 @@ export const fetchToken = createAsyncThunk(
         Authorization: `basic ${encode}`,
       },
     })
-      .then((response) => response.json())
+      .then((response) => {
+        if(!response.ok){
+          throw new Error('Something went wrong');
+        }
+        return response.json()})
       .catch((error) => console.log("error", error));
-    let authorization = {
-      authorization: true,
-      token: response.access_token,
-      refreshToken: response.refresh_token,
-    };
     window.localStorage.setItem("refreshToken", response.refresh_token);
     setTimeout(() => {
-      refreshToken(authorization.refreshToken);
+      refreshToken(response.refresh_token);
     }, 3500000);
-    return authorization;
+    return response;
   }
 );
 
@@ -44,14 +43,19 @@ export const refreshToken = createAsyncThunk(
         Authorization: `basic ${encode}`,
       },
     })
-      .then((response) => response.json())
+    .then((response) => {
+      if(!response.ok){
+        throw new Error('Something went wrong');
+      }
+      return response.json()})
       .catch((error) => console.log("error", error));
     let authorization = {
       authorization: true,
       token: response.access_token,
       refreshToken: response.refresh_token,
     };
-    return authorization;
+    console.log(response)
+    return response;
   }
 );
 
@@ -70,9 +74,9 @@ const authorizationSlice = createSlice({
     },
     [fetchToken.fulfilled]: (state, action) => {
       state.status = "succeeded";
-      state.authorization = action.payload.authorization;
-      state.token = action.payload.token;
-      state.refreshToken = action.payload.refreshToken;
+      state.authorization = true;
+      state.token = action.payload.access_token;
+      state.refreshToken = action.payload.refresh_token;
     },
     [fetchToken.rejected]: (state, action) => {
       state.status = "failed";
@@ -83,9 +87,9 @@ const authorizationSlice = createSlice({
     },
     [refreshToken.fulfilled]: (state, action) => {
       state.status = "succeeded";
-      state.authorization = action.payload.authorization;
-      state.token = action.payload.token;
-      state.refreshToken = action.payload.refreshToken;
+      state.authorization = true;
+      state.token = action.payload.access_token;
+      state.refreshToken = action.payload.refresh_token;
     },
     [refreshToken.rejected]: (state, action) => {
       state.status = "failed";
