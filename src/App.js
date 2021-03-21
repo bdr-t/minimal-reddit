@@ -1,6 +1,8 @@
-import React from "react";
+import React, {useEffect} from "react";
 // import './App.css'
-import './App.css'
+import "./App.css";
+import { useDispatch } from "react-redux";
+import { refreshToken } from "./redux/slices/authorizationSlice";
 
 import {
   BrowserRouter as Router,
@@ -13,6 +15,20 @@ import PostList from "./components/PostList";
 import Callback from "./components/CallBack";
 
 function App() {
+  const dispatch = useDispatch()
+  let refresh_token = window.localStorage['refreshToken']
+  console.log(refresh_token)
+
+  if(refresh_token !== 'undefined' ){
+    console.log('There is a refreshTojen in local storage'+ refresh_token)
+    dispatch(refreshToken(refresh_token))
+    console.log('dispatched refreshToken')
+  } else{
+    console.log('there is no data in local storage')
+    console.log('I did nothing')
+  }
+
+
   return (
     <Router>
       <div className="App">
