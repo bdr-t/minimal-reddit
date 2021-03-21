@@ -17,15 +17,11 @@ import Callback from "./components/CallBack";
 function App() {
   const dispatch = useDispatch()
   let refresh_token = window.localStorage['refreshToken']
-  console.log(refresh_token)
 
   if(refresh_token !== 'undefined' ){
-    console.log('There is a refreshTojen in local storage'+ refresh_token)
     dispatch(refreshToken(refresh_token))
-    console.log('dispatched refreshToken')
   } else{
-    console.log('there is no data in local storage')
-    console.log('I did nothing')
+    console.log('there is no refreshtoken in local storage')
   }
 
 
