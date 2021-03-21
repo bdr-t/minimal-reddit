@@ -1,6 +1,10 @@
 
 import { useSelector } from "react-redux";
 import { selectPostById } from "../redux/slices/postsSlice";
+import he from 'he'
+import sanitizeHtml from 'sanitize-html'
+import parse from 'html-react-parser'
+
 import {
   Comments,
   UpvotesNum,
@@ -56,8 +60,11 @@ const Post = ({ postId, postNotLeggedIn}) => {
         controls={true}
       />
     );
-  } else {
-    content = <Text>{post.selftext}</Text>;
+  } else if(post.selftext) {
+    const text = he.decode(post.selftext)
+    const html = sanitizeHtml(text)
+
+    content = <Text>{parse(html)}</Text>;
   }
 
   return (

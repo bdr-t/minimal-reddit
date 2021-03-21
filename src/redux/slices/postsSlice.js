@@ -33,7 +33,7 @@ export const fetchPosts = createAsyncThunk(
         post_id: response[x].data.name,
         over_18: response[x].data.over_18,
         link: response[x].data.permalink,
-        selftext: response[x].data.selftext,
+        selftext: response[x].data.selftext_html,
         subreddit: response[x].data.subreddit,
         subreddit_id: response[x].data.subreddit_id,
         thumbnail: response[x].data.thumbnail,
