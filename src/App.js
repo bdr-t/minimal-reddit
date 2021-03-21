@@ -16,13 +16,21 @@ import Callback from "./components/CallBack";
 
 function App() {
   const dispatch = useDispatch()
-  let refresh_token = window.localStorage['refreshToken']
+  
+  useEffect(()=>{
+    let refresh_token = window.localStorage['refreshToken']
+    if(refresh_token !== 'undefined' && window.localStorage['refreshToken'] ){
+      dispatch(refreshToken(refresh_token))
+      console.log('dispath')
+    } else{
+      console.log('there is no refreshtoken in local storage')
+    }
+  })
+  
 
-  if(refresh_token !== 'undefined' ){
-    dispatch(refreshToken(refresh_token))
-  } else{
-    console.log('there is no refreshtoken in local storage')
-  }
+
+
+  
 
 
   return (
