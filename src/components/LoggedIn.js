@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import Post from './Post'
 
 
+
 import {
   fetchPosts,
   selectAllPosts,
@@ -12,18 +13,17 @@ import {
 
 
 
-
 const PostList = ({match}) => {
-  
+  const path = match ? match.url : '/best'
 
-  const link = 'https://oauth.reddit.com/best'
+  const link = 'https://oauth.reddit.com' + path
 
   const dispatch = useDispatch();
 
   const postStatus = useSelector((state) => state.posts.status);
   const error = useSelector((state) => state.posts.error);
   const token = useSelector((state) => state.authorization.token);
-  console.log(token)
+
 
   
 
