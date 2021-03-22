@@ -4,6 +4,7 @@ import { selectPostById } from "../redux/slices/postsSlice";
 import he from 'he'
 import sanitizeHtml from 'sanitize-html'
 import parse from 'html-react-parser'
+import { fromUnixTime, formatDistanceToNowStrict} from 'date-fns'
 
 import {
   Comments,
@@ -67,21 +68,25 @@ const Post = ({ postId, postNotLeggedIn}) => {
     content = <Text>{parse(html)}</Text>;
   }
 
+  const date = fromUnixTime(post.created)
+  const timePeriod = formatDistanceToNowStrict(date)
+ 
+
   return (
     <Container>
       <Title>{post.title}</Title>
-      <SubTitle>Posted by me 9 hours ago</SubTitle>
+      <SubTitle>Posted by u/{post.author} {timePeriod} ago</SubTitle>
       {content}
       <Footer>
         <div style={{display:'flex', borderTop: '1px solid #65676b'}}>
           <Upvotes>
             <ArrowDown />
-            <UpvotesNum>{post.ups}</UpvotesNum>
+            <UpvotesNum>{post.ups - post.downs}</UpvotesNum>
             <ArrowUp />
           </Upvotes>
         </div>
         <div style={{display:'flex', borderTop: '1px solid #65676b'}}>
-        <Comments>Comments</Comments>
+        <Comments>{post.comments} Comments</Comments>
         </div>
         <div style={{display:'flex', borderTop: '1px solid #65676b'}}>
           <SubReddit href={`/r/${post.subreddit}`}>
