@@ -21,7 +21,6 @@ function App() {
     let refresh_token = window.localStorage['refreshToken']
     if(refresh_token !== 'undefined' && window.localStorage['refreshToken'] ){
       dispatch(refreshToken(refresh_token))
-      console.log('dispath')
     } else{
       console.log('there is no refreshtoken in local storage')
     }

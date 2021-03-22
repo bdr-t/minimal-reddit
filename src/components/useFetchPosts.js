@@ -9,7 +9,6 @@ function useFetchPosts(link) {
   useEffect(() => {
     const fetchData = async () => {
       const response = await axios.get(link).then((response) => response.data.data.children);
-      console.log(response);
       let list = [];
       for (let x in response) {
         let post = {

@@ -22,12 +22,13 @@ export const fetchPosts = createAsyncThunk(
     const response = await axios
       .get(link, config)
       .then((response) => response.data.data.children);
-    console.log(response)
     let list = [];
     for (let x in response) {
       let post = {
         id: response[x].data.id,
-        author: response[x].data.author_fullname,
+        author_fullname: response[x].data.author_fullname,
+        comments: response[x].data.num_comments,
+        author: response[x].data.author,
         is_video: response[x].data.is_video,
         media: response[x].data.media,
         post_id: response[x].data.name,
@@ -38,6 +39,8 @@ export const fetchPosts = createAsyncThunk(
         subreddit_id: response[x].data.subreddit_id,
         thumbnail: response[x].data.thumbnail,
         title: response[x].data.title,
+        downs: response[x].data.downs,
+        created: response[x].data.created_utc,
         ups: response[x].data.ups,
         url: response[x].data.url,
         is_gallery: response[x].data.is_gallery,

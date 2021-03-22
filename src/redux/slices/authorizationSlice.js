@@ -49,7 +49,6 @@ export const refreshToken = createAsyncThunk(
       }
       return response.json()})
       .catch((error) => console.log("error", error));
-      console.log(response)
     return response;
   }
 );
