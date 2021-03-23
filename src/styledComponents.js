@@ -24,9 +24,10 @@ export const SaveIcon = styled(HiOutlineSave)`
   padding-left: 1em;
   width: 20px;
   height: auto;
+  color: ${props => props.saved ? "green" : "black"};
   cursor: pointer;
   &:hover {
-    color: red;
+    color: green;
   }
 `;
 

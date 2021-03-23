@@ -5,8 +5,9 @@ import sanitizeHtml from "sanitize-html";
 import parse from "html-react-parser";
 import { fromUnixTime, formatDistanceToNowStrict } from "date-fns";
 import { Link } from "react-router-dom";
-import { useState} from "react";
-import savePost from "../actions/savePost"
+import { useState } from "react";
+import savePost from "../actions/savePost";
+import unSavePost from "../actions/unSavePost";
 
 import {
   Comments,
@@ -32,12 +33,13 @@ const Post = ({ postId, postNotLeggedIn, token }) => {
   if (postNotLeggedIn) {
     post = postNotLeggedIn;
   }
-  console.log(post.likes)
+  console.log(post.likes);
 
   let content;
   const [votes, setVotes] = useState(post.ups - post.downs);
   const [dir, setDir] = useState(0);
-  const [focus, setFocus] = useState(post.likes)
+  const [focus, setFocus] = useState(post.likes);
+  const [saved, setSaved] = useState(post.saved);
   if (post.url.includes("jpg") || post.url.includes("png")) {
     content = <ContentImage src={post.url} alt="" />;
   } else if (!post.url.includes("redd")) {
@@ -82,7 +84,18 @@ const Post = ({ postId, postNotLeggedIn, token }) => {
     <Container>
       <Title>
         {post.title}
-        <SaveIcon onClick={()=>savePost(post.post_id, token)}/>
+        <SaveIcon
+          saved={saved}
+          onClick={() => {
+            if (saved) {
+              unSavePost(post.post_id, token);
+              setSaved(false);
+            } else {
+              savePost(post.post_id, token);
+              setSaved(true);
+            }
+          }}
+        />
       </Title>
       <SubTitle>
         Posted by <Link to={`u/${post.author}`}>u/{post.author}</Link>{" "}
@@ -92,44 +105,46 @@ const Post = ({ postId, postNotLeggedIn, token }) => {
       <Footer>
         <div style={{ display: "flex", borderTop: "1px solid #65676b" }}>
           <Upvotes>
-            <ArrowDown focus={focus === false ? false : true }
+            <ArrowDown
+              focus={focus === false ? false : true}
               onClick={() => {
                 if (dir === 0) {
                   vote(-1, post.post_id, token);
                   setDir(-1);
                   setVotes(votes - 1);
-                  setFocus(false)
+                  setFocus(false);
                 } else if (dir === -1) {
                   vote(0, post.post_id, token);
                   setDir(0);
                   setVotes(votes + 1);
-                  setFocus(null)
-                } else if (dir === 1){
+                  setFocus(null);
+                } else if (dir === 1) {
                   vote(-1, post.post_id, token);
                   setDir(-1);
                   setVotes(votes - 2);
-                  setFocus(false)
+                  setFocus(false);
                 }
               }}
             />
             <UpvotesNum>{votes}</UpvotesNum>
-            <ArrowUp focus={focus === true ? true : false}
+            <ArrowUp
+              focus={focus === true ? true : false}
               onClick={() => {
                 if (dir === 0) {
                   vote(1, post.post_id, token);
                   setDir(1);
                   setVotes(votes + 1);
-                  setFocus(true)
+                  setFocus(true);
                 } else if (dir === -1) {
                   vote(1, post.post_id, token);
                   setDir(1);
                   setVotes(votes + 2);
-                  setFocus(true)
-                } else if (dir === 1){
+                  setFocus(true);
+                } else if (dir === 1) {
                   vote(0, post.post_id, token);
                   setDir(0);
                   setVotes(votes - 1);
-                  setFocus(null)
+                  setFocus(null);
                 }
               }}
             />
