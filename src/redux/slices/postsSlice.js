@@ -11,19 +11,28 @@ const postsAdapter = createEntityAdapter();
 const initialState = postsAdapter.getInitialState({
   status: "idle",
   error: null,
+  after: "",
 });
 
 export const fetchPosts = createAsyncThunk(
   "posts/fetchPosts",
-  async ({link, token}) => {
+  async ({ path, token, afterPosts }) => {
+    let after;
     const config = {
-      headers: { Authorization: `Bearer ${token}` }
-  };
-    const response = await axios
-      .get(link, config)
-      .then((response) => response.data.data.children);
+      headers: { Authorization: `Bearer ${token}` },
+    };
+    let response = await axios
+      .get(
+        `https://oauth.reddit.com${path}?limit=10&after${afterPosts}`,
+        config
+      )
+      .then((response) => {
+        after = response.data.data.after;
+        return response.data.data.children;
+      });
     let list = [];
     for (let x in response) {
+      console.log(x);
       let post = {
         id: response[x].data.id,
         author_fullname: response[x].data.author_fullname,
@@ -50,7 +59,8 @@ export const fetchPosts = createAsyncThunk(
       list.push(post);
     }
 
-    return list;
+    const res = [list, after];
+    return res;
   }
 );
 
@@ -64,7 +74,8 @@ const postsSlice = createSlice({
     },
     [fetchPosts.fulfilled]: (state, action) => {
       state.status = "succeeded";
-      postsAdapter.upsertMany(state, action.payload);
+      postsAdapter.upsertMany(state, action.payload[0]);
+      state.after = action.payload[1];
     },
     [fetchPosts.rejected]: (state, action) => {
       state.status = "failed";

@@ -1,42 +1,34 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import Post from './Post'
+import Post from "./Post";
+import comments from "../actions/comments"
 
+import { fetchPosts, selectAllPosts } from "../redux/slices/postsSlice";
 
+const PostList = ({ match }) => {
+  const path = match ? match.url : "/best";
 
-import {
-  fetchPosts,
-  selectAllPosts,
-} from "../redux/slices/postsSlice";
-
-
-
-
-
-const PostList = ({match}) => {
-  const path = match ? match.url : '/best'
-
-  const link = 'https://oauth.reddit.com' + path
 
   const dispatch = useDispatch();
 
   const postStatus = useSelector((state) => state.posts.status);
   const error = useSelector((state) => state.posts.error);
   const token = useSelector((state) => state.authorization.token);
+  const after = useSelector((state) => state.posts.after)
 
-
-  
 
   useEffect(() => {
-    if (postStatus === "idle" ) {
+    if (postStatus === "idle") {
       const config = {
-        link,
-        token
-      }
+        path,
+        token,
+        afterPosts: after,
+      };
       dispatch(fetchPosts(config));
-    }
-  }, [postStatus, dispatch, link, token]);
+      comments()
 
+    }
+  }, [postStatus, dispatch, token]);
 
   const posts = useSelector(selectAllPosts);
 
@@ -46,17 +38,14 @@ const PostList = ({match}) => {
     content = <div className="loader">Loading...</div>;
   } else if (postStatus === "succeeded") {
     content = posts.map((post) => (
-      <Post key={post.id} postId={post.id} token={token}/>
+      <Post key={post.id} postId={post.id} token={token} />
     ));
   } else if (postStatus === "error") {
     content = <div>{error}</div>;
   }
 
-  return (
-    <section className="posts-list">
-      {content}
-    </section>
-  );
+  
+  return <section className="posts-list">{content}</section>;
 };
 
 export default PostList;
