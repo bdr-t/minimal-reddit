@@ -32,10 +32,12 @@ const Post = ({ postId, postNotLeggedIn, token }) => {
   if (postNotLeggedIn) {
     post = postNotLeggedIn;
   }
+  console.log(post.likes)
 
   let content;
   const [votes, setVotes] = useState(post.ups - post.downs);
   const [dir, setDir] = useState(0);
+  const [focus, setFocus] = useState(post.likes)
   if (post.url.includes("jpg") || post.url.includes("png")) {
     content = <ContentImage src={post.url} alt="" />;
   } else if (!post.url.includes("redd")) {
@@ -90,30 +92,44 @@ const Post = ({ postId, postNotLeggedIn, token }) => {
       <Footer>
         <div style={{ display: "flex", borderTop: "1px solid #65676b" }}>
           <Upvotes>
-            <ArrowDown
+            <ArrowDown focus={focus === false ? false : true }
               onClick={() => {
                 if (dir === 0) {
                   vote(-1, post.post_id, token);
                   setDir(-1);
                   setVotes(votes - 1);
-                } else {
+                  setFocus(false)
+                } else if (dir === -1) {
                   vote(0, post.post_id, token);
                   setDir(0);
                   setVotes(votes + 1);
+                  setFocus(null)
+                } else if (dir === 1){
+                  vote(-1, post.post_id, token);
+                  setDir(-1);
+                  setVotes(votes - 2);
+                  setFocus(false)
                 }
               }}
             />
             <UpvotesNum>{votes}</UpvotesNum>
-            <ArrowUp
+            <ArrowUp focus={focus === true ? true : false}
               onClick={() => {
                 if (dir === 0) {
                   vote(1, post.post_id, token);
                   setDir(1);
                   setVotes(votes + 1);
-                } else {
+                  setFocus(true)
+                } else if (dir === -1) {
+                  vote(1, post.post_id, token);
+                  setDir(1);
+                  setVotes(votes + 2);
+                  setFocus(true)
+                } else if (dir === 1){
                   vote(0, post.post_id, token);
                   setDir(0);
                   setVotes(votes - 1);
+                  setFocus(null)
                 }
               }}
             />

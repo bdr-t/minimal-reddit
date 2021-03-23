@@ -12,6 +12,7 @@ export const ArrowDown = styled(TiArrowDownThick)`
   align-self: center;
   width: 20px;
   height: auto;
+  color: ${props => props.focus ? "black" : "red"};
   cursor: pointer;
   &:hover {
     color: red;
@@ -35,6 +36,7 @@ export const ArrowUp = styled(TiArrowUpThick)`
   width: 20px;
   height: auto;
   cursor: pointer;
+  color: ${props => props.focus ? "blue" : "black"};
   &:hover {
     color: blue;
   }
