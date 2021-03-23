@@ -33,7 +33,6 @@ const Post = ({ postId, postNotLeggedIn, token }) => {
   if (postNotLeggedIn) {
     post = postNotLeggedIn;
   }
-  console.log(post.likes);
 
   let content;
   const [votes, setVotes] = useState(post.ups - post.downs);

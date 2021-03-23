@@ -1,5 +1,5 @@
 const savePost = async(fullname, token) => {
-    console.log('saved')
+
     const response = await fetch(
       `https://oauth.reddit.com/api/unsave?id=${fullname}`,
       {
@@ -7,6 +7,7 @@ const savePost = async(fullname, token) => {
         headers: { Authorization: `Bearer ${token}` }
       }
     ).then(response => console.log(response))
+    .catch(err => console.log(err))
   };
 
 export default savePost;
