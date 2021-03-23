@@ -46,7 +46,7 @@ const PostList = ({match}) => {
     content = <div className="loader">Loading...</div>;
   } else if (postStatus === "succeeded") {
     content = posts.map((post) => (
-      <Post key={post.id} postId={post.id} />
+      <Post key={post.id} postId={post.id} token={token}/>
     ));
   } else if (postStatus === "error") {
     content = <div>{error}</div>;
