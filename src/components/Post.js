@@ -5,7 +5,8 @@ import sanitizeHtml from "sanitize-html";
 import parse from "html-react-parser";
 import { fromUnixTime, formatDistanceToNowStrict } from "date-fns";
 import { Link } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useState} from "react";
+import savePost from "../actions/savePost"
 
 import {
   Comments,
@@ -79,7 +80,7 @@ const Post = ({ postId, postNotLeggedIn, token }) => {
     <Container>
       <Title>
         {post.title}
-        <SaveIcon />
+        <SaveIcon onClick={()=>savePost(post.post_id, token)}/>
       </Title>
       <SubTitle>
         Posted by <Link to={`u/${post.author}`}>u/{post.author}</Link>{" "}
