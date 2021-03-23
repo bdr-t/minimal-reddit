@@ -13,6 +13,7 @@ import {
 import NavBar from "./components/NavBar";
 import PostList from "./components/PostList";
 import Callback from "./components/CallBack";
+import UserProfile from './components/UserProfile'
 
 function App() {
   const dispatch = useDispatch()
@@ -46,6 +47,7 @@ function App() {
               </React.Fragment>
             )}
           />
+          <Route exact path="/u/:user" component={UserProfile} />
           <Route exact path="/r/:subReddit" component={PostList} />
           <Route exact path="/r/:subReddit/hot" component={PostList} />
           <Route exact path="/r/:subReddit/top" component={PostList} />
