@@ -18,7 +18,6 @@ const Callback = () => {
     return ( 
         <div>
             <h1>LOGING IN</h1>
-            <h2>{token}</h2>
             <button >
                 <Link to='/'>HOME</Link>
             </button>

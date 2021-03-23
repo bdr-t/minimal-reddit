@@ -1,5 +1,5 @@
 import Post from "./Post";
-import useFetchPosts from "./useFetchPosts";
+import useFetchPosts from "../actions/useFetchPosts";
 
 const PostList = ({ match }) => {
   let linkHome = `https://www.reddit.com/.json`;
