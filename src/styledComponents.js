@@ -4,6 +4,9 @@ import {
   TiArrowDownThick,
   TiArrowUpThick,
 } from "react-icons/ti";
+import {
+  HiOutlineSave
+} from "react-icons/hi";
 
 export const ArrowDown = styled(TiArrowDownThick)`
   align-self: center;
@@ -14,6 +17,18 @@ export const ArrowDown = styled(TiArrowDownThick)`
     color: red;
   }
 `;
+
+export const SaveIcon = styled(HiOutlineSave)`
+  vertical-align: middle;
+  padding-left: 1em;
+  width: 20px;
+  height: auto;
+  cursor: pointer;
+  &:hover {
+    color: red;
+  }
+`;
+
 
 export const ArrowUp = styled(TiArrowUpThick)`
   align-self: center;
