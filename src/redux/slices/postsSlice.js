@@ -23,7 +23,7 @@ export const fetchPosts = createAsyncThunk(
     };
     let response = await axios
       .get(
-        `https://oauth.reddit.com${path}?limit=10&after${afterPosts}`,
+        `https://oauth.reddit.com${path}?limit=10&after=${afterPosts}`,
         config
       )
       .then((response) => {
@@ -32,7 +32,6 @@ export const fetchPosts = createAsyncThunk(
       });
     let list = [];
     for (let x in response) {
-      console.log(x);
       let post = {
         id: response[x].data.id,
         author_fullname: response[x].data.author_fullname,
@@ -60,6 +59,7 @@ export const fetchPosts = createAsyncThunk(
     }
 
     const res = [list, after];
+    console.log(res)
     return res;
   }
 );
@@ -74,7 +74,7 @@ const postsSlice = createSlice({
     },
     [fetchPosts.fulfilled]: (state, action) => {
       state.status = "succeeded";
-      postsAdapter.upsertMany(state, action.payload[0]);
+      postsAdapter.addMany(state, action.payload[0]);
       state.after = action.payload[1];
     },
     [fetchPosts.rejected]: (state, action) => {

@@ -8,7 +8,8 @@ import Sort from "./sort";
 
 
 const PostList = ({match}) => {
-  let path = match ? match.params.subReddit : null
+  let path = match ? match.params.subReddit : '/';
+  
   
   const authorization = useSelector(state=> state.authorization.authorization)
   return (
