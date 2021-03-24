@@ -1,6 +1,6 @@
 const savePost = async(fullname, token) => {
 
-    const response = await fetch(
+    await fetch(
       `https://oauth.reddit.com/api/unsave?id=${fullname}`,
       {
         method: "POST",

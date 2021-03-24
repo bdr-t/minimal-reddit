@@ -35,7 +35,7 @@ function useFetchPosts(link) {
       setError(false);
     };
     fetchData()
-  }, []);
+  }, [link]);
 
   
   return { posts, status, error };

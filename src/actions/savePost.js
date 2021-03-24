@@ -1,5 +1,5 @@
 const savePost = async(fullname, token) => {
-    const response = await fetch(
+    await fetch(
       `https://oauth.reddit.com/api/save?id=${fullname}`,
       {
         method: "POST",
