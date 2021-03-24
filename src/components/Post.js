@@ -84,7 +84,7 @@ const Post = ({ postId, postNotLeggedIn, token }) => {
       <Title>
         {post.title}
         <SaveIcon
-          saved={saved}
+          saved={saved === true ? 1 : 0}
           onClick={() => {
             if (saved) {
               unSavePost(post.post_id, token);
@@ -105,7 +105,7 @@ const Post = ({ postId, postNotLeggedIn, token }) => {
         <div style={{ display: "flex", borderTop: "1px solid #65676b" }}>
           <Upvotes>
             <ArrowDown
-              focus={focus === false ? false : true}
+              focus={focus === false ? 0 : 1}
               onClick={() => {
                 if (dir === 0) {
                   vote(-1, post.post_id, token);
@@ -127,7 +127,7 @@ const Post = ({ postId, postNotLeggedIn, token }) => {
             />
             <UpvotesNum>{votes}</UpvotesNum>
             <ArrowUp
-              focus={focus === true ? true : false}
+              focus={focus === true ? 1 : 2}
               onClick={() => {
                 if (dir === 0) {
                   vote(1, post.post_id, token);

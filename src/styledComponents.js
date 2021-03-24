@@ -24,7 +24,7 @@ export const SaveIcon = styled(HiOutlineSave)`
   padding-left: 1em;
   width: 20px;
   height: auto;
-  color: ${props => props.saved ? "green" : "black"};
+  color: ${props => props.saved === 1 ? "green" : "black"};
   cursor: pointer;
   &:hover {
     color: green;
@@ -37,7 +37,7 @@ export const ArrowUp = styled(TiArrowUpThick)`
   width: 20px;
   height: auto;
   cursor: pointer;
-  color: ${props => props.focus ? "blue" : "black"};
+  color: ${props => props.focus === 1 ? "blue" : "black"};
   &:hover {
     color: blue;
   }
