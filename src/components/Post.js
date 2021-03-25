@@ -8,6 +8,7 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import savePost from "../actions/savePost";
 import unSavePost from "../actions/unSavePost";
+import useFetchComments from "../actions/useFetchComments"
 
 import {
   Comments,
@@ -76,8 +77,15 @@ const Post = ({ postId, postNotLeggedIn, token }) => {
     content = <Text>{parse(html)}</Text>;
   }
 
-  const date = fromUnixTime(post.created);
-  const timePeriod = formatDistanceToNowStrict(date);
+
+
+  let timePeriod = 1
+
+  if(post.created){
+    const date = fromUnixTime(post.created);
+    timePeriod = formatDistanceToNowStrict(date);
+  }
+  
 
   return (
     <Container>
@@ -158,6 +166,7 @@ const Post = ({ postId, postNotLeggedIn, token }) => {
           </SubReddit>
         </div>
       </Footer>
+      <div className="comments">{comment}</div>
     </Container>
   );
 };
