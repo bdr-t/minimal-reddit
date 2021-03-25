@@ -59,7 +59,6 @@ export const fetchPosts = createAsyncThunk(
     }
 
     const res = [list, after];
-    console.log(res)
     return res;
   }
 );
@@ -67,7 +66,12 @@ export const fetchPosts = createAsyncThunk(
 const postsSlice = createSlice({
   name: "posts",
   initialState,
-  reducers: {},
+  reducers: {
+    remove(state, {payload}){
+      postsAdapter.removeAll(state, payload);
+      state.after = ''
+    }
+  },
   extraReducers: {
     [fetchPosts.pending]: (state, action) => {
       state.status = "loading";
@@ -89,5 +93,7 @@ export const {
   selectById: selectPostById,
   selectIds: selectPostIds,
 } = postsAdapter.getSelectors((state) => state.posts);
+
+export const {remove} = postsSlice.actions
 
 export default postsSlice.reducer;
