@@ -161,12 +161,11 @@ const Post = ({ postId, postNotLeggedIn, token }) => {
           <Comments>{post.comments} Comments</Comments>
         </div>
         <div style={{ display: "flex", borderTop: "1px solid #65676b" }}>
-          <SubReddit href={`/r/${post.subreddit}`}>
+          <SubReddit href={`/r/${post.subreddit}/`}>
             r/{post.subreddit}
           </SubReddit>
         </div>
       </Footer>
-      <div className="comments">{comment}</div>
     </Container>
   );
 };

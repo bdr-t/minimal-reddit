@@ -1,23 +1,32 @@
 import styled from 'styled-components'
+import {Link, useLocation} from 'react-router-dom'
 
 
 const Button = styled.button`
-    paddding: 20px;
+    padding: 10px;
     background-color: lighgrey;
 `
 
+const Enlace = styled(Link)`
+text-decoration: none;
+color: inherit;
+
+`
 const Sort = ({url}) => {
+    const location = useLocation()
 
+    console.log(location)
 
-
+    
 
 
     return (
         <div>
-            <Button onClick={() => (window.location.href = url ? `/r/${url}/new` : 'new' )}>New</Button>
-            <Button onClick={() => (window.location.href = url ? `/r/${url}/hot` : 'hot')}>Hot</Button>
-            <Button onClick={() => (window.location.href = url ? `/r/${url}/top` : 'top')}>Top</Button>
-            <Button onClick={() => (window.location.href = url ? `/r/${url}/rising` : 'rising')}>Rising</Button>
+
+            <Button><Enlace to={`${location.pathname}new`}> New </Enlace></Button>
+            <Button><Enlace to={`${location.pathname}hot`}> Hot </Enlace></Button>
+            <Button><Enlace to={`${location.pathname}top`}> Top </Enlace></Button>
+            <Button><Enlace to={`${location.pathname}raising`}> Raising </Enlace></Button>
         
         </div>
     );
