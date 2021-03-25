@@ -24,9 +24,12 @@ function useFetchPosts(link) {
           subreddit_id: response[x].data.subreddit_id,
           thumbnail: response[x].data.thumbnail,
           title: response[x].data.title,
+          downs: response[x].data.downs,
           ups: response[x].data.ups,
           url: response[x].data.url,
+          created: response[x].data.created_utc,
           is_gallery: response[x].data.is_gallery,
+          comments: response[x].data.num_comments,
         };
         list.push(post)
       }
