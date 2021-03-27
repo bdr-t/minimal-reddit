@@ -12,6 +12,7 @@ import NavBar from "./components/NavBar";
 import PostList from "./components/PostList";
 import Callback from "./components/CallBack";
 import UserProfile from './components/UserProfile'
+import PostPage from './components/PostPage'
 
 function App() {
 
@@ -40,6 +41,7 @@ function App() {
           <Route exact path="/top" component={PostList} />
           <Route exact path="/rising" component={PostList} />
           <Route exact path="/callback" component={Callback} />
+          <Route exact path="/post/:id" component={PostPage} />
 
           <Redirect to="/" />
         </Switch>
