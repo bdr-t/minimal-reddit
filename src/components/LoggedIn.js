@@ -6,7 +6,6 @@ import { fetchPosts, remove, selectAllPosts } from "../redux/slices/postsSlice";
 
 const LoggedIn = ({ match }) => {
   const path = match ? match.url : "/best";
-  let secondUseEffect = false
 
   const dispatch = useDispatch();
 

@@ -8,10 +8,9 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import savePost from "../actions/savePost";
 import unSavePost from "../actions/unSavePost";
-import useFetchComments from "../actions/useFetchComments"
 
 import {
-  Comments,
+  Comments as NumComments,
   UpvotesNum,
   Container,
   Title,
@@ -158,7 +157,8 @@ const Post = ({ postId, postNotLeggedIn, token }) => {
           </Upvotes>
         </div>
         <div style={{ display: "flex", borderTop: "1px solid #65676b" }}>
-          <Comments>{post.comments} Comments</Comments>
+          <Link to={`post/${post.id}`}><NumComments>{post.comments} Comments</NumComments></Link>
+          
         </div>
         <div style={{ display: "flex", borderTop: "1px solid #65676b" }}>
           <SubReddit href={`/r/${post.subreddit}/`}>

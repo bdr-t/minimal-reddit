@@ -1,5 +1,4 @@
 const vote = async(dir, fullname, token) => {
-    console.log(dir)
     await fetch(
       `https://oauth.reddit.com/api/vote?dir=${dir}&id=${fullname}`,
       {
