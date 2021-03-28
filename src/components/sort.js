@@ -1,32 +1,20 @@
 import styled from 'styled-components'
-import {Link, useLocation} from 'react-router-dom'
+import {Link, useParams} from 'react-router-dom'
+import {Button, Linked} from '../styledComponents'
 
 
-const Button = styled.button`
-    padding: 10px;
-    background-color: lighgrey;
-`
 
-const Enlace = styled(Link)`
-text-decoration: none;
-color: inherit;
-
-`
-const Sort = ({url}) => {
-    const location = useLocation()
-
-    console.log(location)
-
-    
+const Sort = () => {
+    const {subReddit} = useParams()
 
 
     return (
         <div>
 
-            <Button><Enlace to={`${location.pathname}new`}> New </Enlace></Button>
-            <Button><Enlace to={`${location.pathname}hot`}> Hot </Enlace></Button>
-            <Button><Enlace to={`${location.pathname}top`}> Top </Enlace></Button>
-            <Button><Enlace to={`${location.pathname}raising`}> Raising </Enlace></Button>
+            <Button><Linked to={subReddit ? `/r/${subReddit}/new` : `/new`}> New </Linked></Button>
+            <Button><Linked to={subReddit ? `/r/${subReddit}/hot` : `/hot`}> Hot </Linked></Button>
+            <Button><Linked to={subReddit ? `/r/${subReddit}/top` :`/top`}> Top </Linked></Button>
+            <Button><Linked to={subReddit ? `/r/${subReddit}/rising` : `/rising`}> Raising </Linked></Button>
         
         </div>
     );
