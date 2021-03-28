@@ -4,17 +4,17 @@ import NotLoggedIn from './NotLoggedIn'
 
 
 
+
 import Sort from "./sort";
 
 
 const PostList = ({match}) => {
-  let path = match ? match.params.subReddit : '/';
   
-  
+
   const authorization = useSelector(state=> state.authorization.authorization)
   return (
     <section className="posts-list">
-      <Sort url={path}/>
+      <Sort/>
       {authorization && <LoggedIn match={match}/>}
       {!authorization && <NotLoggedIn match={match}/>}
 

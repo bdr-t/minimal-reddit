@@ -13,12 +13,13 @@ import PostList from "./components/PostList";
 import Callback from "./components/CallBack";
 import UserProfile from './components/UserProfile'
 import PostPage from './components/PostPage'
+import {AppDiv} from "./styledComponents"
 
 function App() {
 
   return (
     <Router>
-      <div className="App">
+      <AppDiv>
         <NavBar />
         <Switch>
           <Route
@@ -45,7 +46,7 @@ function App() {
 
           <Redirect to="/" />
         </Switch>
-      </div>
+      </AppDiv>
     </Router>
   );
 }

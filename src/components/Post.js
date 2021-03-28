@@ -20,6 +20,7 @@ import {
   ContentImage,
   Video,
   SaveIcon,
+  Linked,
 } from "../styledComponents";
 import vote from "../actions/vote";
 import TimeAgo from "./TimeAgo";
@@ -143,15 +144,20 @@ const Post = ({ postId, postNotLeggedIn, token }) => {
         </div>
         <div style={{ display: "flex", borderTop: "1px solid #65676b" }}>
           <NumComments>
-            <Link to={`post/${post.id}`}>
+            <Linked to={`post/${post.id}`}>
               <NumComments>{post.comments} Comments</NumComments>
-            </Link>
+            </Linked>
           </NumComments>
         </div>
         <div style={{ display: "flex", borderTop: "1px solid #65676b" }}>
-          <SubReddit href={`/r/${post.subreddit}/`}>
+        <SubReddit>
+        <Linked to = {`/r/${post.subreddit}/`}>
+          
+            
             r/{post.subreddit}
+          </Linked>
           </SubReddit>
+
         </div>
       </Footer>
     </Container>

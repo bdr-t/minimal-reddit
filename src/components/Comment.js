@@ -1,9 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { Text} from "../styledComponents";
-import he from "he";
-import sanitizeHtml from "sanitize-html";
-import parse from "html-react-parser";
 import TimeAgo from "./TimeAgo";
 import parseHtml from "../actions/parseHTML";
 

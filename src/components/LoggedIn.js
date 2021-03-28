@@ -1,11 +1,13 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import Post from "./Post";
+import {useParams} from 'react-router-dom'
 
 import { fetchPosts, remove, selectAllPosts } from "../redux/slices/postsSlice";
 
 const LoggedIn = ({ match }) => {
   const path = match ? match.url : "/best";
+  const {subReddit} = useParams()
 
   const dispatch = useDispatch();
 
@@ -37,7 +39,7 @@ const LoggedIn = ({ match }) => {
       };
       dispatch(fetchPosts(config));
     }
-  }, [path]);
+  }, [path , subReddit]);
 
   window.onscroll = function (ev) {
     if (

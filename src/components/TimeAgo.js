@@ -1,6 +1,6 @@
 import { fromUnixTime, formatDistanceToNowStrict } from "date-fns";
 import { SubTitle } from "../styledComponents";
-import { Link } from "react-router-dom";
+import {Linked} from "../styledComponents"
 const TimeAgo = ({ created, author, needsPadding }) => {
   let timePeriod = 1;
 
@@ -13,10 +13,10 @@ const TimeAgo = ({ created, author, needsPadding }) => {
   return (
       <>
     {needsPadding && <SubTitle style={{paddingLeft:'1em', paddingBottom:'8px'}}>
-      Posted by <Link to={`u/${author}`}>u/{author}</Link> {timePeriod} ago
+      Posted by <Linked to={`u/${author}`}>u/{author}</Linked> {timePeriod} ago
     </SubTitle>}
     {!needsPadding && <SubTitle>
-      Posted by <Link to={`u/${author}`}>u/{author}</Link> {timePeriod} ago
+      Posted by <Linked to={`u/${author}`}>u/{author}</Linked> {timePeriod} ago
     </SubTitle>}
 
     </>
