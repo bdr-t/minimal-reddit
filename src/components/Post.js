@@ -1,9 +1,5 @@
 import { useSelector } from "react-redux";
 import { selectPostById } from "../redux/slices/postsSlice";
-import he from "he";
-import sanitizeHtml from "sanitize-html";
-import parse from "html-react-parser";
-import { fromUnixTime, formatDistanceToNowStrict } from "date-fns";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import savePost from "../actions/savePost";
@@ -22,11 +18,12 @@ import {
   ArrowUp,
   SubReddit,
   ContentImage,
-  SubTitle,
   Video,
   SaveIcon,
 } from "../styledComponents";
 import vote from "../actions/vote";
+import TimeAgo from "./TimeAgo";
+import parseHtml from "../actions/parseHTML";
 
 const Post = ({ postId, postNotLeggedIn, token }) => {
   let post = useSelector((state) => selectPostById(state, postId));
@@ -70,21 +67,8 @@ const Post = ({ postId, postNotLeggedIn, token }) => {
       />
     );
   } else if (post.selftext) {
-    const text = he.decode(post.selftext);
-    const html = sanitizeHtml(text);
-
-    content = <Text>{parse(html)}</Text>;
+    content = <Text>{parseHtml(post.selftext)}</Text>;
   }
-
-
-
-  let timePeriod = 1
-
-  if(post.created){
-    const date = fromUnixTime(post.created);
-    timePeriod = formatDistanceToNowStrict(date);
-  }
-  
 
   return (
     <Container>
@@ -103,10 +87,11 @@ const Post = ({ postId, postNotLeggedIn, token }) => {
           }}
         />
       </Title>
-      <SubTitle>
-        Posted by <Link to={`u/${post.author}`}>u/{post.author}</Link>{" "}
-        {timePeriod} ago
-      </SubTitle>
+      <TimeAgo
+        needsPadding={true}
+        created={post.created}
+        author={post.author}
+      />
       {content}
       <Footer>
         <div style={{ display: "flex", borderTop: "1px solid #65676b" }}>
@@ -157,8 +142,11 @@ const Post = ({ postId, postNotLeggedIn, token }) => {
           </Upvotes>
         </div>
         <div style={{ display: "flex", borderTop: "1px solid #65676b" }}>
-          <Link to={`post/${post.id}`}><NumComments>{post.comments} Comments</NumComments></Link>
-          
+          <NumComments>
+            <Link to={`post/${post.id}`}>
+              <NumComments>{post.comments} Comments</NumComments>
+            </Link>
+          </NumComments>
         </div>
         <div style={{ display: "flex", borderTop: "1px solid #65676b" }}>
           <SubReddit href={`/r/${post.subreddit}/`}>

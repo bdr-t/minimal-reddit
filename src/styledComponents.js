@@ -113,7 +113,7 @@ export const ContentImage = styled.img`
   margin: auto;
   object-fit: contain;
   width: 100%;
-  max-height: 700px;
+  max-height: 1000px;
   display: block;
   margin: auto;
   background-color: black;
@@ -121,8 +121,6 @@ export const ContentImage = styled.img`
 
 export const SubTitle = styled.div`
   font-family: Segoe UI Light;
-  padding-left: 1em;
-  padding-bottom: 8px;
   font-size: 13px;
   color: #65676b;
 `;
