@@ -1,7 +1,13 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { Text} from "../styledComponents";
+import he from "he";
+import sanitizeHtml from "sanitize-html";
+import parse from "html-react-parser";
+import TimeAgo from "./TimeAgo";
+import parseHtml from "../actions/parseHTML";
 
-const Comment = ({ author, id, body }) => {
+const Comment = ({ author, id, body, replies, created }) => {
   const [icon, setIcon] = useState(
     "https://www.redditstatic.com/avatars/avatar_default_05_7193FF.png"
   );
@@ -14,24 +20,58 @@ const Comment = ({ author, id, body }) => {
       if (url.endsWith("png")) {
         setIcon(url);
       } else {
-        console.log(url);
         const remove = url.split("?").pop();
-        console.log(remove);
         const icon = url.replace(remove, "");
-        console.log(icon);
         setIcon(icon);
       }
     }
     getIcon();
   });
 
-  console.log(icon);
+
+
+
+  body = <Text>{parseHtml(body)}</Text>;
 
   return (
-    <div>
-      <img src={icon} width='30px' height='30px' alt="" />
-      {author}
+    <div style={{ borderBottom: "1px solid #E9EAED" }}>
+      <div
+        className="flex"
+        style={{
+          display: "flex",
+          gap: "0.5em",
+          padding: "0.5em 1em 0.5em 1em",
+        }}
+      >
+        <div className="img" style={{width: '35px', display:'grid', placeContent:'center'}}>
+          <img
+            src={icon}
+            width="30px"
+            height="30px"
+            style={{ borderRadius: "50%", margin: "auto" }}
+            alt=""
+          />
+        </div>
+
+        <div className="flex-author">
+          {author}
+          <TimeAgo created={created} author={author}/>
+        </div>
+      </div>
       {body}
+      {replies && (
+        <p
+          style={{
+            fontFamily: "Segoe UI SemiBold",
+            color: "#65676b",
+            textAlign: "center",
+            fontSize: "15px",
+            paddingBottom: "0.5em",
+          }}
+        >
+          {replies.children.length} replies
+        </p>
+      )}
     </div>
   );
 };
