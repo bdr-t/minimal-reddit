@@ -6,16 +6,21 @@ const TrenSubreddit = ({name}) => {
 
     useEffect(()=>{
         const getSubreddit = async() => {
-            const data = await axios.get(`https://www.reddit.com/r/${name}/about.json`).then(res => res.data)
+            const data = await axios.get(`https://www.reddit.com/r/${name}/about.json`).then(res => res.data.data)
             console.log(data)
+            setSubreddit(data)
         }
         getSubreddit()
-    })
+    },[])
 
 
     return (
-        <div>hola</div>
+        <div>
+
+            <p>{subReddit && subReddit.display_name_prefixed}</p>
+            <p>{subReddit && subReddit.subscribers}</p>
+        </div>
     );
 }
- 
+
 export default TrenSubreddit;
