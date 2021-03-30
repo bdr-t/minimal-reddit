@@ -66,7 +66,7 @@ const Comment = ({ author, id, body, replies, created }) => {
             paddingBottom: "0.5em",
           }}
         >
-          {replies.children.length} replies
+          {replies.data.children.length} replies
         </p>
       )}
     </div>

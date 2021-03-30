@@ -10,7 +10,8 @@ const Comments = ({postId}) => {
     
     let content = 'loading'
     if (status === 'succeded'){
-        content = comments.map(x=> <Comment author={x.author} id={x.id} body={x.body_html} replies={x.replies.data} created={x.created_utc}></Comment> )
+        console.log(comments)
+        content = comments.map(x=> <Comment author={x.author} id={x.id} body={x.body_html} replies={x.replies} created={x.created_utc}></Comment> )
     }
 
     return ( 

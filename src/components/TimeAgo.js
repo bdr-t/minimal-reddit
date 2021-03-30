@@ -12,7 +12,7 @@ const TimeAgo = ({ created, author, needsPadding }) => {
 
   return (
       <>
-    {needsPadding && <SubTitle style={{paddingLeft:'1em', paddingBottom:'8px'}}>
+    {needsPadding && <SubTitle style={{paddingLeft:'0.5em', paddingBottom:'8px'}}>
       Posted by <Linked to={`u/${author}`}>u/{author}</Linked> {timePeriod} ago
     </SubTitle>}
     {!needsPadding && <SubTitle>
