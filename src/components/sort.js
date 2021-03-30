@@ -1,5 +1,4 @@
-import styled from 'styled-components'
-import {Link, useParams} from 'react-router-dom'
+import {useParams} from 'react-router-dom'
 import {Button, Linked} from '../styledComponents'
 
 
