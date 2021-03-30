@@ -1,9 +1,9 @@
 import { useSelector } from "react-redux";
 import { selectPostById } from "../redux/slices/postsSlice";
-import { Link } from "react-router-dom";
 import { useState } from "react";
 import savePost from "../actions/savePost";
 import unSavePost from "../actions/unSavePost";
+import axios from 'axios'
 
 import {
   Comments as NumComments,
@@ -33,10 +33,13 @@ const Post = ({ postId, postNotLeggedIn, token }) => {
   }
 
   let content;
+  const [icon, setIcon] = useState('https://svgshare.com/i/V_c.svg')
   const [votes, setVotes] = useState(post.ups - post.downs);
   const [dir, setDir] = useState(0);
   const [focus, setFocus] = useState(post.likes);
   const [saved, setSaved] = useState(post.saved);
+
+  
   if (post.url.includes("jpg") || post.url.includes("png")) {
     content = <ContentImage src={post.url} alt="" />;
   } else if (!post.url.includes("redd")) {
@@ -71,8 +74,32 @@ const Post = ({ postId, postNotLeggedIn, token }) => {
     content = <Text>{parseHtml(post.selftext)}</Text>;
   }
 
+  async function getIcon() {
+    const url = await axios(
+      `https://www.reddit.com/r/${post.subreddit}/about.json`
+    ).then((res) => res.data.data.icon_img);
+    if(url){
+      setIcon(url)
+    }
+    }
+
+  getIcon()
+
   return (
     <Container>
+      <div
+        className="flex"
+        style={{
+          display: "flex",
+          gap: "0.5em",
+          padding: "0.5em 1em 0.5em 1em",
+        }}
+      >
+        <div className="img" style={{width: '35px', display:'grid', placeContent:'center'}}>
+
+      <img src={icon} style={{borderRadius: '50%'}} width='35px' alt=""/>
+      </div>
+      <div className="flex-author">
       <Title>
         {post.title}
         <SaveIcon
@@ -93,6 +120,8 @@ const Post = ({ postId, postNotLeggedIn, token }) => {
         created={post.created}
         author={post.author}
       />
+      </div>
+      </div>
       {content}
       <Footer>
         <div style={{ display: "flex", borderTop: "1px solid #65676b" }}>
@@ -144,7 +173,7 @@ const Post = ({ postId, postNotLeggedIn, token }) => {
         </div>
         <div style={{ display: "flex", borderTop: "1px solid #65676b" }}>
           <NumComments>
-            <Linked to={`post/${post.id}`}>
+            <Linked to={`/r/${post.subreddit}/post/${post.id}`}>
               <NumComments>{post.comments} Comments</NumComments>
             </Linked>
           </NumComments>

@@ -121,7 +121,8 @@ export const Title = styled.h2`
   font-family: Segoe UI Semibold;
   font-size: 15px;
   color: white;
-  padding: 0.75em 1em 0 1em;
+  padding: 0.75em 1em 0 0.5em;
+  padding-left : 0.5em;
   /* border-bottom: 1px solid black; */
 `;
 
