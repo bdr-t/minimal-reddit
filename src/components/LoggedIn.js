@@ -18,6 +18,9 @@ const LoggedIn = ({ match }) => {
   const ids = useSelector((sate) => sate.posts.ids);
 
 
+  
+
+
   useEffect(() => {
     if (postStatus === "idle" ) {
       const config = {
@@ -35,7 +38,7 @@ const LoggedIn = ({ match }) => {
       const config = {
         path,
         token,
-        afterPosts: after,
+        afterPosts: '',
       };
       dispatch(fetchPosts(config));
     }
