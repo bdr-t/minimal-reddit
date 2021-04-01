@@ -92,13 +92,9 @@ const Post = ({ postId, postNotLeggedIn, token }) => {
         style={{
           display: "flex",
           gap: "0.5em",
-          padding: "0.5em 1em 0.5em 1em",
+          padding: "0.5em 0.5em 0.5em 0.5em",
         }}
       >
-        <div className="img" style={{width: '35px', display:'grid', placeContent:'center'}}>
-
-      <img src={icon} style={{borderRadius: '50%'}} width='35px' alt=""/>
-      </div>
       <div className="flex-author">
       <Title>
         {post.title}

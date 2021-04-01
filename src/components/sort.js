@@ -1,5 +1,5 @@
 import {useParams} from 'react-router-dom'
-import {Button, Linked} from '../styledComponents'
+import {SortingElement, Sorting, LinkedSort} from '../styledComponents'
 
 
 
@@ -8,14 +8,15 @@ const Sort = () => {
 
 
     return (
-        <div>
+        <Sorting>
+            
 
-            <Button><Linked to={subReddit ? `/r/${subReddit}/new` : `/new`}> New </Linked></Button>
-            <Button><Linked to={subReddit ? `/r/${subReddit}/hot` : `/hot`}> Hot </Linked></Button>
-            <Button><Linked to={subReddit ? `/r/${subReddit}/top` :`/top`}> Top </Linked></Button>
-            <Button><Linked to={subReddit ? `/r/${subReddit}/rising` : `/rising`}> Raising </Linked></Button>
+            <SortingElement><LinkedSort to={subReddit ? `/r/${subReddit}/new` : `/new`}> New </LinkedSort></SortingElement>
+            <SortingElement><LinkedSort to={subReddit ? `/r/${subReddit}/hot` : `/hot`}> Hot </LinkedSort></SortingElement>
+            <SortingElement><LinkedSort to={subReddit ? `/r/${subReddit}/top` :`/top`}> Top </LinkedSort></SortingElement>
+            <SortingElement><LinkedSort to={subReddit ? `/r/${subReddit}/rising` : `/rising`}> Raising </LinkedSort></SortingElement>
         
-        </div>
+        </Sorting>
     );
 }
  

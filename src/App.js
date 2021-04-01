@@ -24,7 +24,6 @@ function App() {
   return (
     <Router>
       <AppDiv>
-        <NavBar />
         <Switch>
           <Route
             exact

@@ -1,13 +1,15 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import Post from "./Post";
-import {useParams} from 'react-router-dom'
+import { useParams } from "react-router-dom";
 
 import { fetchPosts, remove, selectAllPosts } from "../redux/slices/postsSlice";
+import { Sorting, SortingElement } from "../styledComponents";
+import Sort from "./sort";
 
 const LoggedIn = ({ match }) => {
   const path = match ? match.url : "/best";
-  const {subReddit} = useParams()
+  const { subReddit } = useParams();
 
   const dispatch = useDispatch();
 
@@ -17,12 +19,8 @@ const LoggedIn = ({ match }) => {
   const after = useSelector((state) => state.posts.after);
   const ids = useSelector((sate) => sate.posts.ids);
 
-
-  
-
-
   useEffect(() => {
-    if (postStatus === "idle" ) {
+    if (postStatus === "idle") {
       const config = {
         path,
         token,
@@ -38,16 +36,16 @@ const LoggedIn = ({ match }) => {
       const config = {
         path,
         token,
-        afterPosts: '',
+        afterPosts: "",
       };
       dispatch(fetchPosts(config));
     }
-  }, [path , subReddit]);
+  }, [path, subReddit]);
 
   window.onscroll = function (ev) {
     if (
       window.innerHeight + window.pageYOffset >=
-        document.body.offsetHeight * 0.9
+      document.body.offsetHeight * 0.9
     ) {
       if (postStatus === "succeeded") {
         console.log("a ver");
@@ -82,7 +80,14 @@ const LoggedIn = ({ match }) => {
   //   content = <div>{error}</div>;
   // }
 
-  return <section className="posts-list">{content}</section>;
+  return (
+    <div className="posts-list">
+
+        <Sort/>
+
+      {content}
+    </div>
+  );
 };
 
 export default LoggedIn;
