@@ -1,13 +1,12 @@
 import { useState, useEffect } from "react";
-function useComments(id) {
+function useComments(link) {
     const [comments,setComments] = useState('')
     const [status, setStatus] = useState('idle')
 
     useEffect(()=>{
         const fetchData = async () => {
-            const algo = await fetch(
-              `https://www.reddit.com/comments/${id}.json`
-            )
+          console.log(link)
+            const algo = await fetch(link)
               .then((res) => res.json())
               .then((json) =>
                 json[1].data.children.map((data) => {
