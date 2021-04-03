@@ -3,11 +3,14 @@ import axios from "axios";
 import { Text} from "../styledComponents";
 import TimeAgo from "./TimeAgo";
 import parseHtml from "../actions/parseHTML";
+import useComments from "../actions/useComments";
 
-const Comment = ({ author, id, body, replies, created }) => {
+const Comment = ({ author, id, body, replies, created, permalink }) => {
   const [icon, setIcon] = useState(
     "https://www.redditstatic.com/avatars/avatar_default_05_7193FF.png"
   );
+
+  const [showReplies, setShowReplies] = useState(false)
 
   useEffect(() => {
     async function getIcon() {
@@ -25,10 +28,9 @@ const Comment = ({ author, id, body, replies, created }) => {
     getIcon();
   });
 
-
-
-
   body = <Text>{parseHtml(body)}</Text>;
+
+  let content = 'loading'
 
   return (
     <div style={{ borderBottom: "1px solid #E9EAED" }}>
@@ -58,7 +60,9 @@ const Comment = ({ author, id, body, replies, created }) => {
       {body}
       {replies && (
         <p
+        onClick={()=> setShowReplies(!showReplies)}
           style={{
+            cursor:'pointer',
             fontFamily: "Segoe UI SemiBold",
             color: "#65676b",
             textAlign: "center",
@@ -67,6 +71,9 @@ const Comment = ({ author, id, body, replies, created }) => {
           }}
         >
           {replies.data.children.length} replies
+          <div>
+            {showReplies && content}
+          </div>
         </p>
       )}
     </div>
