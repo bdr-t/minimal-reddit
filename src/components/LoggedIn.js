@@ -17,9 +17,14 @@ const LoggedIn = ({ match }) => {
   const error = useSelector((state) => state.posts.error);
   const token = useSelector((state) => state.authorization.token);
   const after = useSelector((state) => state.posts.after);
-  const ids = useSelector((sate) => sate.posts.ids);
+  const ids = useSelector((state) => state.posts.ids);
+  const prevPath = useSelector((state) => state.posts.prevPath)
+
+
 
   useEffect(() => {
+    let config 
+    console.log(path)
     if (postStatus === "idle") {
       const config = {
         path,
@@ -28,18 +33,21 @@ const LoggedIn = ({ match }) => {
       };
       dispatch(fetchPosts(config));
     }
-  }, []);
-
-  useEffect(() => {
-    if (after) {
+    else if(prevPath === ''){
+      let doNothing = true
+    }
+    else if (!(prevPath === path)) {
+      console.log('option 2')
       dispatch(remove(ids));
-      const config = {
+      config = {
         path,
         token,
         afterPosts: "",
-      };
-      dispatch(fetchPosts(config));
+      }
+    dispatch(fetchPosts(config));
+
     }
+    
   }, [path, subReddit]);
 
   window.onscroll = function (ev) {

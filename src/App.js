@@ -14,10 +14,7 @@ import Callback from "./components/CallBack";
 import UserProfile from './components/UserProfile'
 import PostPage from './components/PostPage'
 import {AppDiv} from "./styledComponents"
-import New from "./components/New";
-import Top from "./components/Top";
-import Rising from "./components/Rising";
-import Hot from "./components/Hot";
+
 
 function App() {
 
@@ -36,14 +33,14 @@ function App() {
           />
           <Route exact path="/u/:user" component={UserProfile} />
           <Route exact path="/r/:subReddit" component={PostList} />
-          <Route exact path="/r/:subReddit/hot" component={Hot} />
-          <Route exact path="/r/:subReddit/top" component={Top} />
-          <Route exact path="/r/:subReddit/new" component={New} />
-          <Route exact path="/r/:subReddit/rising" component={Rising} />
-          <Route exact path="/hot" component={Hot} />
-          <Route exact path="/new" component={New} />
-          <Route exact path="/top" component={Top} />
-          <Route exact path="/rising" component={Rising} />
+          <Route exact path="/r/:subReddit/hot" component={PostList} />
+          <Route exact path="/r/:subReddit/top" component={PostList} />
+          <Route exact path="/r/:subReddit/new" component={PostList} />
+          <Route exact path="/r/:subReddit/rising" component={PostList} />
+          <Route exact path="/hot" component={PostList} />
+          <Route exact path="/new" component={PostList} />
+          <Route exact path="/top" component={PostList} />
+          <Route exact path="/rising" component={PostList} />
           <Route exact path="/callback" component={Callback} />
           <Route exact path="/post/:id" component={PostPage} />
           <Route exact path="/r/:subReddit/post/:id" component={PostPage} />
