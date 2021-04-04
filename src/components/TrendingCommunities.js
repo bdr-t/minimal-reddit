@@ -30,7 +30,10 @@ const TrendingCommunities = () => {
 
 
     return ( 
-        <div>{content}</div>
+        <div style={{justifySelf: 'center', backgroundColor:'#242C37', height:'fit-content', width:'80%', placeContent:'center', borderRadius:'8px'}}>
+            <h3 style={{textAlign: 'center', padding:'0.5em'}}>Trending Communities</h3>
+            {content}
+            </div>
      );
 }
  
