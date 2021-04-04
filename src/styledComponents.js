@@ -1,7 +1,10 @@
 import styled from "styled-components";
 import ReactHlsPlayer from "react-hls-player";
 import { TiArrowDownThick, TiArrowUpThick } from "react-icons/ti";
-import { HiOutlineSave } from "react-icons/hi";
+import { HiOutlineSave, HiTrendingUp} from "react-icons/hi";
+import { MdFiberNew, MdWhatshot } from "react-icons/md";
+import { IoRocketSharp } from "react-icons/io5";
+import { BsFillBarChartFill } from "react-icons/bs";
 
 import { Link } from "react-router-dom";
 
@@ -46,8 +49,12 @@ export const Linked = styled(Link)`
 
 export const LinkedSort = styled(Linked)`
   align-self: flex-end;
-  font-weight: 300;
+  font-weight: 700;
   padding-bottom: 8.8px;
+  padding-left: 0.5em;
+  color: ${(props) => (props.active === 1 ? color.colorAccent : "white")};
+
+
 `;
 
 export const ArrowDown = styled(TiArrowDownThick)`
@@ -171,7 +178,7 @@ export const SubTitle = styled.div`
 `;
 
 export const Video = styled(ReactHlsPlayer)`
-  max-height: 500px;
+  max-height: 90vh;
   max-width: 100%;
   background-color: black;
 `;
@@ -335,14 +342,23 @@ export const Sorting = styled.div`
   position: sticky;
   top: 0;
   background-color: #151a21;
-  display: flex;
-  justify-content: space-around;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   height: 60px;
 `;
 
 export const SortingElement = styled.div`
-  align-self: center;
-  font-weight: 300;
+  place-self: center;
+`;
+
+export const SortingContainer = styled.div`
+  display: grid;
+  border-bottom: ${(props) =>
+    props.active === 1 ? "1px solid" + color.colorAccent : "none"};
+  :hover{
+    border-bottom: 1px solid ${color.colorAccent}
+
+  }
 `;
 
 export const CommentContainer = styled.div`
@@ -391,3 +407,55 @@ export const RepliesDiv = styled.div`
   border-bottom-width: 10px;
   margin-bottom: 10px;
 `;
+
+export const NewIcon = styled(MdFiberNew)`
+
+color: ${(props) => (props.active === 1 ? color.colorAccent : "white")};
+width: 1.5em;
+height: 1.5em;
+display: inline-block;
+position: relative;
+top: 5px;
+
+
+`
+
+export const HotIcon = styled(MdWhatshot)`
+color: ${(props) => (props.active === 1 ? color.colorAccent : "white")};
+width: 1.5em;
+height: 1.5em;
+display: inline-block;
+position: relative;
+top: 5px;
+
+`
+export const BestIcon = styled(IoRocketSharp)`
+color: ${(props) => (props.active === 1 ? color.colorAccent : "white")};
+width: 1.5em;
+height: 1.5em;
+display: inline-block;
+position: relative;
+top: 5px;
+
+`
+
+export const TopIcon = styled(BsFillBarChartFill)`
+color: ${(props) => (props.active === 1 ? color.colorAccent : "white")};
+width: 1.5em;
+height: 1.5em;
+display: inline-block;
+position: relative;
+top: 5px;
+
+`
+
+export const RisingIcon = styled(HiTrendingUp)`
+color: ${(props) => (props.active === 1 ? color.colorAccent : "white")};
+width: 1.5em;
+height: 1.5em;
+display: inline-block;
+position: relative;
+top: 5px;
+
+`
+
