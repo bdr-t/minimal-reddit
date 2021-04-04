@@ -1,10 +1,12 @@
 import styled from "styled-components";
 import ReactHlsPlayer from "react-hls-player";
 import { TiArrowDownThick, TiArrowUpThick } from "react-icons/ti";
-import { HiOutlineSave, HiTrendingUp} from "react-icons/hi";
+import { HiTrendingUp, HiHome } from "react-icons/hi";
 import { MdFiberNew, MdWhatshot } from "react-icons/md";
 import { IoRocketSharp } from "react-icons/io5";
-import { BsFillBarChartFill } from "react-icons/bs";
+import { BsFillBarChartFill, BsFillBookmarkFill, BsFillPersonFill } from "react-icons/bs";
+import { RiBookFill, RiNotification4Fill } from "react-icons/ri";
+import { BiUpvote,BiMessageSquareDetail } from "react-icons/bi";
 
 import { Link } from "react-router-dom";
 
@@ -53,8 +55,6 @@ export const LinkedSort = styled(Linked)`
   padding-bottom: 8.8px;
   padding-left: 0.5em;
   color: ${(props) => (props.active === 1 ? color.colorAccent : "white")};
-
-
 `;
 
 export const ArrowDown = styled(TiArrowDownThick)`
@@ -69,7 +69,7 @@ export const ArrowDown = styled(TiArrowDownThick)`
   }
 `;
 
-export const SaveIcon = styled(HiOutlineSave)`
+export const SaveIcon = styled(BsFillBookmarkFill)`
   vertical-align: middle;
   padding-left: 1em;
   width: 20px;
@@ -292,6 +292,9 @@ export const BtnSort = styled.h3`
   cursor: pointer;
   font-weight: 700;
   font-size: 20px;
+  display: flex;
+  gap: 0.5em;
+  align-items: center;
   &:hover {
     background-color: ${color.colorAccentHover};
   }
@@ -355,9 +358,8 @@ export const SortingContainer = styled.div`
   display: grid;
   border-bottom: ${(props) =>
     props.active === 1 ? "1px solid" + color.colorAccent : "none"};
-  :hover{
-    border-bottom: 1px solid ${color.colorAccent}
-
+  :hover {
+    border-bottom: 1px solid ${color.colorAccent};
   }
 `;
 
@@ -409,53 +411,73 @@ export const RepliesDiv = styled.div`
 `;
 
 export const NewIcon = styled(MdFiberNew)`
-
-color: ${(props) => (props.active === 1 ? color.colorAccent : "white")};
-width: 1.5em;
-height: 1.5em;
-display: inline-block;
-position: relative;
-top: 5px;
-
-
-`
+  color: ${(props) => (props.active === 1 ? color.colorAccent : "white")};
+  width: 1.5em;
+  height: 1.5em;
+  display: inline-block;
+  position: relative;
+  top: 5px;
+`;
 
 export const HotIcon = styled(MdWhatshot)`
-color: ${(props) => (props.active === 1 ? color.colorAccent : "white")};
-width: 1.5em;
-height: 1.5em;
-display: inline-block;
-position: relative;
-top: 5px;
-
-`
+  color: ${(props) => (props.active === 1 ? color.colorAccent : "white")};
+  width: 1.5em;
+  height: 1.5em;
+  display: inline-block;
+  position: relative;
+  top: 5px;
+`;
 export const BestIcon = styled(IoRocketSharp)`
-color: ${(props) => (props.active === 1 ? color.colorAccent : "white")};
-width: 1.5em;
-height: 1.5em;
-display: inline-block;
-position: relative;
-top: 5px;
-
-`
+  color: ${(props) => (props.active === 1 ? color.colorAccent : "white")};
+  width: 1.5em;
+  height: 1.5em;
+  display: inline-block;
+  position: relative;
+  top: 5px;
+`;
 
 export const TopIcon = styled(BsFillBarChartFill)`
-color: ${(props) => (props.active === 1 ? color.colorAccent : "white")};
-width: 1.5em;
-height: 1.5em;
-display: inline-block;
-position: relative;
-top: 5px;
-
-`
+  color: ${(props) => (props.active === 1 ? color.colorAccent : "white")};
+  width: 1.5em;
+  height: 1.5em;
+  display: inline-block;
+  position: relative;
+  top: 5px;
+`;
 
 export const RisingIcon = styled(HiTrendingUp)`
-color: ${(props) => (props.active === 1 ? color.colorAccent : "white")};
-width: 1.5em;
-height: 1.5em;
-display: inline-block;
-position: relative;
-top: 5px;
+  color: ${(props) => (props.active === 1 ? color.colorAccent : "white")};
+  width: 1.5em;
+  height: 1.5em;
+  display: inline-block;
+  position: relative;
+  top: 5px;
+`;
 
+export const HomeIcon = styled(HiHome)`
+  color: white;
+`;
+
+export const PostsIcon = styled(RiBookFill)`
+  color: white;
+`;
+
+export const SaveIconNav = styled(BsFillBookmarkFill)`
+  color: white;
+`;
+
+export const UpvotedIcon = styled(BiUpvote)`
+  color: white;
+`;
+
+export const NotificationIcon = styled(RiNotification4Fill)`
+  color: white;
+`;
+
+export const MessagesIcon = styled(BiMessageSquareDetail)`
+  color: white;
+`;
+
+export const ProfileIcon = styled(BsFillPersonFill)`
+color: white;
 `
-
