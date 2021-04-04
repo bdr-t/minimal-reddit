@@ -7,8 +7,10 @@ import LogoNav from './LogoNav'
 
 
 
+
 import Sort from "./sort";
 import TrendingCommunities from "./TrendingCommunities";
+import ThirdPart from "./ThirdPart";
 
 
 const PostList = ({match}) => {
@@ -21,7 +23,7 @@ const PostList = ({match}) => {
       {/* <Sort/> */}
       {authorization && <LoggedIn match={match}/>}
       {!authorization && <NotLoggedIn match={match}/>}
-
+      <ThirdPart/>
     </Section>
   );
 };
