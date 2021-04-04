@@ -7,6 +7,7 @@ import {
   RepliesDiv,
   RepliesP,
   Text,
+  Username,
 } from "../styledComponents";
 import TimeAgo from "./TimeAgo";
 import parseHtml from "../actions/parseHTML";
@@ -62,9 +63,12 @@ const Comment = ({
             <CommentImageDiv>
               <CommentImg src={icon} />
             </CommentImageDiv>
+            <div>
 
-            <div>{author}</div>
-            <TimeAgo needsPadding={true} created={created} author={author} />
+            
+            <Username style={{paddingLeft: 0,}}>{author}</Username>
+            <TimeAgo created={created} author={author} />
+            </div>
           </HeaderContainer>
           {body}
           {replies && (

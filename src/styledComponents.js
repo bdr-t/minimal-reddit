@@ -208,8 +208,8 @@ export const Input = styled.input`
   border-radius: 8px;
   background-color: ${color.colorPrimary600};
   height: 30px;
-  width: 680px;
-  align-self: center;
+  width: 80%;
+  place-self: center;
   outline: none;
   border: none;
 `;
