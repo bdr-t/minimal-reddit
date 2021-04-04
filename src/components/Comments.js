@@ -10,7 +10,7 @@ const Comments = ({postId}) => {
     
     let content = 'loading'
     if (status === 'succeded'){
-        content = comments.map(x=> <Comment author={x.author} id={x.id} body={x.body_html} replies={x.replies} created={x.created_utc} permalink={x.permalink}></Comment> )
+        content = comments.map(x=> <Comment fullComment={x} author={x.author} id={x.id} body={x.body_html} replies={x.replies} created={x.created_utc} permalink={x.permalink}></Comment> )
     }
     window.onscroll = function (ev) {
         if (
@@ -22,7 +22,7 @@ const Comments = ({postId}) => {
       };
 
     return ( 
-        <Container >
+        <Container style={{overflow:'hidden'}} >
             {content}
         </Container>
         
