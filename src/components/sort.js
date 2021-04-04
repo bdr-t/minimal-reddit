@@ -15,7 +15,7 @@ import {
 const Sort = () => {
   const { pathname } = useLocation();
   const { subReddit } = useParams();
-  const activeBest = pathname.includes("/best") || pathname === "/" ? 1 : 0
+  const activeBest = pathname.includes("/best") || pathname === "/" || pathname.endsWith(subReddit+'/')? 1 : 0
   const activeNew = pathname.includes("/new") ? 1 : 0
   const activeHot = pathname.includes("/hot") ? 1 : 0
   const activeTop = pathname.includes("/top") ? 1 : 0
