@@ -344,3 +344,50 @@ export const SortingElement = styled.div`
   align-self: center;
   font-weight: 300;
 `;
+
+export const CommentContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+`;
+
+export const HeaderContainer = styled.div`
+  display: flex;
+  gap: 0.5em;
+  padding: 0.5em 1em 0.5em 1em;
+`;
+
+export const CommentImageDiv = styled.div`
+  width: 35px;
+  display: grid;
+  place-content: center;
+`;
+
+export const CommentImg = styled.img`
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  margin: auto;
+`;
+
+export const RepliesP = styled.p`
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  cursor: pointer;
+  font-family: Segoe UI SemiBold;
+  color: #65676b;
+  text-align: center;
+  font-size: 15px;
+  padding-bottom: 0.5em;
+`;
+
+export const RepliesDiv = styled.div`
+  border-left: 0.5px solid grey;
+  display: flex;
+  flex-direction: column;
+  margin-left: 25px;
+  padding-left: 5px;
+  border-bottom-width: 10px;
+  margin-bottom: 10px;
+`;

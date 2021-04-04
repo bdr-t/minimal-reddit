@@ -1,10 +1,17 @@
 import { useEffect, useState, useCallback } from "react";
 import axios from "axios";
-import { Text } from "../styledComponents";
+import {
+  CommentImageDiv,
+  CommentImg,
+  HeaderContainer,
+  RepliesDiv,
+  RepliesP,
+  Text,
+} from "../styledComponents";
 import TimeAgo from "./TimeAgo";
 import parseHtml from "../actions/parseHTML";
 import useComments from "../actions/useComments";
-import {CommentContainer} from '../styledComponents'
+import { CommentContainer } from "../styledComponents";
 
 const Comment = ({
   fullComment,
@@ -46,67 +53,30 @@ const Comment = ({
       getIcon();
     });
 
+    body = <Text>{parseHtml(body)}</Text>;
+
     return (
       <CommentContainer>
         <div>
-          <div
-            className="flex"
-            style={{
-              display: "flex",
-              gap: "0.5em",
-              padding: "0.5em 1em 0.5em 1em",
-            }}
-          >
-            <div
-              className="img"
-              style={{ width: "35px", display: "grid", placeContent: "center" }}
-            >
-              <img
-                src={icon}
-                width="30px"
-                height="30px"
-                style={{ borderRadius: "50%", margin: "auto" }}
-                alt=""
-              />
-            </div>
+          <HeaderContainer>
+            <CommentImageDiv>
+              <CommentImg src={icon} />
+            </CommentImageDiv>
 
-            <div className="flex-author">{author}</div>
-            <TimeAgo
-              needsPadding={true}
-              created={created}
-              author={author}
-            />
-          </div>
+            <div>{author}</div>
+            <TimeAgo needsPadding={true} created={created} author={author} />
+          </HeaderContainer>
           {body}
           {replies && (
-            <p
-              onClick={handleClick}
-              style={{
-                cursor: "pointer",
-                fontFamily: "Segoe UI SemiBold",
-                color: "#65676b",
-                textAlign: "center",
-                fontSize: "15px",
-                paddingBottom: "0.5em",
-              }}
-            >
+            <RepliesP onClick={handleClick}>
               {replies.data.children.length} replies
-            </p>
+            </RepliesP>
           )}
         </div>
-        <div
-          style={{
-            position: "relative",
-            display: "flex",
-            flexDirection: "column",
-            left: 25,
-            borderLeft: "1px solid",
-            paddingLeft: 15,
-          }}
-        >
+        <RepliesDiv>
           {showChildren &&
             (children ?? []).map((data) => <File {...data.data} />)}
-        </div>
+        </RepliesDiv>
       </CommentContainer>
     );
   };
@@ -115,7 +85,11 @@ const Comment = ({
 
   let data = fullComment;
 
-  return <File {...data} />;
+  return (
+    <div className="a" style={{backgroundColor: '#242C37'}}>
+      <File {...data} />
+    </div>
+  );
 };
 
 export default Comment;
