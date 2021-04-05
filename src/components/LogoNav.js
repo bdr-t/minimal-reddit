@@ -1,7 +1,8 @@
-import { Logo, NavLogo, BtnSort, BtnCreate, Avatar, AvatarImg, User, Username, HomeIcon, PostsIcon, SaveIconNav, UpvotedIcon, NotificationIcon, MessagesIcon, ProfileIcon} from "../styledComponents";
+import { Logo, NavLogo, BtnSort, BtnCreate, Avatar, AvatarImg, User, Username, HomeIcon, PostsIcon, SaveIconNav, UpvotedIcon, NotificationIcon, MessagesIcon, ProfileIcon, Linked} from "../styledComponents";
 import {useState, useEffect} from 'react'
 import {useSelector} from 'react-redux'
 import axios from 'axios'
+
 const LogoNav = () => {
   const [icon, setIcon] = useState(
     "https://www.redditstatic.com/avatars/avatar_default_05_7193FF.png"
@@ -40,20 +41,23 @@ const LogoNav = () => {
     }
     getIcon();
   });
+
+
   return (
     <NavLogo>
       <div style={{height:'60px'}}>
         <Logo>MinimalReddit</Logo>
       </div>
       <div class="nav">
-        <BtnSort><HomeIcon/>Home</BtnSort>
-        <BtnSort><PostsIcon/>My posts</BtnSort>
-        <BtnSort><SaveIconNav/>Saved</BtnSort>
-        <BtnSort><UpvotedIcon/> Upvoted</BtnSort>
-        <BtnSort><NotificationIcon/> Notifications</BtnSort>
-        <BtnSort><MessagesIcon/>Messages</BtnSort>
-        <BtnSort><ProfileIcon/>Profile</BtnSort>
-        <BtnCreate>Create Post</BtnCreate>
+        
+        <Linked to='/best'><BtnSort><HomeIcon/>Home</BtnSort></Linked>
+        <Linked to='/posts'><BtnSort><PostsIcon/>My posts</BtnSort></Linked>
+        <Linked to='/saved'><BtnSort><SaveIconNav/>Saved</BtnSort></Linked>
+        <Linked to='/upvoted'><BtnSort><UpvotedIcon/> Upvoted</BtnSort></Linked>
+        <Linked to='/notifications'><BtnSort><NotificationIcon/> Notifications</BtnSort></Linked>
+        <Linked to='/messages'><BtnSort><MessagesIcon/>Messages</BtnSort></Linked>
+        <Linked to='/me'><BtnSort><ProfileIcon/>Profile</BtnSort></Linked>
+        <Linked to='/best'><BtnCreate>Create Post</BtnCreate></Linked>
       </div>
       <Avatar>
         <div>
@@ -67,7 +71,7 @@ const LogoNav = () => {
           <Username>
             {userName}
             <br />
-            <span>u/wakfuld</span>
+            <span>u/{userName}</span>
           </Username>
         </User>
       </Avatar>
