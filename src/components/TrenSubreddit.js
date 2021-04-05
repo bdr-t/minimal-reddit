@@ -11,7 +11,6 @@ const TrenSubreddit = ({ name }) => {
       const data = await axios
         .get(`https://www.reddit.com/r/${name}/about.json`)
         .then((res) => res.data.data);
-      console.log(data);
       setSubreddit(data);
       if (data) {
         let url = data.community_icon;

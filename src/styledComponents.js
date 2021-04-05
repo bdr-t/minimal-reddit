@@ -14,31 +14,31 @@ import { BiUpvote, BiMessageSquareDetail } from "react-icons/bi";
 
 import { Link } from "react-router-dom";
 
-// const color = {
-//   text: 'fff',
-//   colorPrimary200: "#b2bdcd",
-//   colorPrimary300: "#5d7290",
-//   colorPrimary600: "#323d4d",
-//   colorPrimary700: "#242c37",
-//   colorPrimary800: "#151a21",
-//   colorSecondary: "#5575e7",
-//   colorAccentGlow: "rgba(253,77,77,0.3)",
-//   colorAccent: "#fd4d4d",
-//   colorAccentHover: "#fd6868",
-// };
-
 const color = {
-  text: '#000000',
+  text: 'fff',
   colorPrimary200: "#b2bdcd",
   colorPrimary300: "#5d7290",
-  colorPrimary600: "grey",
-  colorPrimary700:"lightgrey",
-  colorPrimary800: "white",
+  colorPrimary600: "#323d4d",
+  colorPrimary700: "#242c37",
+  colorPrimary800: "#151a21",
   colorSecondary: "#5575e7",
   colorAccentGlow: "rgba(253,77,77,0.3)",
   colorAccent: "#fd4d4d",
   colorAccentHover: "#fd6868",
 };
+
+// const color = {
+//   text: '#000000',
+//   colorPrimary200: "#b2bdcd",
+//   colorPrimary300: "#5d7290",
+//   colorPrimary600: "grey",
+//   colorPrimary700:"lightgrey",
+//   colorPrimary800: "white",
+//   colorSecondary: "#5575e7",
+//   colorAccentGlow: "rgba(253,77,77,0.3)",
+//   colorAccent: "#fd4d4d",
+//   colorAccentHover: "#fd6868",
+// };
 
 export const AppDiv = styled.div`
   background-color: ${color.colorPrimary800};
@@ -87,7 +87,7 @@ export const ArrowDown = styled(TiArrowDownThick)`
 
 export const SaveIcon = styled(BsFillBookmarkFill)`
   vertical-align: middle;
-  padding-left: 1em;
+  padding-left: 0.5em;
   width: 20px;
   height: auto;
   color: ${(props) =>
@@ -118,6 +118,9 @@ export const SubReddit = styled.div`
   cursor: pointer;
   align-self: center;
   margin-left: auto;
+  display:flex;
+  align-items: center;
+  gap: 0.5em;
 `;
 
 export const Container = styled.div`

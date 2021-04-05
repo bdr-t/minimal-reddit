@@ -24,7 +24,6 @@ const LoggedIn = ({ match }) => {
 
   useEffect(() => {
     let config 
-    console.log(path)
     if (postStatus === "idle") {
       const config = {
         path,
@@ -56,7 +55,6 @@ const LoggedIn = ({ match }) => {
       document.body.offsetHeight * 0.9
     ) {
       if (postStatus === "succeeded") {
-        console.log("a ver");
         const config = {
           path,
           token,
@@ -91,7 +89,6 @@ const LoggedIn = ({ match }) => {
   return (
     <div className="posts-list">
 
-        <Sort/>
 
       {content}
     </div>

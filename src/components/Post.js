@@ -176,7 +176,8 @@ const Post = ({ postId, postNotLeggedIn, token }) => {
         </div>
         <div style={{ display: "flex", borderTop: "1px solid #65676b" }}>
         <SubReddit>
-        <Linked to = {`/r/${post.subreddit}/`}>
+          <img src={icon} width='20px' style={{borderRadius:'50%'}}alt="" srcset=""/>
+        <Linked style={{fontWeight: 600}}to = {`/r/${post.subreddit}/`}>
           
             
             r/{post.subreddit}

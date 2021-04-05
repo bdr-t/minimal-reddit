@@ -8,7 +8,6 @@ import {
   Route,
   Redirect,
 } from "react-router-dom";
-import NavBar from "./components/NavBar";
 import PostList from "./components/PostList";
 import Callback from "./components/CallBack";
 import UserProfile from './components/UserProfile'

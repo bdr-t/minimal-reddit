@@ -50,7 +50,7 @@ const LogoNav = () => {
       </div>
       <div class="nav">
         
-        <Linked to='/best'><BtnSort><HomeIcon/>Home</BtnSort></Linked>
+        <Linked to='/'><BtnSort><HomeIcon/>Home</BtnSort></Linked>
         <Linked to='/posts'><BtnSort><PostsIcon/>My posts</BtnSort></Linked>
         <Linked to='/saved'><BtnSort><SaveIconNav/>Saved</BtnSort></Linked>
         <Linked to='/upvoted'><BtnSort><UpvotedIcon/> Upvoted</BtnSort></Linked>

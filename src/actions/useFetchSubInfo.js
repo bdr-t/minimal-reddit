@@ -7,7 +7,6 @@ function useFetchSubInfo(link, token) {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-      console.log('algi')
     const fetchData = async () => {
       const config = {
         headers: { Authorization: `Bearer ${token}` },
@@ -34,7 +33,7 @@ function useFetchSubInfo(link, token) {
       setError(false);
     };
     fetchData();
-  }, [link]);
+  }, []);
 
   return { data, status, error };
 }
