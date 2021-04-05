@@ -43,13 +43,18 @@ const Comment = ({
         const url = await axios(
           `https://www.reddit.com/user/${author}/about/.json`
         ).then((res) => res.data.data.icon_img);
-        if (url.endsWith("png")) {
-          setIcon(url);
-        } else {
-          const remove = url.split("?").pop();
-          const icon = url.replace(remove, "");
-          setIcon(icon);
+        try{
+          if (url.endsWith("png")) {
+            setIcon(url);
+          } else {
+            const remove = url.split("?").pop();
+            const icon = url.replace(remove, "");
+            setIcon(icon);
+          }
+        } catch(err){
+          
         }
+        
       }
       getIcon();
     });
