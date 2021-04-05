@@ -14,25 +14,26 @@ import { BiUpvote, BiMessageSquareDetail } from "react-icons/bi";
 
 import { Link } from "react-router-dom";
 
-const color = {
-  text: 'fff',
-  colorPrimary200: "#b2bdcd",
-  colorPrimary300: "#5d7290",
-  colorPrimary600: "#323d4d",
-  colorPrimary700: "#242c37",
-  colorPrimary800: "#151a21",
-  colorSecondary: "#5575e7",
-  colorAccentGlow: "rgba(253,77,77,0.3)",
-  colorAccent: "#fd4d4d",
-  colorAccentHover: "#fd6868",
-};
+// const color = {
+//   text: 'fff',
+//   colorPrimary200: "#b2bdcd",
+//   colorPrimary300: "#5d7290",
+//   colorPrimary600: "#323d4d",
+//   colorPrimary700: "#242c37",
+//   colorPrimary800: "#151a21",
+//   colorSecondary: "#5575e7",
+//   colorAccentGlow: "rgba(253,77,77,0.3)",
+//   colorAccent: "#fd4d4d",
+//   colorAccentHover: "#fd6868",
+// };
 
-const color2 = {
+const color = {
+  text: '#000000',
   colorPrimary200: "#b2bdcd",
   colorPrimary300: "#5d7290",
-  colorPrimary600: "#323d4d",
-  colorPrimary700: "#242c37",
-  colorPrimary800: "#151a21",
+  colorPrimary600: "grey",
+  colorPrimary700:"lightgrey",
+  colorPrimary800: "white",
   colorSecondary: "#5575e7",
   colorAccentGlow: "rgba(253,77,77,0.3)",
   colorAccent: "#fd4d4d",
@@ -69,7 +70,7 @@ export const LinkedSort = styled(Linked)`
   font-weight: 700;
   padding-bottom: 8.8px;
   padding-left: 0.5em;
-  color: ${(props) => (props.active === 1 ? color.colorAccent : "white")};
+  color: ${(props) => (props.active === 1 ? color.colorAccent : color.text)};
 `;
 
 export const ArrowDown = styled(TiArrowDownThick)`
@@ -142,7 +143,7 @@ export const Container = styled.div`
 export const Title = styled.h2`
   font-family: Segoe UI Semibold;
   font-size: 15px;
-  color: white;
+  color: ${color.text};
   padding: 0.75em 1em 0 0.5em;
   padding-left: 0.5em;
   /* border-bottom: 1px solid black; */
@@ -198,7 +199,7 @@ export const Video = styled(ReactHlsPlayer)`
   background-color: black;
 `;
 export const Text = styled.div`
-  color: white;
+  color: ${color.text};
   padding: 4px 1em 1em 1em;
   font-family: Segoe UI;
   font-size: 15px;
@@ -236,6 +237,16 @@ export const Input = styled.input`
   border: none;
 `;
 
+export const TrendingContainer = styled.div`
+
+justify-self: center;
+background-color:${color.colorPrimary700};
+height:fit-content;
+width:80%;
+place-content:center;
+border-radius:8px;
+`
+
 export const Login = styled.a`
   width: 60px;
   justify-self: end;
@@ -246,11 +257,11 @@ export const Login = styled.a`
   cursor: pointer;
   outline: none;
   font-weight: 700;
-  color: white;
+  color: ${color.text};
   text-align: center;
   text-decoration: none;
   &:hover {
-    background-color: white;
+    background-color: ${color.text};
     color: black;
   }
 `;
@@ -286,7 +297,7 @@ export const Section = styled.div`
   height: 100%;
   display: grid;
   grid-template-columns: 1fr 680px 1fr;
-  background-color: #151a21;
+  background-color: ${color.colorPrimary800};
 `;
 
 export const NavLogo = styled.div`
@@ -322,6 +333,7 @@ export const JoinBtn = styled.p`
   align-self: center;
   background-color: ${color.colorAccent};
   cursor: pointer;
+  color:white;
 `;
 
 export const BtnCreate = styled.h3`
@@ -368,7 +380,7 @@ export const Username = styled.h4`
 export const Sorting = styled.div`
   position: sticky;
   top: 0;
-  background-color: #151a21;
+  background-color: ${color.colorPrimary800};
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   height: 60px;
@@ -435,7 +447,7 @@ export const RepliesDiv = styled.div`
 `;
 
 export const NewIcon = styled(MdFiberNew)`
-  color: ${(props) => (props.active === 1 ? color.colorAccent : "white")};
+  color: ${(props) => (props.active === 1 ? color.colorAccent : color.text)};
   width: 1.5em;
   height: 1.5em;
   display: inline-block;
@@ -444,7 +456,7 @@ export const NewIcon = styled(MdFiberNew)`
 `;
 
 export const HotIcon = styled(MdWhatshot)`
-  color: ${(props) => (props.active === 1 ? color.colorAccent : "white")};
+  color: ${(props) => (props.active === 1 ? color.colorAccent : color.text)};
   width: 1.5em;
   height: 1.5em;
   display: inline-block;
@@ -452,7 +464,7 @@ export const HotIcon = styled(MdWhatshot)`
   top: 5px;
 `;
 export const BestIcon = styled(IoRocketSharp)`
-  color: ${(props) => (props.active === 1 ? color.colorAccent : "white")};
+  color: ${(props) => (props.active === 1 ? color.colorAccent : color.text)};
   width: 1.5em;
   height: 1.5em;
   display: inline-block;
@@ -461,7 +473,7 @@ export const BestIcon = styled(IoRocketSharp)`
 `;
 
 export const TopIcon = styled(BsFillBarChartFill)`
-  color: ${(props) => (props.active === 1 ? color.colorAccent : "white")};
+  color: ${(props) => (props.active === 1 ? color.colorAccent : color.text)};
   width: 1.5em;
   height: 1.5em;
   display: inline-block;
@@ -470,7 +482,7 @@ export const TopIcon = styled(BsFillBarChartFill)`
 `;
 
 export const RisingIcon = styled(HiTrendingUp)`
-  color: ${(props) => (props.active === 1 ? color.colorAccent : "white")};
+  color: ${(props) => (props.active === 1 ? color.colorAccent : color.text)};
   width: 1.5em;
   height: 1.5em;
   display: inline-block;
@@ -479,29 +491,29 @@ export const RisingIcon = styled(HiTrendingUp)`
 `;
 
 export const HomeIcon = styled(HiHome)`
-  color: white;
+  color: ${color.text};
 `;
 
 export const PostsIcon = styled(RiBookFill)`
-  color: white;
+  color: ${color.text};
 `;
 
 export const SaveIconNav = styled(BsFillBookmarkFill)`
-  color: white;
+  color: ${color.text};
 `;
 
 export const UpvotedIcon = styled(BiUpvote)`
-  color: white;
+  color: ${color.text};
 `;
 
 export const NotificationIcon = styled(RiNotification4Fill)`
-  color: white;
+  color: ${color.text};
 `;
 
 export const MessagesIcon = styled(BiMessageSquareDetail)`
-  color: white;
+  color: ${color.text};
 `;
 
 export const ProfileIcon = styled(BsFillPersonFill)`
-  color: white;
+  color: ${color.text};
 `;
