@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import {Linked, JoinBtn} from '../styledComponents'
 import axios from "axios";
 
 const TrenSubreddit = ({ name }) => {
@@ -24,16 +25,21 @@ const TrenSubreddit = ({ name }) => {
     getSubreddit();
   }, []);
 
+  let subRedditName
+
+  if(subReddit){
+    subRedditName = subReddit.display_name_prefixed
+  }
   
 
   return (
     <div style={{display:'flex', gap:'1em', padding:'0.5em 1em'}}>
       <img src={icon} style={{borderRadius: '50%'}} width="40px" alt="" />
       <div className="a">
-        <p>{subReddit && subReddit.display_name_prefixed}</p>
+        <Linked style={{fontWeight: 700}} to={`/${subRedditName}/`}>{subRedditName}</Linked>
         <p>{subReddit && subReddit.subscribers}</p>
       </div>
-      <p style={{marginLeft: 'auto', borderRadius: '20px', padding:'0.5em 1em', alignSelf:'center', backgroundColor: 'red', cursor:'pointer'}}>Join</p>
+      <JoinBtn>Join</JoinBtn>
     </div>
   );
 };

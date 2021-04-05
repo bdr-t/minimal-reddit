@@ -4,27 +4,39 @@ import { TiArrowDownThick, TiArrowUpThick } from "react-icons/ti";
 import { HiTrendingUp, HiHome } from "react-icons/hi";
 import { MdFiberNew, MdWhatshot } from "react-icons/md";
 import { IoRocketSharp } from "react-icons/io5";
-import { BsFillBarChartFill, BsFillBookmarkFill, BsFillPersonFill } from "react-icons/bs";
+import {
+  BsFillBarChartFill,
+  BsFillBookmarkFill,
+  BsFillPersonFill,
+} from "react-icons/bs";
 import { RiBookFill, RiNotification4Fill } from "react-icons/ri";
-import { BiUpvote,BiMessageSquareDetail } from "react-icons/bi";
+import { BiUpvote, BiMessageSquareDetail } from "react-icons/bi";
 
 import { Link } from "react-router-dom";
 
 const color = {
-  colorButtonText: "#fff",
-  colorPrimary100: "#dee3ea",
+  text: 'fff',
   colorPrimary200: "#b2bdcd",
   colorPrimary300: "#5d7290",
   colorPrimary600: "#323d4d",
   colorPrimary700: "#242c37",
   colorPrimary800: "#151a21",
-  colorPrimary900: "#0b0e11",
-  colorSecondaryWashedOut: "#879eed",
   colorSecondary: "#5575e7",
   colorAccentGlow: "rgba(253,77,77,0.3)",
   colorAccent: "#fd4d4d",
   colorAccentHover: "#fd6868",
-  colorAccentDisabled: "#f5bfbf",
+};
+
+const color2 = {
+  colorPrimary200: "#b2bdcd",
+  colorPrimary300: "#5d7290",
+  colorPrimary600: "#323d4d",
+  colorPrimary700: "#242c37",
+  colorPrimary800: "#151a21",
+  colorSecondary: "#5575e7",
+  colorAccentGlow: "rgba(253,77,77,0.3)",
+  colorAccent: "#fd4d4d",
+  colorAccentHover: "#fd6868",
 };
 
 export const AppDiv = styled.div`
@@ -41,12 +53,15 @@ export const Button = styled.button`
   margin: 1em;
   background-color: ${color.colorAccent};
   &:hover {
-    background-color: ${color.colorAccentHover};
+    /* background-color: ${color.colorAccentHover}; */
   }
 `;
 export const Linked = styled(Link)`
   text-decoration: none;
   color: inherit;
+  &:hover {
+    color: ${color.colorAccentHover};
+  }
 `;
 
 export const LinkedSort = styled(Linked)`
@@ -296,8 +311,17 @@ export const BtnSort = styled.h3`
   gap: 0.5em;
   align-items: center;
   &:hover {
-    background-color: ${color.colorAccentHover};
+    /* background-color: ${color.colorAccentHover}; */
   }
+`;
+
+export const JoinBtn = styled.p`
+  margin-left: auto;
+  border-radius: 20px;
+  padding: 0.5em 1em;
+  align-self: center;
+  background-color: ${color.colorAccent};
+  cursor: pointer;
 `;
 
 export const BtnCreate = styled.h3`
@@ -479,5 +503,5 @@ export const MessagesIcon = styled(BiMessageSquareDetail)`
 `;
 
 export const ProfileIcon = styled(BsFillPersonFill)`
-color: white;
-`
+  color: white;
+`;
