@@ -1,17 +1,25 @@
 import { useEffect, useState } from "react";
 import {Linked, JoinBtn} from '../styledComponents'
 import axios from "axios";
+import { useSelector} from 'react-redux'
+import suscribe from '../actions/suscribe'
 
 const TrenSubreddit = ({ name }) => {
   const [subReddit, setSubreddit] = useState();
   const [icon, setIcon] = useState("https://i.imgur.com/Td33Ac4.png");
+  const [isSubscriber, setIsSubscriber ]= useState(false)
+  const token = useSelector((state) => state.authorization.token);
 
   useEffect(() => {
+    const config = {
+      headers: { Authorization: `Bearer ${token}` },
+    };
     const getSubreddit = async () => {
       const data = await axios
-        .get(`https://www.reddit.com/r/${name}/about.json`)
+        .get(`https://oauth.reddit.com/r/${name}/about.json`, config)
         .then((res) => res.data.data);
       setSubreddit(data);
+      setIsSubscriber(data.user_is_subscriber)
       if (data) {
         let url = data.community_icon;
         if (url !== "") {
@@ -29,6 +37,16 @@ const TrenSubreddit = ({ name }) => {
   if(subReddit){
     subRedditName = subReddit.display_name_prefixed
   }
+
+  function handleClick(){
+    if(isSubscriber){
+      suscribe('unsub', subRedditName, token )
+      setIsSubscriber(false)
+    } else{
+      suscribe('sub', subRedditName, token )
+      setIsSubscriber(true)
+    }
+  }
   
 
   return (
@@ -38,7 +56,7 @@ const TrenSubreddit = ({ name }) => {
         <Linked style={{fontWeight: 700}} to={`/${subRedditName}/`}>{subRedditName}</Linked>
         <p>{subReddit && subReddit.subscribers}</p>
       </div>
-      <JoinBtn>Join</JoinBtn>
+      <JoinBtn onClick={()=>handleClick()}>{isSubscriber ? 'leave' : 'join'}</JoinBtn>
     </div>
   );
 };

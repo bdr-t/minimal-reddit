@@ -4,15 +4,13 @@ import { TrendingContainer, Text, JoinBtn } from "../styledComponents";
 import useFetchSubInfo from "../actions/useFetchSubInfo";
 import { useState } from "react";
 import parseHtml from "../actions/parseHTML";
+import suscribe from "../actions/suscribe";
 
-const SubReddit = () => {
+const SubReddit = ({data, error, status}) => {
   const token = useSelector((state) => state.authorization.token);
+  const [isSubscriber, setIsSubscriber ]= useState(data.user_is_subscriber)
   const { subReddit } = useParams();
-  const { data, error, status } = useFetchSubInfo(
-    `https://oauth.reddit.com/r/${subReddit}/about`,
-    token
-  );
-  console.log(status);
+
 
   let content 
 
@@ -47,6 +45,20 @@ const SubReddit = () => {
       }
     }
 
+    function handleClick(){
+      if(isSubscriber){
+        suscribe('unsub', data.name, token )
+        setIsSubscriber(false)
+      } else{
+        suscribe('sub', data.name, token )
+        setIsSubscriber(true)
+      }
+    }
+
+  
+    
+
+
     content = (
       <div className="a">
         {banner && <img width="100%" src={banner} alt="" />}
@@ -54,7 +66,7 @@ const SubReddit = () => {
           <img width="40" style={{ borderRadius: "50%"}} src={icon} alt="" />
           <div style={{display:'flex', alignItems:'center', gap:'0.5em'}}>
             <h4>{data.name}</h4>
-            <JoinBtn style={{padding:'0.25em 0.5em'}}>{data.user_is_subscriber ? 'leave' : 'join'}</JoinBtn>
+            <JoinBtn onClick={()=>handleClick()} style={{padding:'0.25em 0.5em'}}>{isSubscriber ? 'leave' : 'join'}</JoinBtn>
           </div>
         </div>
         <div className="des">
@@ -72,15 +84,9 @@ const SubReddit = () => {
     content = <div>{error}</div>;
   }
 
-  // icon: response.icon_img,
-  //       accounts_active: response.accounts_active,
-  //       banner: response.banner_img,
-  //       description: response.public_description_html,
-  //       suscribers: response.suscribers,
-  //       title: response.title,
-  //       user_is_subscriber: response.user_is_subscriber,
 
-  return <TrendingContainer>{content}</TrendingContainer>;
+
+  return <TrendingContainer></TrendingContainer>;
 };
 
 export default SubReddit;
