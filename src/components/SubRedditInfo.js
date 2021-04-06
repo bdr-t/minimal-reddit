@@ -1,15 +1,13 @@
 import { useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
 import { TrendingContainer, Text, JoinBtn } from "../styledComponents";
-import useFetchSubInfo from "../actions/useFetchSubInfo";
 import { useState } from "react";
 import parseHtml from "../actions/parseHTML";
 import suscribe from "../actions/suscribe";
 
 const SubReddit = ({data, error, status}) => {
   const token = useSelector((state) => state.authorization.token);
-  const [isSubscriber, setIsSubscriber ]= useState(data.user_is_subscriber)
-  const { subReddit } = useParams();
+  const [isSubscriber, setIsSubscriber ]= useState(data.user_is_subscriber || false)
+
 
 
   let content 
@@ -86,7 +84,7 @@ const SubReddit = ({data, error, status}) => {
 
 
 
-  return <TrendingContainer></TrendingContainer>;
+  return <TrendingContainer>{content}</TrendingContainer>;
 };
 
 export default SubReddit;
