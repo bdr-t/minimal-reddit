@@ -7,9 +7,13 @@ import { fetchPosts, remove, selectAllPosts } from "../redux/slices/postsSlice";
 import { Sorting, SortingElement } from "../styledComponents";
 import Sort from "./sort";
 
-const LoggedIn = ({ match }) => {
+const LoggedIn = ({ match, username }) => {
+  
   const path = match ? match.url : "/best";
   const { subReddit } = useParams();
+
+  
+
 
   const dispatch = useDispatch();
 
@@ -20,15 +24,23 @@ const LoggedIn = ({ match }) => {
   const ids = useSelector((state) => state.posts.ids);
   const prevPath = useSelector((state) => state.posts.prevPath)
 
+  let link 
+
+  if(path === '/saved'){
+ 
+      link = `https://oauth.reddit.com/user/${username}/saved`
+  }else{
+      link = `https://oauth.reddit.com${path}?limit=10&after=${after}`
+    }
+  
 
 
   useEffect(() => {
     let config 
     if (postStatus === "idle") {
       const config = {
-        path,
+        link,
         token,
-        afterPosts: after,
       };
       dispatch(fetchPosts(config));
     }
@@ -39,9 +51,8 @@ const LoggedIn = ({ match }) => {
       console.log('option 2')
       dispatch(remove(ids));
       config = {
-        path,
+        link,
         token,
-        afterPosts: "",
       }
     dispatch(fetchPosts(config));
 

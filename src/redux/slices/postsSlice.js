@@ -18,14 +18,15 @@ const initialState = postsAdapter.getInitialState({
 
 export const fetchPosts = createAsyncThunk(
   "posts/fetchPosts",
-  async ({ path, token, afterPosts }) => {
+  async ({ link, token}) => {
+    console.log(link)
     let after;
     const config = {
       headers: { Authorization: `Bearer ${token}` },
     };
     let response = await axios
       .get(
-        `https://oauth.reddit.com${path}?limit=10&after=${afterPosts}`,
+        link,
         config
       )
       .then((response) => {
@@ -60,7 +61,7 @@ export const fetchPosts = createAsyncThunk(
       list.push(post);
     }
 
-    const res = [list, after, path];
+    const res = [list, after];
     return res;
   }
 );
