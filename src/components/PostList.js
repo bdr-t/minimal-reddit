@@ -18,7 +18,7 @@ const PostList = ({ match }) => {
     const [userName, setUserName] = useState();
     useEffect(() => {
       if (token) {
-        async function getIcon() {
+        async function getName() {
           const config = {
             headers: { Authorization: `Bearer ${token}` },
           };
@@ -26,10 +26,9 @@ const PostList = ({ match }) => {
             `https://oauth.reddit.com/api/v1/me`,
             config
           ).then((res) => res);
-          console.log(data);
           setUserName(data.data.name);
         }
-        getIcon();
+        getName();
       }
     }, [token]);
   return (
