@@ -15,7 +15,6 @@ import PostPage from './components/PostPage'
 import {AppDiv} from "./styledComponents"
 import NotFound from "./components/NotFound";
 import MyPosts from "./components/MyPosts";
-import Saved from "./components/saved";
 import Upvoted from "./components/Upvoted";
 import Notifications from "./components/Notifications";
 import Messages from "./components/Messages";
@@ -54,7 +53,7 @@ function App() {
           <Route exact path="/r/:subReddit/post/:id" component={PostPage} />
           <Route exact path="/notFound" component={NotFound} />
           <Route exact path="/posts" component={MyPosts} />
-          <Route exact path="/saved" component={Saved} />
+          <Route exact path="/saved" component={PostList} />
           <Route exact path="/upvoted" component={Upvoted} />
           <Route exact path="/notifications" component={Notifications} />
           <Route exact path="/messages" component={Messages} />
