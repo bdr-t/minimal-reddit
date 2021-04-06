@@ -40,39 +40,45 @@ const Post = ({ postId, postNotLeggedIn, token }) => {
   const [saved, setSaved] = useState(post.saved);
 
   
-  if (post.url.includes("jpg") || post.url.includes("png")) {
-    content = <ContentImage src={post.url} alt="" />;
-  } else if (!post.url.includes("redd")) {
-    content = (
-      <Text>
-        <Enlace target="_blank" href={post.url}>
-          {post.url}
-        </Enlace>
-      </Text>
-    );
-  } else if (post.url.includes("gif")) {
-    content = (
-      <Video
-        url={"https://proxy-bt.herokuapp.com/" + post.url}
-        autoplay={true}
-        loop={true}
-        controls={true}
-        width="100%"
-      />
-    );
-  } else if (post.is_video) {
-    content = (
-      <Video
-        url={
-          "https://proxy-bt.herokuapp.com/" + post.media.reddit_video.hls_url
-        }
-        autoplay={false}
-        controls={true}
-      />
-    );
-  } else if (post.selftext) {
-    content = <Text>{parseHtml(post.selftext)}</Text>;
+  try{
+    if (post.url.includes("jpg") || post.url.includes("png")) {
+      content = <ContentImage src={post.url} alt="" />;
+    } else if (!post.url.includes("redd")) {
+      content = (
+        <Text>
+          <Enlace target="_blank" href={post.url}>
+            {post.url}
+          </Enlace>
+        </Text>
+      );
+    } else if (post.url.includes("gif")) {
+      content = (
+        <Video
+          url={"https://proxy-bt.herokuapp.com/" + post.url}
+          autoplay={true}
+          loop={true}
+          controls={true}
+          width="100%"
+        />
+      );
+    } else if (post.is_video) {
+      content = (
+        <Video
+          url={
+            "https://proxy-bt.herokuapp.com/" + post.media.reddit_video.hls_url
+          }
+          autoplay={false}
+          controls={true}
+        />
+      );
+    } else if (post.selftext) {
+      content = <Text>{parseHtml(post.selftext)}</Text>;
+    }
+  } catch(err){
+    
   }
+
+
 
   async function getIcon() {
     const url = await axios(
