@@ -51,12 +51,13 @@ const LogoNav = () => {
       <div class="nav">
         
         <Linked to='/'><BtnSort><HomeIcon/>Home</BtnSort></Linked>
-        <Linked to='/posts'><BtnSort><PostsIcon/>My posts</BtnSort></Linked>
         <Linked to='/saved'><BtnSort><SaveIconNav/>Saved</BtnSort></Linked>
         <Linked to='/upvoted'><BtnSort><UpvotedIcon/> Upvoted</BtnSort></Linked>
         <Linked to='/notifications'><BtnSort><NotificationIcon/> Notifications</BtnSort></Linked>
         <Linked to='/messages'><BtnSort><MessagesIcon/>Messages</BtnSort></Linked>
+        <Linked to='/posts'><BtnSort><PostsIcon/>My posts</BtnSort></Linked>
         <Linked to='/me'><BtnSort><ProfileIcon/>Profile</BtnSort></Linked>
+        
         <Linked to='/best'><BtnCreate>Create Post</BtnCreate></Linked>
       </div>
       <Avatar>
