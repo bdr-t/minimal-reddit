@@ -6,6 +6,9 @@ import { useParams } from "react-router-dom";
 import { fetchPosts, remove, selectAllPosts } from "../redux/slices/postsSlice";
 import { Sorting, SortingElement } from "../styledComponents";
 import Sort from "./sort";
+import Notifications from "./Notifications";
+import Messages from "./Messages";
+import { id } from "date-fns/locale";
 
 const LoggedIn = ({ match, username }) => {
   
@@ -27,9 +30,15 @@ const LoggedIn = ({ match, username }) => {
   let link 
 
   if(path === '/saved'){
- 
       link = `https://oauth.reddit.com/user/${username}/saved`
-  }else{
+  }else if(path === '/upvoted'){
+    link = `https://oauth.reddit.com/user/${username}/upvoted`
+  } else if(path ==='/posts'){
+    link = `https://oauth.reddit.com/user/${username}/submitted`
+  }
+  
+  
+  else{
       link = `https://oauth.reddit.com${path}?limit=10&after=${after}`
     }
   
@@ -80,9 +89,17 @@ const LoggedIn = ({ match, username }) => {
 
   let content;
 
-  content = posts.map((post) => (
-    <Post key={post.id} postId={post.id} token={token} />
-  ));
+  if(path === '/notifications'){
+    content = <Notifications/>
+  } else if(path === '/messages'){
+    content = <Messages/>
+  }else{
+    content = posts.map((post) => (
+      <Post key={post.id} postId={post.id} token={token} />
+    ));
+  }
+
+  
   if (error) {
     <div className="err">{error}</div>;
   }
