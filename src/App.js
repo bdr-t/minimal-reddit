@@ -52,11 +52,11 @@ function App() {
           <Route exact path="/post/:id" component={PostPage} />
           <Route exact path="/r/:subReddit/post/:id" component={PostPage} />
           <Route exact path="/notFound" component={NotFound} />
-          <Route exact path="/posts" component={MyPosts} />
+          <Route exact path="/posts" component={PostList} />
           <Route exact path="/saved" component={PostList} />
-          <Route exact path="/upvoted" component={Upvoted} />
-          <Route exact path="/notifications" component={Notifications} />
-          <Route exact path="/messages" component={Messages} />
+          <Route exact path="/upvoted" component={PostList} />
+          <Route exact path="/notifications" component={PostList} />
+          <Route exact path="/messages" component={PostList} />
           <Route exact path="/me" component={MyProfile} />
 
           <Redirect to="/notFound" />
