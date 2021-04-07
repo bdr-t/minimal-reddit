@@ -15,7 +15,7 @@ import { BiUpvote, BiMessageSquareDetail } from "react-icons/bi";
 import { Link } from "react-router-dom";
 
 const color = {
-  text: 'fff',
+  text: 'white',
   colorPrimary200: "#b2bdcd",
   colorPrimary300: "#5d7290",
   colorPrimary600: "#323d4d",
@@ -25,6 +25,7 @@ const color = {
   colorAccentGlow: "rgba(253,77,77,0.3)",
   colorAccent: "#fd4d4d",
   colorAccentHover: "#fd6868",
+  links: 'lightblue',
 };
 
 // const color = {
@@ -196,6 +197,22 @@ export const SubTitle = styled.div`
   font-size: 13px;
 `;
 
+export const MessageBy = styled.div`
+  color: ${color.colorAccent};
+  font-family: Segoe UI SemiBold;
+  font-size: 15px;
+  padding: 0.25em 1em;
+  a{
+    :hover{
+      color:white;
+    }
+  }
+  span{
+    padding-right: 0.5em;
+    color: ${color.text};
+  }
+`
+
 export const Video = styled(ReactHlsPlayer)`
   max-height: 90vh;
   max-width: 100%;
@@ -208,6 +225,9 @@ export const Text = styled.div`
   font-size: 15px;
   p {
     margin-bottom: 1em;
+  }
+  a {
+    color: ${color.links};
   }
 `;
 
