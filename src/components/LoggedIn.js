@@ -9,6 +9,7 @@ import Sort from "./sort";
 import Notifications from "./Notifications";
 import Messages from "./Messages";
 import { id } from "date-fns/locale";
+import MyProfile from "./MyProfile";
 
 const LoggedIn = ({ match, username }) => {
   
@@ -46,7 +47,10 @@ const LoggedIn = ({ match, username }) => {
 
   useEffect(() => {
     let config 
-    if (postStatus === "idle") {
+    if (path === '/me') {
+      let doNothing = true
+    }
+    else if (postStatus === "idle") {
       const config = {
         link,
         token,
@@ -93,7 +97,10 @@ const LoggedIn = ({ match, username }) => {
     content = <Notifications/>
   } else if(path === '/messages'){
     content = <Messages/>
-  }else{
+  } else if(path === '/me'){
+    content = <MyProfile name={username}/>
+  }
+  else{
     content = posts.map((post) => (
       <Post key={post.id} postId={post.id} token={token} />
     ));

@@ -57,7 +57,7 @@ function App() {
           <Route exact path="/upvoted" component={PostList} />
           <Route exact path="/notifications" component={PostList} />
           <Route exact path="/messages" component={PostList} />
-          <Route exact path="/me" component={MyProfile} />
+          <Route exact path="/me" component={PostList} />
 
           <Redirect to="/notFound" />
         </Switch>
