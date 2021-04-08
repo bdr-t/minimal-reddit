@@ -268,6 +268,26 @@ height:fit-content;
 width:80%;
 place-content:center;
 border-radius:8px;
+padding: 1em 0;
+`
+
+export const ProfileContainer = styled.div`
+background-color:${color.colorPrimary700};
+height:fit-content;
+width:100%;
+border-radius:8px;
+padding: 1em 0.5em;
+width:100%;
+margin-top:50px;
+display:flex;
+gap: 1em;
+align-items:center;
+`
+
+export const ProfileName = styled.h2`
+font-weight: 300;
+font-size: 30px;
+
 `
 
 export const Login = styled.a`
