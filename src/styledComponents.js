@@ -268,7 +268,7 @@ height:fit-content;
 width:80%;
 place-content:center;
 border-radius:8px;
-padding: 1em 0;
+padding: 0 0 1em 0;
 `
 
 export const ProfileContainer = styled.div`
