@@ -1,7 +1,7 @@
 import {useState, useEffect} from 'react'
 import axios from 'axios'
-import { ProfileContainer, ProfileName} from '../styledComponents'
-import { format, parseISO,fromUnixTime } from 'date-fns'
+import { ProfileContainer, ProfileName, KarmaCreated, SpanColor, LogOutBtn} from '../styledComponents'
+import {fromUnixTime } from 'date-fns'
 
 
 
@@ -34,22 +34,22 @@ const MyProfile = ({name}) => {
     return (  
         <>
         {!data && <div className="a">'loading'</div> }
-        {data && <ProfileContainer style={{width:'100%', marginTop:'50px', display:'flex'}}>
+        {data && <ProfileContainer>
             <img height='300px' width='auto'src={img} alt=""/>
-            <div className="a" style={{padding:'1em'}}>
+            <div style={{padding:'1em'}}>
                 <ProfileName>{data.subreddit.display_name_prefixed}</ProfileName>
-                <div className="karam-created" style={{display:'flex', gap:'4em', padding:'1em 0'}}>
-                    <div className="karma">
+                <KarmaCreated>
+                    <div>
                         <h3>{data.total_karma} karma </h3>
                     </div>
-                    <div className="creaated">
-                        <h3>Created <span style={{color:'red'}}>{date}</span></h3>
+                    <div>
+                        <h3>Created <SpanColor>{date}</SpanColor></h3>
                     </div>
     
-                </div>
-                <div className="button" style={{textAlign:'center', padding:'1em', backgroundColor:'red', borderRadius:'20px', marginTop:'2em', cursor: 'pointer' }}>
+                </KarmaCreated>
+                <LogOutBtn>
                         <h3>Log Out</h3>
-                    </div>
+                    </LogOutBtn>
             </div>
          
             

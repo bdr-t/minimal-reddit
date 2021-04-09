@@ -15,7 +15,7 @@ import { BiUpvote, BiMessageSquareDetail } from "react-icons/bi";
 import { Link } from "react-router-dom";
 
 const color = {
-  text: 'white',
+  text: "white",
   colorPrimary200: "#b2bdcd",
   colorPrimary300: "#5d7290",
   colorPrimary600: "#323d4d",
@@ -25,7 +25,7 @@ const color = {
   colorAccentGlow: "rgba(253,77,77,0.3)",
   colorAccent: "#fd4d4d",
   colorAccentHover: "#fd6868",
-  links: 'lightblue',
+  links: "lightblue",
 };
 
 // const color = {
@@ -119,7 +119,7 @@ export const SubReddit = styled.div`
   cursor: pointer;
   align-self: center;
   margin-left: auto;
-  display:flex;
+  display: flex;
   align-items: center;
   gap: 0.5em;
 `;
@@ -202,16 +202,16 @@ export const MessageBy = styled.div`
   font-family: Segoe UI SemiBold;
   font-size: 15px;
   padding: 0.25em 1em;
-  a{
-    :hover{
-      color:white;
+  a {
+    :hover {
+      color: white;
     }
   }
-  span{
+  span {
     padding-right: 0.5em;
     color: ${color.text};
   }
-`
+`;
 
 export const Video = styled(ReactHlsPlayer)`
   max-height: 90vh;
@@ -261,34 +261,59 @@ export const Input = styled.input`
 `;
 
 export const TrendingContainer = styled.div`
-
-justify-self: center;
-background-color:${color.colorPrimary700};
-height:fit-content;
-width:80%;
-place-content:center;
-border-radius:8px;
-padding: 0 0 1em 0;
-`
+  justify-self: center;
+  background-color: ${color.colorPrimary700};
+  height: fit-content;
+  width: 80%;
+  place-content: center;
+  border-radius: 8px;
+  padding: 0 0 1em 0;
+`;
 
 export const ProfileContainer = styled.div`
-background-color:${color.colorPrimary700};
-height:fit-content;
-width:100%;
-border-radius:8px;
-padding: 1em 0.5em;
-width:100%;
-margin-top:50px;
-display:flex;
-gap: 1em;
-align-items:center;
-`
+  background-color: ${color.colorPrimary700};
+  height: fit-content;
+  width: 100%;
+  border-radius: 8px;
+  padding: 1em 0.5em;
+  width: 100%;
+  margin-top: 50px;
+  display: flex;
+  gap: 1em;
+  align-items: center;
+  width: 100%;
+  margin-top: 50px;
+  display: flex;
+`;
+export const KarmaCreated = styled.div`
+  display: flex;
+  gap: 4em;
+  padding: 1em 0;
+`;
 
 export const ProfileName = styled.h2`
-font-weight: 300;
-font-size: 30px;
+  font-weight: 300;
+  font-size: 30px;
+`;
 
-`
+export const LogOutBtn = styled.button`
+  outline: none;
+  border: none;
+  text-align: center;
+  width: 100%;
+  padding: 1em;
+  background-color: ${color.colorAccent};
+  border-radius: 20px;
+  margin-top: 2em;
+  cursor: pointer;
+  h3{
+    color:white;
+  }
+`;
+
+export const SpanColor = styled.span`
+  color: ${color.colorAccent};
+`;
 
 export const Login = styled.a`
   width: 60px;
@@ -376,7 +401,7 @@ export const JoinBtn = styled.p`
   align-self: center;
   background-color: ${color.colorAccent};
   cursor: pointer;
-  color:white;
+  color: white;
 `;
 
 export const BtnCreate = styled.h3`
