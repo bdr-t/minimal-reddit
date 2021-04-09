@@ -1,23 +1,18 @@
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import Post from "./Post";
 import { useParams } from "react-router-dom";
-
 import { fetchPosts, remove, selectAllPosts } from "../redux/slices/postsSlice";
-import { Sorting, SortingElement } from "../styledComponents";
-import Sort from "./sort";
 import Notifications from "./Notifications";
 import Messages from "./Messages";
-import { id } from "date-fns/locale";
 import MyProfile from "./MyProfile";
 
+
 const LoggedIn = ({ match, username }) => {
-  
   const path = match ? match.url : "/best";
   const { subReddit } = useParams();
 
-  
-
+  const observer = useRef(path);
 
   const dispatch = useDispatch();
 
@@ -26,51 +21,44 @@ const LoggedIn = ({ match, username }) => {
   const token = useSelector((state) => state.authorization.token);
   const after = useSelector((state) => state.posts.after);
   const ids = useSelector((state) => state.posts.ids);
-  const prevPath = useSelector((state) => state.posts.prevPath)
+  const first = useSelector((state) => state.posts.first);
 
-  let link 
-
-  if(path === '/saved'){
-      link = `https://oauth.reddit.com/user/${username}/saved`
-  }else if(path === '/upvoted'){
-    link = `https://oauth.reddit.com/user/${username}/upvoted`
-  } else if(path ==='/posts'){
-    link = `https://oauth.reddit.com/user/${username}/submitted`
+  let link;
+  if (path === "/saved") {
+    link = `https://oauth.reddit.com/user/${username}/saved`;
+  } else if (path === "/upvoted") {
+    link = `https://oauth.reddit.com/user/${username}/upvoted`;
+  } else if (path === "/posts") {
+    link = `https://oauth.reddit.com/user/${username}/submitted`;
+  } else {
+    link = `https://oauth.reddit.com${path}?limit=10`;
   }
-  
-  
-  else{
-      link = `https://oauth.reddit.com${path}?limit=10&after=${after}`
-    }
-  
-
 
   useEffect(() => {
-    let config 
-    if (path === '/me') {
-      let doNothing = true
+    if (!(observer.current === path)) {
+      console.log("removing");
+      dispatch(remove(ids));
     }
-    else if (postStatus === "idle") {
+  }, [path]);
+
+  useEffect(() => {
+    if (first) {
+      if (path !== "/me" && path !== "/notifications" && path !== "/messages") {
+        const config = {
+          link,
+          token,
+        };
+        dispatch(fetchPosts(config));
+        observer.current = path;
+      }
+    } else if (!(observer.current === path)) {
       const config = {
         link,
         token,
       };
       dispatch(fetchPosts(config));
+      observer.current = path;
     }
-    else if(prevPath === ''){
-      let doNothing = true
-    }
-    else if (!(prevPath === path)) {
-      console.log('option 2')
-      dispatch(remove(ids));
-      config = {
-        link,
-        token,
-      }
-    dispatch(fetchPosts(config));
-
-    }
-    
   }, [path, subReddit]);
 
   window.onscroll = function (ev) {
@@ -80,7 +68,7 @@ const LoggedIn = ({ match, username }) => {
     ) {
       if (postStatus === "succeeded") {
         const config = {
-          path,
+          link: `https://oauth.reddit.com${path}?limit=10&after=${after}`,
           token,
           afterPosts: after,
         };
@@ -93,20 +81,18 @@ const LoggedIn = ({ match, username }) => {
 
   let content;
 
-  if(path === '/notifications'){
-    content = <Notifications/>
-  } else if(path === '/messages'){
-    content = <Messages/>
-  } else if(path === '/me'){
-    content = <MyProfile name={username}/>
-  }
-  else{
+  if (path === "/notifications") {
+    content = <Notifications />;
+  } else if (path === "/messages") {
+    content = <Messages />;
+  } else if (path === "/me") {
+    content = <MyProfile name={username} />;
+  } else {
     content = posts.map((post) => (
       <Post key={post.id} postId={post.id} token={token} />
     ));
   }
 
-  
   if (error) {
     <div className="err">{error}</div>;
   }
@@ -121,13 +107,7 @@ const LoggedIn = ({ match, username }) => {
   //   content = <div>{error}</div>;
   // }
 
-  return (
-    <div className="posts-list">
-
-
-      {content}
-    </div>
-  );
+  return <div className="posts-list">{content}</div>;
 };
 
 export default LoggedIn;

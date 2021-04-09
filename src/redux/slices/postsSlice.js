@@ -12,8 +12,7 @@ const initialState = postsAdapter.getInitialState({
   status: "idle",
   error: null,
   after: "",
-  prevPath: '',
-  actualPath: '/best'
+  first: true
 });
 
 export const fetchPosts = createAsyncThunk(
@@ -74,6 +73,7 @@ const postsSlice = createSlice({
       postsAdapter.removeAll(state, payload);
       state.after = ''
       state.status = 'idle'
+      state.first = true
     }
   },
   extraReducers: {
@@ -84,8 +84,7 @@ const postsSlice = createSlice({
       state.status = "succeeded";
       postsAdapter.addMany(state, action.payload[0]);
       state.after = action.payload[1];
-      state.prevPath = state.actualPath
-      state.actualPath = action.payload[2]
+      state.first = false
     },
     [fetchPosts.rejected]: (state, action) => {
       state.status = "failed";
