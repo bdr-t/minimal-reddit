@@ -315,24 +315,7 @@ export const SpanColor = styled.span`
   color: ${color.colorAccent};
 `;
 
-export const Login = styled.a`
-  width: 60px;
-  justify-self: end;
-  border: none;
-  align-self: center;
-  border-radius: 1em;
-  padding: 0.75em;
-  cursor: pointer;
-  outline: none;
-  font-weight: 700;
-  color: ${color.text};
-  text-align: center;
-  text-decoration: none;
-  &:hover {
-    background-color: ${color.text};
-    color: black;
-  }
-`;
+
 
 export const Logo = styled.a`
   display: inline-block;
@@ -408,10 +391,18 @@ export const BtnCreate = styled.h3`
   margin-top: 1em;
   padding: 0.5em 1.5em;
   width: 150px;
+  color:white;
   background-color: ${color.colorAccent};
   text-align: center;
   border-radius: 20px;
+  :hover{
+    color:white;
+  }
 `;
+
+export const Login = styled.a`
+  text-decoration:none;
+`
 
 export const Avatar = styled.div`
   display: flex;
