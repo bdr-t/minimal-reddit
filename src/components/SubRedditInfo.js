@@ -5,6 +5,9 @@ import parseHtml from "../actions/parseHTML";
 import suscribe from "../actions/suscribe";
 
 const SubReddit = ({data, error, status}) => {
+  const authorization = useSelector(
+    (state) => state.authorization.authorization
+  );
   const token = useSelector((state) => state.authorization.token);
   const [isSubscriber, setIsSubscriber ]= useState(data.user_is_subscriber || false)
 
@@ -44,13 +47,17 @@ const SubReddit = ({data, error, status}) => {
     }
 
     function handleClick(){
-      if(isSubscriber){
-        suscribe('unsub', data.name, token )
-        setIsSubscriber(false)
-      } else{
-        suscribe('sub', data.name, token )
-        setIsSubscriber(true)
+      if(authorization){
+        if(isSubscriber){
+          suscribe('unsub', data.name, token )
+          setIsSubscriber(false)
+        } else{
+          suscribe('sub', data.name, token )
+          setIsSubscriber(true)
+        }
+
       }
+      
     }
 
   

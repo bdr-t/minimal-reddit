@@ -68,13 +68,12 @@ const TrenSubreddit = ({ name }) => {
   function handleClick() {
     if(authorization){
       if (isSubscriber) {
-        suscribe("unsub", subRedditName, token);
-        setIsSubscriber(false);
-      } else {
-        suscribe("sub", subRedditName, token);
-        setIsSubscriber(true);
-      }
-
+      suscribe("unsub", subRedditName, token);
+      setIsSubscriber(false);
+    } else {
+      suscribe("sub", subRedditName, token);
+      setIsSubscriber(true);
+    }
     }
 
     

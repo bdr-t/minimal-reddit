@@ -8,9 +8,14 @@ function useFetchSubInfo(link, token) {
 
   useEffect(() => {
     const fetchData = async () => {
-      const config = {
-        headers: { Authorization: `Bearer ${token}` },
-      };
+      let config
+      if(token){
+        config = {
+          headers: { Authorization: `Bearer ${token}` },
+        };
+
+      }
+      
       const response = await axios
         .get(link, config)
         .then((response) => response.data.data);

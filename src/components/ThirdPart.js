@@ -3,7 +3,11 @@ import TrendingCommunities from './TrendingCommunities'
 import {useParams} from 'react-router-dom'
 import {useSelector} from 'react-redux'
 import SubLayer from './SubLayer'
+import SubLayerNot from './SubLayerNot'
 const ThirdPart = () => {
+    const authorization = useSelector(
+        (state) => state.authorization.authorization
+      );
     const {subReddit} = useParams()
     const token = useSelector((state) => state.authorization.token);
     
@@ -14,6 +18,7 @@ const ThirdPart = () => {
             <Input/>
             {!subReddit && <TrendingCommunities/>}
             {subReddit && token && <SubLayer/>}
+            {!authorization && subReddit && <SubLayerNot/>}
             
         </div>
      );
