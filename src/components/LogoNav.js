@@ -49,12 +49,12 @@ const LogoNav = () => {
       <div class="nav">
         
         <Linked to='/'><BtnSort><HomeIcon/>Home</BtnSort></Linked>
-        <Linked to='/saved'><BtnSort><SaveIconNav/>Saved</BtnSort></Linked>
-        <Linked to='/upvoted'><BtnSort><UpvotedIcon/> Upvoted</BtnSort></Linked>
-        <Linked to='/notifications'><BtnSort><NotificationIcon/> Notifications</BtnSort></Linked>
-        <Linked to='/messages'><BtnSort><MessagesIcon/>Messages</BtnSort></Linked>
-        <Linked to='/posts'><BtnSort><PostsIcon/>My posts</BtnSort></Linked>
-        <Linked to='/me'><BtnSort><ProfileIcon/>Profile</BtnSort></Linked>
+        <Linked to={authorization ? '/saved' : '/login'}><BtnSort><SaveIconNav/>Saved</BtnSort></Linked>
+        <Linked to={authorization ? '/upvoted' : '/login'}><BtnSort><UpvotedIcon/> Upvoted</BtnSort></Linked>
+        <Linked to={authorization ? '/notifications' : '/login'}><BtnSort><NotificationIcon/> Notifications</BtnSort></Linked>
+        <Linked to={authorization ? '/messages' : '/login'}><BtnSort><MessagesIcon/>Messages</BtnSort></Linked>
+        <Linked to={authorization ? '/posts' : '/login'}><BtnSort><PostsIcon/>My posts</BtnSort></Linked>
+        <Linked to={authorization ? '/me' : '/login'}><BtnSort><ProfileIcon/>Profile</BtnSort></Linked>
         
         {authorization && <Linked to='/best'><BtnCreate>Create Post</BtnCreate></Linked>}
       </div>

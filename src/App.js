@@ -10,15 +10,10 @@ import {
 } from "react-router-dom";
 import PostList from "./components/PostList";
 import Callback from "./components/CallBack";
-import UserProfile from './components/UserProfile'
 import PostPage from './components/PostPage'
 import {AppDiv} from "./styledComponents"
 import NotFound from "./components/NotFound";
-import MyPosts from "./components/MyPosts";
-import Upvoted from "./components/Upvoted";
-import Notifications from "./components/Notifications";
-import Messages from "./components/Messages";
-import MyProfile from "./components/MyProfile";
+import Login from "./components/Login";
 
 
 function App() {
@@ -36,7 +31,7 @@ function App() {
               </React.Fragment>
             )}
           />
-          <Route exact path="/u/:user" component={UserProfile} />
+          <Route exact path="/u/:user" component={PostList} />
           <Route exact path="/r/:subReddit" component={PostList} />
           <Route exact path="/r/:subReddit/hot" component={PostList} />
           <Route exact path="/r/:subReddit/top" component={PostList} />
@@ -58,6 +53,7 @@ function App() {
           <Route exact path="/notifications" component={PostList} />
           <Route exact path="/messages" component={PostList} />
           <Route exact path="/me" component={PostList} />
+          <Route exact path="/login" component={Login} />
 
           <Redirect to="/notFound" />
         </Switch>
