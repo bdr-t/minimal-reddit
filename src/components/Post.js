@@ -3,7 +3,7 @@ import { selectPostById } from "../redux/slices/postsSlice";
 import { useState } from "react";
 import savePost from "../actions/savePost";
 import unSavePost from "../actions/unSavePost";
-import axios from 'axios'
+import axios from "axios";
 
 import {
   Comments as NumComments,
@@ -27,20 +27,20 @@ import TimeAgo from "./TimeAgo";
 import parseHtml from "../actions/parseHTML";
 
 const Post = ({ postId, postNotLeggedIn, token }) => {
+  const authorization = useSelector((state) => state.authorization.authorization);
   let post = useSelector((state) => selectPostById(state, postId));
   if (postNotLeggedIn) {
     post = postNotLeggedIn;
   }
 
   let content;
-  const [icon, setIcon] = useState('https://svgshare.com/i/V_c.svg')
+  const [icon, setIcon] = useState("https://svgshare.com/i/V_c.svg");
   const [votes, setVotes] = useState(post.ups - post.downs);
   const [dir, setDir] = useState(0);
   const [focus, setFocus] = useState(post.likes);
   const [saved, setSaved] = useState(post.saved);
 
-  
-  try{
+  try {
     if (post.url.includes("jpg") || post.url.includes("png")) {
       content = <ContentImage src={post.url} alt="" />;
     } else if (!post.url.includes("redd")) {
@@ -74,22 +74,18 @@ const Post = ({ postId, postNotLeggedIn, token }) => {
     } else if (post.selftext) {
       content = <Text>{parseHtml(post.selftext)}</Text>;
     }
-  } catch(err){
-    
-  }
-
-
+  } catch (err) {}
 
   async function getIcon() {
     const url = await axios(
       `https://www.reddit.com/r/${post.subreddit}/about.json`
     ).then((res) => res.data.data.icon_img);
-    if(url){
-      setIcon(url)
+    if (url) {
+      setIcon(url);
     }
-    }
+  }
 
-  getIcon()
+  getIcon();
 
   return (
     <Container>
@@ -101,28 +97,31 @@ const Post = ({ postId, postNotLeggedIn, token }) => {
           padding: "0.5em 0.5em 0.5em 0.5em",
         }}
       >
-      <div className="flex-author">
-      <Title>
-        {post.title}
-        <SaveIcon
-          saved={saved === true ? 1 : 0}
-          onClick={() => {
-            if (saved) {
-              unSavePost(post.post_id, token);
-              setSaved(false);
-            } else {
-              savePost(post.post_id, token);
-              setSaved(true);
-            }
-          }}
-        />
-      </Title>
-      <TimeAgo
-        needsPadding={true}
-        created={post.created}
-        author={post.author}
-      />
-      </div>
+        <div className="flex-author">
+          <Title>
+            {post.title}
+            <SaveIcon
+              saved={saved === true ? 1 : 0}
+              onClick={() => {
+                if(authorization){
+                  if (saved) {
+                    unSavePost(post.post_id, token);
+                    setSaved(false);
+                  } else {
+                    savePost(post.post_id, token);
+                    setSaved(true);
+                  }
+                }
+                
+              }}
+            />
+          </Title>
+          <TimeAgo
+            needsPadding={true}
+            created={post.created}
+            author={post.author}
+          />
+        </div>
       </div>
       {content}
       <Footer>
@@ -131,44 +130,51 @@ const Post = ({ postId, postNotLeggedIn, token }) => {
             <ArrowDown
               focus={focus === false ? 0 : 1}
               onClick={() => {
-                if (dir === 0) {
-                  vote(-1, post.post_id, token);
-                  setDir(-1);
-                  setVotes(votes - 1);
-                  setFocus(false);
-                } else if (dir === -1) {
-                  vote(0, post.post_id, token);
-                  setDir(0);
-                  setVotes(votes + 1);
-                  setFocus(null);
-                } else if (dir === 1) {
-                  vote(-1, post.post_id, token);
-                  setDir(-1);
-                  setVotes(votes - 2);
-                  setFocus(false);
+                if(authorization){
+                  if (dir === 0) {
+                    vote(-1, post.post_id, token);
+                    setDir(-1);
+                    setVotes(votes - 1);
+                    setFocus(false);
+                  } else if (dir === -1) {
+                    vote(0, post.post_id, token);
+                    setDir(0);
+                    setVotes(votes + 1);
+                    setFocus(null);
+                  } else if (dir === 1) {
+                    vote(-1, post.post_id, token);
+                    setDir(-1);
+                    setVotes(votes - 2);
+                    setFocus(false);
+                  }
                 }
+                
               }}
             />
             <UpvotesNum>{votes}</UpvotesNum>
             <ArrowUp
               focus={focus === true ? 1 : 2}
               onClick={() => {
-                if (dir === 0) {
-                  vote(1, post.post_id, token);
-                  setDir(1);
-                  setVotes(votes + 1);
-                  setFocus(true);
-                } else if (dir === -1) {
-                  vote(1, post.post_id, token);
-                  setDir(1);
-                  setVotes(votes + 2);
-                  setFocus(true);
-                } else if (dir === 1) {
-                  vote(0, post.post_id, token);
-                  setDir(0);
-                  setVotes(votes - 1);
-                  setFocus(null);
+                if(authorization){
+                  if (dir === 0) {
+                    vote(1, post.post_id, token);
+                    setDir(1);
+                    setVotes(votes + 1);
+                    setFocus(true);
+                  } else if (dir === -1) {
+                    vote(1, post.post_id, token);
+                    setDir(1);
+                    setVotes(votes + 2);
+                    setFocus(true);
+                  } else if (dir === 1) {
+                    vote(0, post.post_id, token);
+                    setDir(0);
+                    setVotes(votes - 1);
+                    setFocus(null);
+                  }
+
                 }
+                
               }}
             />
           </Upvotes>
@@ -181,15 +187,18 @@ const Post = ({ postId, postNotLeggedIn, token }) => {
           </NumComments>
         </div>
         <div style={{ display: "flex", borderTop: "1px solid #65676b" }}>
-        <SubReddit>
-          <img src={icon} width='20px' style={{borderRadius:'50%'}}alt="" srcset=""/>
-        <Linked style={{fontWeight: 600}}to = {`/r/${post.subreddit}/`}>
-          
-            
-            r/{post.subreddit}
-          </Linked>
+          <SubReddit>
+            <img
+              src={icon}
+              width="20px"
+              style={{ borderRadius: "50%" }}
+              alt=""
+              srcset=""
+            />
+            <Linked style={{ fontWeight: 600 }} to={`/r/${post.subreddit}/`}>
+              r/{post.subreddit}
+            </Linked>
           </SubReddit>
-
         </div>
       </Footer>
     </Container>
