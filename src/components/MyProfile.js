@@ -2,11 +2,17 @@ import {useState, useEffect} from 'react'
 import axios from 'axios'
 import { ProfileContainer, ProfileName, KarmaCreated, SpanColor, LogOutBtn} from '../styledComponents'
 import {fromUnixTime } from 'date-fns'
+import {useHistory} from 'react-router-dom'
+import {useDispatch} from 'react-redux'
+import {logOut} from '../redux/slices/authorizationSlice'
 
 
 
 const MyProfile = ({name}) => {
     const [data, setData] = useState()
+    const history = useHistory()
+    const dispatch = useDispatch()
+    
     
 
     useEffect(()=>{
@@ -29,7 +35,11 @@ const MyProfile = ({name}) => {
     }
     
 
-    console.log(data)
+    function handleClick(){
+        window.localStorage.removeItem("refreshToken")
+        dispatch(logOut())
+        history.push("/")
+    }
 
     return (  
         <>
@@ -47,7 +57,7 @@ const MyProfile = ({name}) => {
                     </div>
     
                 </KarmaCreated>
-                <LogOutBtn>
+                <LogOutBtn onClick={()=>handleClick()}>
                         <h3>Log Out</h3>
                     </LogOutBtn>
             </div>

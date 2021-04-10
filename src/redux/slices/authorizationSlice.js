@@ -61,7 +61,12 @@ const authorizationSlice = createSlice({
     token: null,
     refreshToken: null,
   },
-  reducers: {},
+  reducers: {
+    logOut(state){
+      state.authorization = false;
+    }
+
+  },
   extraReducers: {
     [fetchToken.pending]: (state, action) => {
       state.status = "loading";
@@ -91,5 +96,7 @@ const authorizationSlice = createSlice({
     },
   },
 });
+
+export const {logOut} = authorizationSlice.actions
 
 export default authorizationSlice.reducer;
