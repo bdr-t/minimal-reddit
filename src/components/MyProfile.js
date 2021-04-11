@@ -2,7 +2,7 @@ import {useState, useEffect} from 'react'
 import axios from 'axios'
 import { ProfileContainer, ProfileName, KarmaCreated, SpanColor, LogOutBtn} from '../styledComponents'
 import {fromUnixTime } from 'date-fns'
-import {useHistory} from 'react-router-dom'
+import {useHistory, useParams} from 'react-router-dom'
 import {useDispatch} from 'react-redux'
 import {logOut} from '../redux/slices/authorizationSlice'
 
@@ -12,6 +12,7 @@ const MyProfile = ({name}) => {
     const [data, setData] = useState()
     const history = useHistory()
     const dispatch = useDispatch()
+    const {user} = useParams()
     
     
 
@@ -41,11 +42,21 @@ const MyProfile = ({name}) => {
         history.push("/")
     }
 
+    let style 
+
+    if(user){
+        style = {width:'80%', 
+        justifySelf:'center',}
+    } else{
+        style = {width:'80%', 
+        alignSelf:'center',}
+    }
+
     return (  
         <>
         {!data && <div className="a">'loading'</div> }
-        {data && <ProfileContainer>
-            <img height='300px' width='auto'src={img} alt=""/>
+        {data && <ProfileContainer style={style}>
+            <img height='auto' width='25%'src={img} alt=""/>
             <div style={{padding:'1em'}}>
                 <ProfileName>{data.subreddit.display_name_prefixed}</ProfileName>
                 <KarmaCreated>
@@ -57,9 +68,9 @@ const MyProfile = ({name}) => {
                     </div>
     
                 </KarmaCreated>
-                <LogOutBtn onClick={()=>handleClick()}>
+                {!user && <LogOutBtn onClick={()=>handleClick()}>
                         <h3>Log Out</h3>
-                    </LogOutBtn>
+                    </LogOutBtn>}
             </div>
          
             

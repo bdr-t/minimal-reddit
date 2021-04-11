@@ -1,10 +1,13 @@
 import {Input} from '../styledComponents'
 import TrendingCommunities from './TrendingCommunities'
-import {useParams} from 'react-router-dom'
+import {useLocation, useParams} from 'react-router-dom'
 import {useSelector} from 'react-redux'
 import SubLayer from './SubLayer'
 import SubLayerNot from './SubLayerNot'
+import MyProfile from './MyProfile'
 const ThirdPart = () => {
+    const location = useLocation()
+    const {user} = useParams()
     const authorization = useSelector(
         (state) => state.authorization.authorization
       );
@@ -16,9 +19,10 @@ const ThirdPart = () => {
     return ( 
         <div style={{display: 'grid', gridTemplateRows:'60px auto', gap:'50px', height: '100vh', position:'sticky', top:'0'}}>
             <Input/>
-            {!subReddit && <TrendingCommunities/>}
-            {subReddit && token && <SubLayer/>}
-            {!authorization && subReddit && <SubLayerNot/>}
+            {!user && !subReddit && <TrendingCommunities/>}
+            {!user && subReddit && token && <SubLayer/>}
+            {!user && !authorization && subReddit && <SubLayerNot/>}
+            {user && <MyProfile name={user}/>}
             
         </div>
      );
