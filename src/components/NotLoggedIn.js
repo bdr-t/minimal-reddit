@@ -1,10 +1,14 @@
 import Post from "./Post";
 import useFetchPosts from "../actions/useFetchPosts";
 
-const PostList = ({ match }) => {
+const PostList = ({ match, user }) => {
   let linkHome = `https://www.reddit.com/.json`;
   let linkSub = `https://www.reddit.com${match ? match.url : null}/.json`;
   let link = match ? linkSub : linkHome;
+
+  if(user){
+    link = `https://www.reddit.com/user/${user}.json` 
+  }
 
   const { posts, status, error } = useFetchPosts(link);
 

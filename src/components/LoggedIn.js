@@ -8,7 +8,7 @@ import Messages from "./Messages";
 import MyProfile from "./MyProfile";
 
 
-const LoggedIn = ({ match, username }) => {
+const LoggedIn = ({ match, username, user }) => {
   const path = match ? match.url : "/best";
   const { subReddit } = useParams();
 
@@ -30,7 +30,11 @@ const LoggedIn = ({ match, username }) => {
     link = `https://oauth.reddit.com/user/${username}/upvoted`;
   } else if (path === "/posts") {
     link = `https://oauth.reddit.com/user/${username}/submitted`;
-  } else {
+  } else if (user){
+    link = `https://oauth.reddit.com/user/${user}/overview`
+  }
+  
+  else {
     link = `https://oauth.reddit.com${path}?limit=10`;
   }
 
@@ -78,6 +82,7 @@ const LoggedIn = ({ match, username }) => {
   };
 
   const posts = useSelector(selectAllPosts);
+
 
   let content;
 

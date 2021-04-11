@@ -27,7 +27,9 @@ import TimeAgo from "./TimeAgo";
 import parseHtml from "../actions/parseHTML";
 
 const Post = ({ postId, postNotLeggedIn, token }) => {
-  const authorization = useSelector((state) => state.authorization.authorization);
+  const authorization = useSelector(
+    (state) => state.authorization.authorization
+  );
   let post = useSelector((state) => selectPostById(state, postId));
   if (postNotLeggedIn) {
     post = postNotLeggedIn;
@@ -88,120 +90,123 @@ const Post = ({ postId, postNotLeggedIn, token }) => {
   getIcon();
 
   return (
-    <Container>
-      <div
-        className="flex"
-        style={{
-          display: "flex",
-          gap: "0.5em",
-          padding: "0.5em 0.5em 0.5em 0.5em",
-        }}
-      >
-        <div className="flex-author">
-          <Title>
-            {post.title}
-            <SaveIcon
-              saved={saved === true ? 1 : 0}
-              onClick={() => {
-                if(authorization){
-                  if (saved) {
-                    unSavePost(post.post_id, token);
-                    setSaved(false);
-                  } else {
-                    savePost(post.post_id, token);
-                    setSaved(true);
-                  }
-                }
-                
-              }}
-            />
-          </Title>
-          <TimeAgo
-            needsPadding={true}
-            created={post.created}
-            author={post.author}
-          />
-        </div>
-      </div>
-      {content}
-      <Footer>
-        <div style={{ display: "flex", borderTop: "1px solid #65676b" }}>
-          <Upvotes>
-            <ArrowDown
-              focus={focus === false ? 0 : 1}
-              onClick={() => {
-                if(authorization){
-                  if (dir === 0) {
-                    vote(-1, post.post_id, token);
-                    setDir(-1);
-                    setVotes(votes - 1);
-                    setFocus(false);
-                  } else if (dir === -1) {
-                    vote(0, post.post_id, token);
-                    setDir(0);
-                    setVotes(votes + 1);
-                    setFocus(null);
-                  } else if (dir === 1) {
-                    vote(-1, post.post_id, token);
-                    setDir(-1);
-                    setVotes(votes - 2);
-                    setFocus(false);
-                  }
-                }
-                
-              }}
-            />
-            <UpvotesNum>{votes}</UpvotesNum>
-            <ArrowUp
-              focus={focus === true ? 1 : 2}
-              onClick={() => {
-                if(authorization){
-                  if (dir === 0) {
-                    vote(1, post.post_id, token);
-                    setDir(1);
-                    setVotes(votes + 1);
-                    setFocus(true);
-                  } else if (dir === -1) {
-                    vote(1, post.post_id, token);
-                    setDir(1);
-                    setVotes(votes + 2);
-                    setFocus(true);
-                  } else if (dir === 1) {
-                    vote(0, post.post_id, token);
-                    setDir(0);
-                    setVotes(votes - 1);
-                    setFocus(null);
-                  }
-
-                }
-                
-              }}
-            />
-          </Upvotes>
-        </div>
-        <div style={{ display: "flex", borderTop: "1px solid #65676b" }}>
-          <NumComments>
-            <Linked to={`/r/${post.subreddit}/post/${post.id}`}>
-              <NumComments>{post.comments} Comments</NumComments>
-            </Linked>
-          </NumComments>
-        </div>
-        <div style={{ display: "flex", borderTop: "1px solid #65676b" }}>
-          <SubReddit>
-            <img
-              src={icon}
-              width="20px"
-              style={{ borderRadius: "50%" }}
-              alt=""
-              srcset=""
-            />
-            <Linked style={{ fontWeight: 600 }} to={`/r/${post.subreddit}/`}>
-              r/{post.subreddit}
-            </Linked>
-          </SubReddit>
-        </div>
-      </Footer>
-    </Container>
+    <>
+      {post.post_id.includes("t3") && (
+        <Container>
+          <div
+            className="flex"
+            style={{
+              display: "flex",
+              gap: "0.5em",
+              padding: "0.5em 0.5em 0.5em 0.5em",
+            }}
+          >
+            <div className="flex-author">
+              <Title>
+                {post.title}
+                <SaveIcon
+                  saved={saved === true ? 1 : 0}
+                  onClick={() => {
+                    if (authorization) {
+                      if (saved) {
+                        unSavePost(post.post_id, token);
+                        setSaved(false);
+                      } else {
+                        savePost(post.post_id, token);
+                        setSaved(true);
+                      }
+                    }
+                  }}
+                />
+              </Title>
+              <TimeAgo
+                needsPadding={true}
+                created={post.created}
+                author={post.author}
+              />
+            </div>
+          </div>
+          {content}
+          <Footer>
+            <div style={{ display: "flex", borderTop: "1px solid #65676b" }}>
+              <Upvotes>
+                <ArrowDown
+                  focus={focus === false ? 0 : 1}
+                  onClick={() => {
+                    if (authorization) {
+                      if (dir === 0) {
+                        vote(-1, post.post_id, token);
+                        setDir(-1);
+                        setVotes(votes - 1);
+                        setFocus(false);
+                      } else if (dir === -1) {
+                        vote(0, post.post_id, token);
+                        setDir(0);
+                        setVotes(votes + 1);
+                        setFocus(null);
+                      } else if (dir === 1) {
+                        vote(-1, post.post_id, token);
+                        setDir(-1);
+                        setVotes(votes - 2);
+                        setFocus(false);
+                      }
+                    }
+                  }}
+                />
+                <UpvotesNum>{votes}</UpvotesNum>
+                <ArrowUp
+                  focus={focus === true ? 1 : 2}
+                  onClick={() => {
+                    if (authorization) {
+                      if (dir === 0) {
+                        vote(1, post.post_id, token);
+                        setDir(1);
+                        setVotes(votes + 1);
+                        setFocus(true);
+                      } else if (dir === -1) {
+                        vote(1, post.post_id, token);
+                        setDir(1);
+                        setVotes(votes + 2);
+                        setFocus(true);
+                      } else if (dir === 1) {
+                        vote(0, post.post_id, token);
+                        setDir(0);
+                        setVotes(votes - 1);
+                        setFocus(null);
+                      }
+                    }
+                  }}
+                />
+              </Upvotes>
+            </div>
+            <div style={{ display: "flex", borderTop: "1px solid #65676b" }}>
+              <NumComments>
+                <Linked to={`/r/${post.subreddit}/post/${post.id}`}>
+                  <NumComments>{post.comments} Comments</NumComments>
+                </Linked>
+              </NumComments>
+            </div>
+            <div style={{ display: "flex", borderTop: "1px solid #65676b" }}>
+              <SubReddit>
+                <img
+                  src={icon}
+                  width="20px"
+                  style={{ borderRadius: "50%" }}
+                  alt=""
+                  srcset=""
+                />
+                <Linked
+                  style={{ fontWeight: 600 }}
+                  to={`/r/${post.subreddit}/`}
+                >
+                  r/{post.subreddit}
+                </Linked>
+              </SubReddit>
+            </div>
+          </Footer>
+        </Container>
+      )}
+    </>
   );
 };
 

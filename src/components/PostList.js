@@ -5,19 +5,21 @@ import { Section } from "../styledComponents";
 import LogoNav from "./LogoNav";
 import {useState, useEffect} from 'react'
 import axios from 'axios'
+import {useParams} from 'react-router-dom'
 
 import Sort from "./sort";
 import TrendingCommunities from "./TrendingCommunities";
 import ThirdPart from "./ThirdPart";
 
 const PostList = ({ match }) => {
+  const {user} = useParams()
   const authorization = useSelector(
     (state) => state.authorization.authorization
   );
   const token = useSelector((state) => state.authorization.token);
     const [userName, setUserName] = useState();
     useEffect(() => {
-      if (token) {
+      if (authorization) {
         async function getName() {
           const config = {
             headers: { Authorization: `Bearer ${token}` },
@@ -36,8 +38,8 @@ const PostList = ({ match }) => {
       <LogoNav />
       <div>
         <Sort />
-        {authorization && userName && <LoggedIn match={match} username={userName}/>}
-        {!authorization && <NotLoggedIn match={match} />}
+        {authorization && userName && <LoggedIn match={match} username={userName} user={user}/>}
+        {!authorization && <NotLoggedIn match={match} user={user}/>}
       </div>
 
       <ThirdPart />
