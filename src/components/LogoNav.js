@@ -57,7 +57,7 @@ const LogoNav = () => {
         <Linked to={authorization ? '/posts' : '/login'}><BtnSort><PostsIcon/>My posts</BtnSort></Linked>
         <Linked to={authorization ? '/me' : '/login'}><BtnSort><ProfileIcon/>Profile</BtnSort></Linked>
         
-        {authorization && <Linked to='/best'><BtnCreate>Create Post</BtnCreate></Linked>}
+        {authorization && <a style={{textDecoration:'none'}} rel="noreferrer" target="_blank" href='https://www.reddit.com/submit'><BtnCreate>Create Post</BtnCreate></a>}
       </div>
       <div>
       {!authorization && <Login href={url}> <BtnCreate href={url}>Log in</BtnCreate></Login>}
