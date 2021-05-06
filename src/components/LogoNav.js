@@ -44,7 +44,8 @@ const LogoNav = () => {
   return (
     <NavLogo>
       <div style={{height:'60px'}}>
-        <Logo>MinimalReddit</Logo>
+        <Linked to='/'><Logo>MinimalReddit</Logo></Linked>
+        
       </div>
       <div class="nav">
         
