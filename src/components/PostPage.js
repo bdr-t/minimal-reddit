@@ -4,6 +4,8 @@ import Post from "./Post";
 import Comments from "./Comments";
 import { Section} from "../styledComponents";
 import LogoNav from './LogoNav'
+import ThirdPart from './ThirdPart'
+
 
 const PostPage = () => {
   const { id } = useParams();
@@ -16,6 +18,7 @@ const PostPage = () => {
         <Post postId={id} token={token}></Post>
         <Comments postId={id} />
       </div>
+      <ThirdPart/>
     </Section>
   );
 };
