@@ -1,18 +1,14 @@
-import styled from "styled-components";
-import ReactHlsPlayer from "react-hls-player";
-import { TiArrowDownThick, TiArrowUpThick } from "react-icons/ti";
-import { HiTrendingUp, HiHome } from "react-icons/hi";
-import { MdFiberNew, MdWhatshot } from "react-icons/md";
-import { IoRocketSharp } from "react-icons/io5";
-import {
-  BsFillBarChartFill,
-  BsFillBookmarkFill,
-  BsFillPersonFill,
-} from "react-icons/bs";
-import { RiBookFill, RiNotification4Fill } from "react-icons/ri";
-import { BiUpvote, BiMessageSquareDetail } from "react-icons/bi";
+import styled from 'styled-components';
+import ReactHlsPlayer from 'react-hls-player';
+import { TiArrowDownThick, TiArrowUpThick } from 'react-icons/ti';
+import { HiTrendingUp, HiHome } from 'react-icons/hi';
+import { MdFiberNew, MdWhatshot } from 'react-icons/md';
+import { IoRocketSharp } from 'react-icons/io5';
+import { BsFillBarChartFill, BsFillBookmarkFill, BsFillPersonFill } from 'react-icons/bs';
+import { RiBookFill, RiNotification4Fill } from 'react-icons/ri';
+import { BiUpvote, BiMessageSquareDetail } from 'react-icons/bi';
 
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
 
 // const color = {
 //   text: "white",
@@ -30,15 +26,15 @@ import { Link } from "react-router-dom";
 
 const color = {
   text: '#000000',
-  colorPrimary200: "#b2bdcd",
-  colorPrimary300: "#5d7290",
-  colorPrimary600: "grey",
-  colorPrimary700:"lightgrey",
-  colorPrimary800: "white",
-  colorSecondary: "#5575e7",
-  colorAccentGlow: "rgba(253,77,77,0.3)",
-  colorAccent: "#fd4d4d",
-  colorAccentHover: "#fd6868",
+  colorPrimary200: '#b2bdcd',
+  colorPrimary300: '#5d7290',
+  colorPrimary600: 'grey',
+  colorPrimary700: 'lightgrey',
+  colorPrimary800: 'white',
+  colorSecondary: '#5575e7',
+  colorAccentGlow: 'rgba(253,77,77,0.3)',
+  colorAccent: '#fd4d4d',
+  colorAccentHover: '#fd6868',
 };
 
 export const AppDiv = styled.div`
@@ -78,8 +74,7 @@ export const ArrowDown = styled(TiArrowDownThick)`
   align-self: center;
   width: 20px;
   height: auto;
-  color: ${(props) =>
-    props.focus ? color.colorPrimary200 : color.colorAccent};
+  color: ${(props) => (props.focus ? color.colorPrimary200 : color.colorAccent)};
   cursor: pointer;
   &:hover {
     color: ${color.colorAccentHover};
@@ -91,8 +86,7 @@ export const SaveIcon = styled(BsFillBookmarkFill)`
   padding-left: 0.5em;
   width: 20px;
   height: auto;
-  color: ${(props) =>
-    props.saved === 1 ? color.colorAccent : color.colorPrimary200};
+  color: ${(props) => (props.saved === 1 ? color.colorAccent : color.colorPrimary200)};
   cursor: pointer;
   &:hover {
     color: ${color.colorAccentHover};
@@ -104,8 +98,7 @@ export const ArrowUp = styled(TiArrowUpThick)`
   width: 20px;
   height: auto;
   cursor: pointer;
-  color: ${(props) =>
-    props.focus === 1 ? color.colorAccent : color.colorPrimary200};
+  color: ${(props) => (props.focus === 1 ? color.colorAccent : color.colorPrimary200)};
   &:hover {
     color: ${color.colorAccentHover};
   }
@@ -306,8 +299,8 @@ export const LogOutBtn = styled.button`
   border-radius: 20px;
   margin-top: 2em;
   cursor: pointer;
-  h3{
-    color:white;
+  h3 {
+    color: white;
   }
 `;
 
@@ -315,7 +308,15 @@ export const SpanColor = styled.span`
   color: ${color.colorAccent};
 `;
 
-
+export const LoginComponent = styled.div`
+  display:grid;
+  place-self: center;
+  height: 200px;
+  width: 300px;
+  background-color: ${color.colorPrimary700};
+  border-radius: 8px;
+  place-content: center;
+`;
 
 export const Logo = styled.a`
   display: inline-block;
@@ -391,18 +392,18 @@ export const BtnCreate = styled.h3`
   margin-top: 1em;
   padding: 0.5em 1.5em;
   width: 150px;
-  color:white;
+  color: white;
   background-color: ${color.colorAccent};
   text-align: center;
   border-radius: 20px;
-  :hover{
-    color:white;
+  :hover {
+    color: white;
   }
 `;
 
 export const Login = styled.a`
-  text-decoration:none;
-`
+  text-decoration: none;
+`;
 
 export const Avatar = styled.div`
   display: flex;
@@ -451,8 +452,7 @@ export const SortingElement = styled.div`
 
 export const SortingContainer = styled.div`
   display: grid;
-  border-bottom: ${(props) =>
-    props.active === 1 ? "1px solid" + color.colorAccent : "none"};
+  border-bottom: ${(props) => (props.active === 1 ? '1px solid' + color.colorAccent : 'none')};
   :hover {
     border-bottom: 1px solid ${color.colorAccent};
   }
