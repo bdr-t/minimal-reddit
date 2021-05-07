@@ -62,6 +62,11 @@ export const Linked = styled(Link)`
   }
 `;
 
+export const LinkedNoHover = styled(Link)`
+  text-decoration: none;
+  color: inherit;
+`;
+
 export const LinkedSort = styled(Linked)`
   align-self: flex-end;
   font-weight: 700;
@@ -309,7 +314,7 @@ export const SpanColor = styled.span`
 `;
 
 export const LoginComponent = styled.div`
-  display:grid;
+  display: grid;
   place-self: center;
   height: 200px;
   width: 300px;
