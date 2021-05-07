@@ -127,6 +127,7 @@ export const Container = styled.div`
   flex-direction: column;
   justify-self: center;
   margin: auto;
+  border-radius: 8px;
   width: 680px;
   /* border-radius: 14px; */
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
@@ -246,6 +247,16 @@ export const Comments = styled(UpvotesNum)`
   margin: auto;
   color: ${color.colorPrimary300};
   font-family: Segoe UI SemiBold;
+`;
+
+export const CommentDiv = styled.div`
+  background-color: ${color.colorPrimary700};
+`;
+
+export const CommentsContainer = styled(Container)`
+  overflow: hidden;
+  background-color: ${color.colorPrimary800};
+  gap: 1em;
 `;
 
 export const Input = styled.input`

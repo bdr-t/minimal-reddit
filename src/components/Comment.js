@@ -8,10 +8,10 @@ import {
   RepliesP,
   Text,
   Username,
+  CommentDiv,
 } from "../styledComponents";
 import TimeAgo from "./TimeAgo";
 import parseHtml from "../actions/parseHTML";
-import useComments from "../actions/useComments";
 import { CommentContainer } from "../styledComponents";
 
 const Comment = ({
@@ -95,9 +95,9 @@ const Comment = ({
   let data = fullComment;
 
   return (
-    <div className="a" style={{backgroundColor: '#242C37'}}>
+    <CommentDiv style={{borderRadius:'8px'}}>
       <File {...data} />
-    </div>
+    </CommentDiv>
   );
 };
 

@@ -1,6 +1,6 @@
 import useComments from "../actions/useComments";
 import Comment from "./Comment";
-import { Container } from "../styledComponents";
+import { CommentsContainer } from "../styledComponents";
 
 const Comments = ({ postId }) => {
   const { comments, status } = useComments(
@@ -26,16 +26,14 @@ const Comments = ({ postId }) => {
       window.innerHeight + window.pageYOffset >=
       document.body.offsetHeight * 0.9
     ) {
-      const doNothing = true;
+      
     }
   };
 
   return (
-    <Container
-      style={{ overflow: "hidden", backgroundColor: "#151A21", gap: "1em" }}
-    >
+    <CommentsContainer>
       {content}
-    </Container>
+    </CommentsContainer>
   );
 };
 
