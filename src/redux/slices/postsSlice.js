@@ -56,6 +56,7 @@ export const fetchPosts = createAsyncThunk(
         is_gallery: response[x].data.is_gallery,
         likes: response[x].data.likes,
         saved: response[x].data.saved,
+        gallery_data: response[x].data.gallery_data,
       };
       list.push(post);
     }

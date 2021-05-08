@@ -4,6 +4,7 @@ import { useState } from 'react';
 import savePost from '../actions/savePost';
 import unSavePost from '../actions/unSavePost';
 import axios from 'axios';
+import ImageGallery from 'react-image-gallery';
 
 import {
   Comments as NumComments,
@@ -71,6 +72,15 @@ const Post = ({ postId, postNotLeggedIn, token }) => {
       );
     } else if (post.selftext) {
       content = <Text>{parseHtml(post.selftext)}</Text>;
+    } else if (post.is_gallery) {
+      let images = [];
+      console.log('gallery');
+      let gallery = post.gallery_data.items;
+      for (let x of gallery) {
+        images.push({ original: `https://i.redd.it/${x.media_id}.jpg` });
+      }
+
+      content = <ImageGallery items={images} showThumbnails={false}  showFullscreenButton={false} showIndex={true} showPlayButton={false} />;
     }
   } catch (err) {}
 
