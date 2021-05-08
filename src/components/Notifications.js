@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { Container, MessageBy, Text, Linked } from "../styledComponents";
 import parseHTML from '../actions/parseHTML'
-import TimeAgo from './TimeAgo'
 
 const Notifications = () => {
     const token = useSelector((state) => state.authorization.token);

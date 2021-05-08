@@ -90,12 +90,12 @@ const Comment = ({
     );
   };
 
-  body = <Text>{parseHtml(body)}</Text>;
+  body = <Text style={{width:'75%'}}>{parseHtml(body)}</Text>;
 
   let data = fullComment;
 
   return (
-    <CommentDiv style={{borderRadius:'8px'}}>
+    <CommentDiv>
       <File {...data} />
     </CommentDiv>
   );
