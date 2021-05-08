@@ -27,8 +27,10 @@ const MyProfile = ({name}) => {
 
     let img 
     let date
+    let border
     if(data){
         img = data.snoovatar_img ? data.snoovatar_img : data.icon_img
+        border = data.snoovatar_img ? '0px' : '50%'
         date = fromUnixTime(data.created).toUTCString().slice(4,16)
         console.log(date)
         
@@ -56,7 +58,7 @@ const MyProfile = ({name}) => {
         <>
         {!data && <div className="a">'loading'</div> }
         {data && <ProfileContainer style={style}>
-            <img height='auto' width='25%'src={img} alt=""/>
+            <img height='auto' width='25%'src={img} alt="" style={{borderRadius: border}} />
             <div style={{padding:'1em'}}>
                 <ProfileName>{data.subreddit.display_name_prefixed}</ProfileName>
                 <KarmaCreated>
