@@ -2,6 +2,7 @@ import useComments from "../actions/useComments";
 import Comment from "./Comment";
 import { CommentsContainer } from "../styledComponents";
 
+
 const Comments = ({ postId }) => {
   const { comments, status } = useComments(
     `https://www.reddit.com/comments/${postId}.json`
@@ -18,6 +19,9 @@ const Comments = ({ postId }) => {
         replies={x.replies}
         created={x.created_utc}
         permalink={x.permalink}
+        ups={x.ups}
+        downs={x.downs}
+        likes={x.likes}
       ></Comment>
     ));
   }

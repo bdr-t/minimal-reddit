@@ -251,8 +251,8 @@ export const Comments = styled(UpvotesNum)`
 
 export const CommentDiv = styled.div`
   background-color: ${color.colorPrimary700};
-  border-radius:8px;
-  display:flex;
+  border-radius: 8px;
+  display: flex;
   justify-content: space-between;
   flex: 1 1 auto;
 `;
@@ -466,6 +466,21 @@ export const Sorting = styled.div`
   height: 60px;
   z-index: 1000;
 `;
+
+export const CommentUpvoteContainer = styled.div`
+  display: grid;
+  grid-template-columns: 35px auto;
+  padding-left: 16px;
+  gap:0.5em;
+`;
+
+export const CommentUpvote = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin-top: 7px;
+  width: 35px
+
+`
 
 export const SortingElement = styled.div`
   place-self: center;

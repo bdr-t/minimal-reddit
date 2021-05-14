@@ -71,6 +71,7 @@ const Post = ({ postId, postNotLeggedIn, token }) => {
         />
       );
     } else if (post.selftext) {
+      console.log(post.selftext)
       content = <Text>{parseHtml(post.selftext)}</Text>;
     } else if (post.is_gallery) {
       let images = [];
