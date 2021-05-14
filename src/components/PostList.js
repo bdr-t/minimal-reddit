@@ -8,7 +8,6 @@ import axios from 'axios'
 import {useParams} from 'react-router-dom'
 
 import Sort from "./sort";
-import TrendingCommunities from "./TrendingCommunities";
 import ThirdPart from "./ThirdPart";
 
 const PostList = ({ match }) => {

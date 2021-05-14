@@ -42,7 +42,6 @@ const TrenSubreddit = ({ name }) => {
           .get(`https://www.reddit.com/r/${name}/about.json`)
           .then((res) => res.data.data);
         setSubreddit(data);
-        console.log(data);
         setIsSubscriber(data.user_is_subscriber);
         if (data) {
           let url = data.community_icon;

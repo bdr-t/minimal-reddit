@@ -471,16 +471,15 @@ export const CommentUpvoteContainer = styled.div`
   display: grid;
   grid-template-columns: 35px auto;
   padding-left: 16px;
-  gap:0.5em;
+  gap: 0.5em;
 `;
 
 export const CommentUpvote = styled.div`
   display: flex;
   flex-direction: column;
   margin-top: 7px;
-  width: 35px
-
-`
+  width: 35px;
+`;
 
 export const SortingElement = styled.div`
   place-self: center;
@@ -610,5 +609,9 @@ export const MessagesIcon = styled(BiMessageSquareDetail)`
 `;
 
 export const ProfileIcon = styled(BsFillPersonFill)`
+  color: ${color.text};
+`;
+
+export const NormalText = styled.p`
   color: ${color.text};
 `;
