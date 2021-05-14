@@ -107,11 +107,15 @@ const Post = ({ postId, postNotLeggedIn, token }) => {
 
   getIcon();
 
+  function setScrollPosition(){
+    sessionStorage.setItem("scrollPosition", window.pageYOffset);
+  }
+
   return (
     <>
       {post.post_id.includes('t3') && (
         <Container>
-          <Linked to={`/r/${post.subreddit}/post/${post.id}`}>
+          <Linked to={`/r/${post.subreddit}/post/${post.id}`} onClick={()=>{setScrollPosition()}}>
             <div
               className="flex"
               style={{
@@ -197,7 +201,7 @@ const Post = ({ postId, postNotLeggedIn, token }) => {
             </div>
             <div style={{ display: 'flex', borderTop: '1px solid #65676b' }}>
               <NumComments>
-                <Linked to={`/r/${post.subreddit}/post/${post.id}`}>
+              <Linked to={`/r/${post.subreddit}/post/${post.id}`} onClick={()=>{setScrollPosition()}}>
                   <NumComments>{post.comments} Comments</NumComments>
                 </Linked>
               </NumComments>

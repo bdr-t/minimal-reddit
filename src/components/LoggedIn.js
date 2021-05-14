@@ -38,14 +38,28 @@ const LoggedIn = ({ match, username, user }) => {
     link = `https://oauth.reddit.com${path}?limit=10`;
   }
 
+  
+
   useEffect(() => {
     if (!(observer.current === path)) {
       console.log("removing");
       dispatch(remove(ids));
     }
+    console.log(observer)
   }, [path]);
 
   useEffect(() => {
+    setTimeout(()=>{
+      console.log('set timoiut on useeffect')
+      const scrollPosition = sessionStorage.getItem("scrollPosition");
+      window.scrollTo({
+        top: parseInt(scrollPosition),
+        left: 0,
+        behavior: 'smooth'
+      });
+      sessionStorage.setItem("scrollPosition", 0);
+    }, 500)
+
     if (first) {
       if (path !== "/me" && path !== "/notifications" && path !== "/messages") {
         const config = {

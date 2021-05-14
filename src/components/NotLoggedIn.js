@@ -1,4 +1,5 @@
 import Post from "./Post";
+import {useEffect} from 'react'
 import useFetchPosts from "../actions/useFetchPosts";
 
 const PostList = ({ match, user }) => {
@@ -13,6 +14,19 @@ const PostList = ({ match, user }) => {
   const { posts, status, error } = useFetchPosts(link);
 
   let content;
+
+  useEffect(() => {
+      setTimeout(()=>{
+        console.log('set timoiut on useeffect')
+        const scrollPosition = sessionStorage.getItem("scrollPosition");
+        window.scrollTo({
+          top: parseInt(scrollPosition),
+          left: 0,
+          behavior: 'smooth'
+        });
+        sessionStorage.setItem("scrollPosition", 0);
+      }, 500)
+  }, [])
 
   if (status === "loading") {
     content = <div className="loader">Loading...</div>;
