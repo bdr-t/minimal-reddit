@@ -5,7 +5,6 @@ import savePost from '../actions/savePost';
 import unSavePost from '../actions/unSavePost';
 import axios from 'axios';
 import ImageGallery from 'react-image-gallery';
-
 import {
   Comments as NumComments,
   UpvotesNum,
@@ -27,13 +26,20 @@ import vote from '../actions/vote';
 import TimeAgo from './TimeAgo';
 import parseHtml from '../actions/parseHTML';
 
-const Post = ({ postId, postNotLeggedIn, token }) => {
+const Post = ({ postId, postNotLeggedIn, token}) => {
   const authorization = useSelector((state) => state.authorization.authorization);
   let post = useSelector((state) => selectPostById(state, postId));
   if (postNotLeggedIn) {
     post = postNotLeggedIn;
   }
 
+  if (post) {
+    window.sessionStorage.setItem('post', JSON.stringify(post));
+  } else{
+    post = JSON.parse(sessionStorage.getItem('post'));
+  }
+
+  console.log(post);
   let content;
   const [icon, setIcon] = useState('https://svgshare.com/i/V_c.svg');
   const [votes, setVotes] = useState(post.ups - post.downs);
@@ -71,17 +77,23 @@ const Post = ({ postId, postNotLeggedIn, token }) => {
         />
       );
     } else if (post.selftext) {
-      console.log(post.selftext)
       content = <Text>{parseHtml(post.selftext)}</Text>;
     } else if (post.is_gallery) {
       let images = [];
-      console.log('gallery');
       let gallery = post.gallery_data.items;
       for (let x of gallery) {
         images.push({ original: `https://i.redd.it/${x.media_id}.jpg` });
       }
 
-      content = <ImageGallery items={images} showThumbnails={false}  showFullscreenButton={false} showIndex={true} showPlayButton={false} />;
+      content = (
+        <ImageGallery
+          items={images}
+          showThumbnails={false}
+          showFullscreenButton={false}
+          showIndex={true}
+          showPlayButton={false}
+        />
+      );
     }
   } catch (err) {}
 
