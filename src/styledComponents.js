@@ -615,3 +615,43 @@ export const ProfileIcon = styled(BsFillPersonFill)`
 export const NormalText = styled.p`
   color: ${color.text};
 `;
+
+export const TopDropdownDiv = styled.div`
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  position: absolute;
+  margin-top: 1em;
+  width: 150px;
+  background-color: white;
+  padding: 1em 0;
+  opacity: ${(props) => (props.active === 1 ? 1 : 0)};
+  pointer-events: ${(props) => (props.active === 1 ? 'all' : 'none')};
+`;
+
+export const TopSortBtn = styled.button`
+  width: 65px;
+`;
+export const TopBtn = styled.button`
+  text-decoration: none;
+  color: inherit;
+  &:hover {
+    color: ${color.colorAccentHover};
+  }
+  align-self: flex-end;
+  font-weight: 700;
+  padding-bottom: 8.8px;
+  padding-left: 0.5em;
+  color: ${(props) => (props.active === 1 ? color.colorAccent : color.text)};
+  
+  border: 0;
+  background: none;
+  font-size:16px;
+
+  &:focus + ul{
+    opacity: 0;
+    pointer-events: all;
+  }
+`;
+
+
