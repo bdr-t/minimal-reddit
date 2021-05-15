@@ -69,11 +69,11 @@ const Sort = () => {
           <TopBtn active={activeTop} >
             Top
             <TopDropdownDiv active={topFocus}>
-            <TopSortBtn><Link to={subReddit ? `/r/${subReddit}/top/?t=day` : `/top/day`}>today</Link></TopSortBtn>
-            <TopSortBtn><Link to={subReddit ? `/r/${subReddit}/top/?t=week` : `/top/week`}>week</Link></TopSortBtn>
-            <TopSortBtn><Link to={subReddit ? `/r/${subReddit}/top/?t=month` : `/top/month`}>month</Link></TopSortBtn>
-            <TopSortBtn><Link to={subReddit ? `/r/${subReddit}/top/?t=year` : `/top/year`}>year</Link></TopSortBtn>
-            <TopSortBtn><Link to={subReddit ? `/r/${subReddit}/top/?t=all` : `/top/all`}>all</Link></TopSortBtn>
+            <TopSortBtn><Link to={subReddit ? `/r/${subReddit}/top/day` : `/top/day`}>today</Link></TopSortBtn>
+            <TopSortBtn><Link to={subReddit ? `/r/${subReddit}/top/week` : `/top/week`}>week</Link></TopSortBtn>
+            <TopSortBtn><Link to={subReddit ? `/r/${subReddit}/top/month` : `/top/month`}>month</Link></TopSortBtn>
+            <TopSortBtn><Link to={subReddit ? `/r/${subReddit}/top/year` : `/top/year`}>year</Link></TopSortBtn>
+            <TopSortBtn><Link to={subReddit ? `/r/${subReddit}/top/all` : `/top/all`}>all</Link></TopSortBtn>
             </TopDropdownDiv>
           </TopBtn>
         </SortingElement>

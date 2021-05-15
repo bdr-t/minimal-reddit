@@ -24,6 +24,7 @@ const LoggedIn = ({ match, username, user }) => {
   const first = useSelector((state) => state.posts.first);
 
   let link;
+  
   if (path === "/saved") {
     link = `https://oauth.reddit.com/user/${username}/saved`;
   } else if (path === "/upvoted") {
@@ -32,6 +33,13 @@ const LoggedIn = ({ match, username, user }) => {
     link = `https://oauth.reddit.com/user/${username}/submitted`;
   } else if (user){
     link = `https://oauth.reddit.com/user/${user}/overview`
+  } else if(path.includes('/top/')){
+    if(match.params.subReddit){
+    link = `https://oauth.reddit.com/r/${match.params.subReddit}/top?t=${match.params.id}&limit=10`
+    }else{
+      link = `https://oauth.reddit.com/top?t=${match.params.id}&limit=10`;
+    }
+    console.log(link)
   }
   
   else {
@@ -50,7 +58,6 @@ const LoggedIn = ({ match, username, user }) => {
 
   useEffect(() => {
     setTimeout(()=>{
-      console.log('set timoiut on useeffect')
       const scrollPosition = sessionStorage.getItem("scrollPosition");
       window.scrollTo({
         top: parseInt(scrollPosition),
@@ -111,6 +118,7 @@ const LoggedIn = ({ match, username, user }) => {
       <Post key={post.id} postId={post.id} token={token} />
     ));
   }
+
 
   if (error) {
     <div className="err">{error}</div>;
