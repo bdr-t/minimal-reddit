@@ -10,10 +10,6 @@ import MyProfile from './MyProfile';
 const LoggedIn = ({ match, username, user }) => {
   const path = match ? match.url : '/best';
   const { subReddit } = useParams();
-  console.log('THE MATCH-----------------');
-  console.log(match);
-  console.log(subReddit)
-  
 
   const observer = useRef(path);
 
@@ -42,7 +38,6 @@ const LoggedIn = ({ match, username, user }) => {
     } else {
       link = `https://oauth.reddit.com/top?t=${match.params.id}&limit=10`;
     }
-    console.log(link);
   } else {
     link = `https://oauth.reddit.com${path}?limit=10`;
   }
@@ -95,18 +90,44 @@ const LoggedIn = ({ match, username, user }) => {
 
   window.onscroll = function (ev) {
     if (window.innerHeight + window.pageYOffset >= document.body.offsetHeight * 0.9) {
-      if (postStatus === 'succeeded') {
-        const config = {
-          link: `https://oauth.reddit.com${path}?limit=10&after=${after}`,
-          token,
-          afterPosts: after,
-        };
-        dispatch(fetchPosts(config));
+      if (postStatus === 'succeeded' && after) {
+        let config;
+        if (user) {
+          console.log('algo');
+          config = {
+            link: `${link}?after=${after}`,
+            token,
+            afterPosts: after,
+          };
+          window.alert(`${link}?after=${after}`);
+          console.log(config);
+          dispatch(fetchPosts(config));
+        } else {
+          config = {
+            link: `https://oauth.reddit.com${path}?limit=10&after=${after}`,
+            token,
+            afterPosts: after,
+          };
+
+          window.alert('dispaching');
+          console.log(config);
+          dispatch(fetchPosts(config));
+        }
       }
     }
   };
 
   const posts = useSelector(selectAllPosts);
+
+  while (posts.length < 3 && after) {
+    window.alert('too short');
+    const config = {
+      link: `${link}?after=${after}`,
+      token,
+      afterPosts: after,
+    };
+    dispatch(fetchPosts(config));
+  }
 
   let content;
 
