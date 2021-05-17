@@ -1,5 +1,5 @@
 import { useParams, useLocation, Link } from 'react-router-dom';
-import {useState} from 'react'
+import { useState } from 'react';
 import {
   SortingElement,
   Sorting,
@@ -13,7 +13,7 @@ import {
   TopDropdownDiv,
   TopSortBtn,
   TopBtn,
-  Linked
+  Linked,
 } from '../styledComponents';
 
 const Sort = () => {
@@ -25,16 +25,14 @@ const Sort = () => {
   const activeHot = pathname.includes('/hot') ? 1 : 0;
   const activeTop = pathname.includes('/top') ? 1 : 0;
   const activeRising = pathname.includes('/rising') ? 1 : 0;
-  const [topFocus, setTopFocus] = useState(0)
+  const [topFocus, setTopFocus] = useState(0);
 
-  function handleFocus(){
-    if(topFocus === 1){
-      setTopFocus(0)
-    } else{
-      setTopFocus(1)
+  function handleFocus() {
+    if (topFocus === 1) {
+      setTopFocus(0);
+    } else {
+      setTopFocus(1);
     }
-    
-    console.log(topFocus)
   }
 
   return (
@@ -63,17 +61,27 @@ const Sort = () => {
           </LinkedSort>
         </SortingElement>
       </SortingContainer>
-      <SortingContainer active={activeTop} onClick={()=>handleFocus()}>
+      <SortingContainer active={activeTop} onClick={() => handleFocus()}>
         <SortingElement>
           <TopIcon active={activeTop} />
-          <TopBtn active={activeTop} >
+          <TopBtn active={activeTop}>
             Top
             <TopDropdownDiv active={topFocus}>
-            <TopSortBtn><Link to={subReddit ? `/r/${subReddit}/top/day` : `/top/day`}>today</Link></TopSortBtn>
-            <TopSortBtn><Link to={subReddit ? `/r/${subReddit}/top/week` : `/top/week`}>week</Link></TopSortBtn>
-            <TopSortBtn><Link to={subReddit ? `/r/${subReddit}/top/month` : `/top/month`}>month</Link></TopSortBtn>
-            <TopSortBtn><Link to={subReddit ? `/r/${subReddit}/top/year` : `/top/year`}>year</Link></TopSortBtn>
-            <TopSortBtn><Link to={subReddit ? `/r/${subReddit}/top/all` : `/top/all`}>all</Link></TopSortBtn>
+              <TopSortBtn>
+                <Link to={subReddit ? `/r/${subReddit}/top/day` : `/top/day`}>today</Link>
+              </TopSortBtn>
+              <TopSortBtn>
+                <Link to={subReddit ? `/r/${subReddit}/top/week` : `/top/week`}>week</Link>
+              </TopSortBtn>
+              <TopSortBtn>
+                <Link to={subReddit ? `/r/${subReddit}/top/month` : `/top/month`}>month</Link>
+              </TopSortBtn>
+              <TopSortBtn>
+                <Link to={subReddit ? `/r/${subReddit}/top/year` : `/top/year`}>year</Link>
+              </TopSortBtn>
+              <TopSortBtn>
+                <Link to={subReddit ? `/r/${subReddit}/top/all` : `/top/all`}>all</Link>
+              </TopSortBtn>
             </TopDropdownDiv>
           </TopBtn>
         </SortingElement>

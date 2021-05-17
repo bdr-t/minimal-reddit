@@ -432,6 +432,7 @@ export const Avatar = styled.div`
   border-radius: 20px;
   margin-right: 2em;
   padding: 0.25em;
+  position: relative;
   &:hover {
     background-color: ${color.colorAccentGlow};
   }
@@ -628,6 +629,13 @@ export const TopDropdownDiv = styled.div`
   opacity: ${(props) => (props.active === 1 ? 1 : 0)};
   pointer-events: ${(props) => (props.active === 1 ? 'all' : 'none')};
 `;
+
+export const LogOutDropDown = styled(TopDropdownDiv)`
+  left: 150px;
+  bottom: 40px;
+  
+
+`
 
 export const TopSortBtn = styled.button`
   width: 65px;
