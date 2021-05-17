@@ -26,17 +26,16 @@ import vote from '../actions/vote';
 import TimeAgo from './TimeAgo';
 import parseHtml from '../actions/parseHTML';
 
-const Post = ({ postId, postNotLeggedIn, token }) => {
+const Post = ({ postId, postNotLeggedIn, token, postFetched }) => {
   const authorization = useSelector((state) => state.authorization.authorization);
   let post = useSelector((state) => selectPostById(state, postId));
   if (postNotLeggedIn) {
     post = postNotLeggedIn;
   }
 
-  if (post) {
-    window.sessionStorage.setItem('post', JSON.stringify(post));
-  } else {
-    post = JSON.parse(sessionStorage.getItem('post'));
+
+  if(!post){
+    post = postFetched
   }
 
   let content;
