@@ -11,29 +11,27 @@ import { BiUpvote, BiMessageSquareDetail } from 'react-icons/bi';
 import { Link } from 'react-router-dom';
 
 // const color = {
-//   text: "white",
-//   colorPrimary200: "#b2bdcd",
-//   colorPrimary300: "#5d7290",
-//   colorPrimary600: "#323d4d",
-//   colorPrimary700: "#242c37",
-//   colorPrimary800: "#151a21",
-//   colorSecondary: "#5575e7",
-//   colorAccentGlow: "rgba(253,77,77,0.3)",
-//   colorAccent: "#fd4d4d",
-//   colorAccentHover: "#fd6868",
-//   links: "lightblue",
+//   text: 'white',
+//   colorPrimary200: '#9CA3AF',
+//   colorPrimary300: '#9CA3AF',
+//   colorPrimary600: '#6B7280',
+//   colorPrimary700: '#374151',
+//   colorPrimary800: '#1F2937',
+//   colorAccentGlow: 'rgba(253,77,77,0.3)',
+//   colorAccent: '#10B981',
+//   colorAccentHover: '#fd6868',
+//   links: 'lightblue',
 // };
 
 const color = {
   text: '#000000',
-  colorPrimary200: '#b2bdcd',
-  colorPrimary300: '#5d7290',
-  colorPrimary600: 'grey',
-  colorPrimary700: 'lightgrey',
-  colorPrimary800: 'white',
-  colorSecondary: '#5575e7',
+  colorPrimary200: '#4B5563',
+  colorPrimary300: '#6B7280',
+  colorPrimary600: '#D1D5DB',
+  colorPrimary700: '#E5E7EB',
+  colorPrimary800: '#F3F4F6',
   colorAccentGlow: 'rgba(253,77,77,0.3)',
-  colorAccent: '#fd4d4d',
+  colorAccent: '#10B981',
   colorAccentHover: '#fd6868',
 };
 
@@ -633,9 +631,7 @@ export const TopDropdownDiv = styled.div`
 export const LogOutDropDown = styled(TopDropdownDiv)`
   left: 150px;
   bottom: 40px;
-  
-
-`
+`;
 
 export const TopSortBtn = styled.button`
   width: 65px;
@@ -651,15 +647,13 @@ export const TopBtn = styled.button`
   padding-bottom: 8.8px;
   padding-left: 0.5em;
   color: ${(props) => (props.active === 1 ? color.colorAccent : color.text)};
-  
+
   border: 0;
   background: none;
-  font-size:16px;
+  font-size: 16px;
 
-  &:focus + ul{
+  &:focus + ul {
     opacity: 0;
     pointer-events: all;
   }
 `;
-
-
