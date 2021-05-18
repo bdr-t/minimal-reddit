@@ -35,8 +35,10 @@ const color = {
   colorAccentHover: '#fd6868',
 };
 
+
+
 export const AppDiv = styled.div`
-  background-color: ${color.colorPrimary800};
+  background: ${(props) => props.theme.colorPrimary800};
   height: 100%;
 `;
 
@@ -54,9 +56,9 @@ export const Button = styled.button`
 `;
 export const Linked = styled(Link)`
   text-decoration: none;
-  color: inherit;
+  color: ${(props) => props.theme.text};
   &:hover {
-    color: ${color.colorAccentHover};
+    color: ${(props) => props.theme.colorAccentHover};
   }
 `;
 
@@ -70,17 +72,17 @@ export const LinkedSort = styled(Linked)`
   font-weight: 700;
   padding-bottom: 8.8px;
   padding-left: 0.5em;
-  color: ${(props) => (props.active === 1 ? color.colorAccent : color.text)};
+  color: ${(props) => (props.active === 1 ? color.colorAccent : props.theme.text)};
 `;
 
 export const ArrowDown = styled(TiArrowDownThick)`
   align-self: center;
   width: 20px;
   height: auto;
-  color: ${(props) => (props.focus ? color.colorPrimary200 : color.colorAccent)};
+  color: ${(props) => (props.focus ? props.theme.colorPrimary200 : color.colorAccent)};
   cursor: pointer;
   &:hover {
-    color: ${color.colorAccentHover};
+    color: ${(props) => props.theme.colorAccentHover};
   }
 `;
 
@@ -89,10 +91,10 @@ export const SaveIcon = styled(BsFillBookmarkFill)`
   padding-left: 0.5em;
   width: 20px;
   height: auto;
-  color: ${(props) => (props.saved === 1 ? color.colorAccent : color.colorPrimary200)};
+  color: ${(props) => (props.saved === 1 ? color.colorAccent : props.theme.colorPrimary200)};
   cursor: pointer;
   &:hover {
-    color: ${color.colorAccentHover};
+    color: ${(props) => props.theme.colorAccentHover};
   }
 `;
 
@@ -101,16 +103,16 @@ export const ArrowUp = styled(TiArrowUpThick)`
   width: 20px;
   height: auto;
   cursor: pointer;
-  color: ${(props) => (props.focus === 1 ? color.colorAccent : color.colorPrimary200)};
+  color: ${(props) => (props.focus === 1 ? color.colorAccent : props.theme.colorPrimary200)};
   &:hover {
-    color: ${color.colorAccentHover};
+    color: ${(props) => props.theme.colorAccentHover};
   }
 `;
 
 export const SubReddit = styled.div`
   font-family: Segoe UI SemiBold;
   font-size: 15px;
-  color: ${color.colorPrimary300};
+  color: ${(props) => props.theme.colorPrimary300};
   text-decoration: none;
   cursor: pointer;
   align-self: center;
@@ -118,6 +120,16 @@ export const SubReddit = styled.div`
   display: flex;
   align-items: center;
   gap: 0.5em;
+`;
+
+export const ThridPartDiv = styled.div`
+  display: grid;
+  grid-template-rows: 60px auto;
+  gap: 50px;
+  height: 100vh;
+  position: sticky;
+  top: 0;
+  background-color:${(props) => props.theme.colorPrimary800};
 `;
 
 export const Container = styled.div`
@@ -131,7 +143,7 @@ export const Container = styled.div`
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 
   /* border: 1px solid black; */
-  background-color: ${color.colorPrimary700};
+  background-color: ${(props) => props.theme.colorPrimary700};
   margin-bottom: 1em;
   display: hidden;
   @media (max-width: 768px) {
@@ -144,7 +156,7 @@ export const Container = styled.div`
 export const Title = styled.h2`
   font-family: Segoe UI Semibold;
   font-size: 15px;
-  color: ${color.text};
+  color: ${(props) => props.theme.text};
   padding: 0.75em 1em 0 0.5em;
   padding-left: 0.5em;
   /* border-bottom: 1px solid black; */
@@ -189,7 +201,7 @@ export const ContentImage = styled.img`
 `;
 
 export const SubTitle = styled.div`
-  color: ${color.colorPrimary300};
+  color: ${(props) => props.theme.colorPrimary300};
   font-family: Segoe UI Light;
   font-size: 13px;
 `;
@@ -201,12 +213,12 @@ export const MessageBy = styled.div`
   padding: 0.25em 1em;
   a {
     :hover {
-      color: white;
+      color: ${(props) => props.theme.text};
     }
   }
   span {
     padding-right: 0.5em;
-    color: ${color.text};
+    color: ${(props) => props.theme.text};
   }
 `;
 
@@ -216,7 +228,7 @@ export const Video = styled(ReactHlsPlayer)`
   background-color: black;
 `;
 export const Text = styled.div`
-  color: ${color.text};
+  color: ${(props) => props.theme.text};
   padding: 4px 1em 1em 1em;
   font-family: Segoe UI;
   font-size: 15px;
@@ -224,7 +236,7 @@ export const Text = styled.div`
     margin-bottom: 1em;
   }
   a {
-    color: ${color.links};
+    color: ${(props) => props.theme.links};
   }
 `;
 
@@ -237,18 +249,18 @@ export const Enlace = styled.a`
 export const UpvotesNum = styled.p`
   font-family: Segoe UI SemiBold;
   font-size: 15px;
-  color: ${color.colorPrimary300};
+  color: ${(props) => props.theme.colorPrimary300};
   margin: 0;
 `;
 
 export const Comments = styled(UpvotesNum)`
   margin: auto;
-  color: ${color.colorPrimary300};
+  color: ${(props) => props.theme.colorPrimary300};
   font-family: Segoe UI SemiBold;
 `;
 
 export const CommentDiv = styled.div`
-  background-color: ${color.colorPrimary700};
+  background-color: ${(props) => props.theme.colorPrimary700};
   border-radius: 8px;
   display: flex;
   justify-content: space-between;
@@ -257,13 +269,13 @@ export const CommentDiv = styled.div`
 
 export const CommentsContainer = styled(Container)`
   overflow: hidden;
-  background-color: ${color.colorPrimary800};
+  background-color: ${(props) => props.theme.colorPrimary800};
   gap: 1em;
 `;
 
 export const Input = styled.input`
   border-radius: 8px;
-  background-color: ${color.colorPrimary600};
+  background-color: ${(props) => props.theme.colorPrimary600};
   height: 30px;
   width: 80%;
   place-self: center;
@@ -273,7 +285,7 @@ export const Input = styled.input`
 
 export const TrendingContainer = styled.div`
   justify-self: center;
-  background-color: ${color.colorPrimary700};
+  background-color: ${(props) => props.theme.colorPrimary700};
   height: fit-content;
   width: 80%;
   place-content: center;
@@ -282,7 +294,7 @@ export const TrendingContainer = styled.div`
 `;
 
 export const ProfileContainer = styled.div`
-  background-color: ${color.colorPrimary700};
+  background-color: ${(props) => props.theme.colorPrimary700};
   height: fit-content;
   width: 100%;
   border-radius: 8px;
@@ -303,6 +315,7 @@ export const KarmaCreated = styled.div`
 `;
 
 export const ProfileName = styled.h2`
+  color: ${(props) => props.theme.text};
   font-weight: 300;
   font-size: 30px;
 `;
@@ -331,7 +344,7 @@ export const LoginComponent = styled.div`
   place-self: center;
   height: 200px;
   width: 300px;
-  background-color: ${color.colorPrimary700};
+  background-color: ${(props) => props.theme.colorPrimary700};
   border-radius: 8px;
   place-content: center;
 `;
@@ -354,7 +367,7 @@ export const Nav = styled.div`
   height: 55px;
   justify-content: center;
   margin-bottom: 2em;
-  background-color: ${color.colorPrimary800};
+  background-color: ${(props) => props.theme.colorPrimary800};
 `;
 
 export const NavContainer = styled.div`
@@ -367,7 +380,7 @@ export const Section = styled.div`
   height: 100%;
   display: grid;
   grid-template-columns: 1fr 680px 1fr;
-  background-color: ${color.colorPrimary800};
+  background-color: ${(props) => props.theme.colorPrimary800};
 `;
 
 export const NavLogo = styled.div`
@@ -394,6 +407,12 @@ export const BtnSort = styled.h3`
   &:hover {
     /* background-color: ${color.colorAccentHover}; */
   }
+`;
+
+export const TrendingH3 = styled.h3`
+  text-align: center;
+  padding: 0.5em;
+  color: ${(props) => props.theme.text};
 `;
 
 export const JoinBtn = styled.p`
@@ -432,7 +451,7 @@ export const Avatar = styled.div`
   padding: 0.25em;
   position: relative;
   &:hover {
-    background-color: ${color.colorAccentGlow};
+    background-color: ${(props) => props.theme.colorAccentGlow};
   }
 `;
 
@@ -448,6 +467,7 @@ export const User = styled.div`
 `;
 
 export const Username = styled.h4`
+  color: ${(props) => props.theme.text};
   padding-left: 1em;
   font-size: 15px;
   font-weight: 700;
@@ -459,7 +479,7 @@ export const Username = styled.h4`
 export const Sorting = styled.div`
   position: sticky;
   top: 0;
-  background-color: ${color.colorPrimary800};
+  background-color: ${(props) => props.theme.colorPrimary800};
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   height: 60px;
@@ -523,7 +543,7 @@ export const RepliesP = styled.p`
   transform: translateX(-50%);
   cursor: pointer;
   font-family: Segoe UI SemiBold;
-  color: #65676b;
+  color: ${(props) => props.theme.colorPrimary300};
   text-align: center;
   font-size: 15px;
   padding-bottom: 0.5em;
@@ -540,7 +560,7 @@ export const RepliesDiv = styled.div`
 `;
 
 export const NewIcon = styled(MdFiberNew)`
-  color: ${(props) => (props.active === 1 ? color.colorAccent : color.text)};
+  color: ${(props) => (props.active === 1 ? color.colorAccent : props.theme.text)};
   width: 1.5em;
   height: 1.5em;
   display: inline-block;
@@ -549,7 +569,7 @@ export const NewIcon = styled(MdFiberNew)`
 `;
 
 export const HotIcon = styled(MdWhatshot)`
-  color: ${(props) => (props.active === 1 ? color.colorAccent : color.text)};
+  color: ${(props) => (props.active === 1 ? color.colorAccent : props.theme.text)};
   width: 1.5em;
   height: 1.5em;
   display: inline-block;
@@ -557,7 +577,7 @@ export const HotIcon = styled(MdWhatshot)`
   top: 5px;
 `;
 export const BestIcon = styled(IoRocketSharp)`
-  color: ${(props) => (props.active === 1 ? color.colorAccent : color.text)};
+  color: ${(props) => (props.active === 1 ? color.colorAccent : props.theme.text)};
   width: 1.5em;
   height: 1.5em;
   display: inline-block;
@@ -566,7 +586,7 @@ export const BestIcon = styled(IoRocketSharp)`
 `;
 
 export const TopIcon = styled(BsFillBarChartFill)`
-  color: ${(props) => (props.active === 1 ? color.colorAccent : color.text)};
+  color: ${(props) => (props.active === 1 ? color.colorAccent : props.theme.text)};
   width: 1.5em;
   height: 1.5em;
   display: inline-block;
@@ -575,7 +595,7 @@ export const TopIcon = styled(BsFillBarChartFill)`
 `;
 
 export const RisingIcon = styled(HiTrendingUp)`
-  color: ${(props) => (props.active === 1 ? color.colorAccent : color.text)};
+  color: ${(props) => (props.active === 1 ? color.colorAccent : props.theme.text)};
   width: 1.5em;
   height: 1.5em;
   display: inline-block;
@@ -584,35 +604,35 @@ export const RisingIcon = styled(HiTrendingUp)`
 `;
 
 export const HomeIcon = styled(HiHome)`
-  color: ${color.text};
+  color: ${(props) => props.theme.text};
 `;
 
 export const PostsIcon = styled(RiBookFill)`
-  color: ${color.text};
+  color: ${(props) => props.theme.text};
 `;
 
 export const SaveIconNav = styled(BsFillBookmarkFill)`
-  color: ${color.text};
+  color: ${(props) => props.theme.text};
 `;
 
 export const UpvotedIcon = styled(BiUpvote)`
-  color: ${color.text};
+  color: ${(props) => props.theme.text};
 `;
 
 export const NotificationIcon = styled(RiNotification4Fill)`
-  color: ${color.text};
+  color: ${(props) => props.theme.text};
 `;
 
 export const MessagesIcon = styled(BiMessageSquareDetail)`
-  color: ${color.text};
+  color: ${(props) => props.theme.text};
 `;
 
 export const ProfileIcon = styled(BsFillPersonFill)`
-  color: ${color.text};
+  color: ${(props) => props.theme.text};
 `;
 
 export const NormalText = styled.p`
-  color: ${color.text};
+  color: ${(props) => props.theme.text};
 `;
 
 export const TopDropdownDiv = styled.div`
@@ -640,13 +660,13 @@ export const TopBtn = styled.button`
   text-decoration: none;
   color: inherit;
   &:hover {
-    color: ${color.colorAccentHover};
+    color: ${(props) => props.theme.colorAccentHover};
   }
   align-self: flex-end;
   font-weight: 700;
   padding-bottom: 8.8px;
   padding-left: 0.5em;
-  color: ${(props) => (props.active === 1 ? color.colorAccent : color.text)};
+  color: ${(props) => (props.active === 1 ? color.colorAccent : props.theme.text)};
 
   border: 0;
   background: none;
