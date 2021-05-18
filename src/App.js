@@ -3,7 +3,7 @@ import React from 'react';
 import './App.css';
 import { ThemeProvider } from 'styled-components';
 import { lightTheme, darkTheme } from './Themes';
-import {useState} from 'react'
+import {useSelector} from 'react-redux'
 
 
 import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
@@ -15,15 +15,13 @@ import NotFound from './components/NotFound';
 import Login from './components/Login';
 
 function App() {
-  const [theme, setTheme] = useState('light');
-  const themeToggler = () => {
-    theme === 'light' ? setTheme('dark') : setTheme('light');
-  };
+
+  const theme = useSelector(state => state.authorization.theme)
 
   return (
     <Router>
       <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
-      <button onClick={themeToggler} >haha</button>
+      {/* <button onClick={themeToggler} >haha</button> */}
       <AppDiv>
         
         <Switch>
