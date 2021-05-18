@@ -18,13 +18,13 @@ import {
   Login,
   LogOutDropDown,
   LogOutBtn,
+  DivHover,
 } from '../styledComponents';
 import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import axios from 'axios';
-import {useHistory, useParams} from 'react-router-dom'
-import {logOut} from '../redux/slices/authorizationSlice'
-
+import { useHistory, useParams } from 'react-router-dom';
+import { logOut } from '../redux/slices/authorizationSlice';
 
 const LogoNav = () => {
   const [icon, setIcon] = useState(
@@ -69,8 +69,8 @@ const LogoNav = () => {
     }
   }
 
-  const dispatch = useDispatch()
-  const history = useHistory()
+  const dispatch = useDispatch();
+  const history = useHistory();
 
   function handleClick() {
     window.localStorage.removeItem('refreshToken');
@@ -87,44 +87,58 @@ const LogoNav = () => {
       </div>
       <div class="nav">
         <Linked to="/">
-          <BtnSort>
-            <HomeIcon />
-            Home
-          </BtnSort>
+          <DivHover>
+            <BtnSort>
+              <HomeIcon />
+              Home
+            </BtnSort>
+          </DivHover>
         </Linked>
         <Linked to={authorization ? '/saved' : '/login'}>
-          <BtnSort>
-            <SaveIconNav />
-            Saved
-          </BtnSort>
+          <DivHover>
+            <BtnSort>
+              <SaveIconNav />
+              Saved
+            </BtnSort>
+          </DivHover>
         </Linked>
         <Linked to={authorization ? '/upvoted' : '/login'}>
-          <BtnSort>
-            <UpvotedIcon /> Upvoted
-          </BtnSort>
+          <DivHover>
+            <BtnSort>
+              <UpvotedIcon /> Upvoted
+            </BtnSort>
+          </DivHover>
         </Linked>
         <Linked to={authorization ? '/notifications' : '/login'}>
-          <BtnSort>
-            <NotificationIcon /> Notifications
-          </BtnSort>
+          <DivHover>
+            <BtnSort>
+              <NotificationIcon /> Notifications
+            </BtnSort>
+          </DivHover>
         </Linked>
         <Linked to={authorization ? '/messages' : '/login'}>
-          <BtnSort>
-            <MessagesIcon />
-            Messages
-          </BtnSort>
+          <DivHover>
+            <BtnSort>
+              <MessagesIcon />
+              Messages
+            </BtnSort>
+          </DivHover>
         </Linked>
         <Linked to={authorization ? '/posts' : '/login'}>
-          <BtnSort>
-            <PostsIcon />
-            My posts
-          </BtnSort>
+          <DivHover>
+            <BtnSort>
+              <PostsIcon />
+              My posts
+            </BtnSort>
+          </DivHover>
         </Linked>
         <Linked to={authorization ? '/me' : '/login'}>
-          <BtnSort>
-            <ProfileIcon />
-            Profile
-          </BtnSort>
+          <DivHover>
+            <BtnSort>
+              <ProfileIcon />
+              Profile
+            </BtnSort>
+          </DivHover>
         </Linked>
 
         {authorization && (

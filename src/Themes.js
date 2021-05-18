@@ -5,9 +5,9 @@ export const darkTheme = {
   colorPrimary600: '#6B7280',
   colorPrimary700: '#374151',
   colorPrimary800: '#1F2937',
-  colorAccentGlow: 'rgba(253,77,77,0.3)',
-  colorAccent: '#10B981',
-  colorAccentHover: '#fd6868',
+  colorAccentGlow: 'rgb(5, 150, 105,0.3)',
+  colorAccent: '#34D399',
+  colorAccentHover: '#059669',
   links: 'lightblue',
 };
 
@@ -18,8 +18,8 @@ export const lightTheme = {
     colorPrimary600: '#D1D5DB',
     colorPrimary700: '#E5E7EB',
     colorPrimary800: '#F3F4F6',
-    colorAccentGlow: 'rgba(253,77,77,0.3)',
-    colorAccent: '#10B981',
-    colorAccentHover: '#fd6868',
+    colorAccentGlow: 'rgb(5, 150, 105,0.3)',
+    colorAccent: '#34D399',
+    colorAccentHover: '#059669',
     links: 'none'
   };

@@ -67,7 +67,8 @@ export const LinkedNoHover = styled(Link)`
   color: inherit;
 `;
 
-export const LinkedSort = styled(Linked)`
+export const LinkedSort = styled(Link)`
+  text-decoration: none;
   align-self: flex-end;
   font-weight: 700;
   padding-bottom: 8.8px;
@@ -404,9 +405,6 @@ export const BtnSort = styled.h3`
   display: flex;
   gap: 0.5em;
   align-items: center;
-  &:hover {
-    /* background-color: ${color.colorAccentHover}; */
-  }
 `;
 
 export const TrendingH3 = styled.h3`
@@ -507,8 +505,12 @@ export const SortingElement = styled.div`
 export const SortingContainer = styled.div`
   display: grid;
   border-bottom: ${(props) => (props.active === 1 ? '1px solid' + color.colorAccent : 'none')};
-  :hover {
+  &:hover {
     border-bottom: 1px solid ${color.colorAccent};
+    color: ${(props) => props.theme.colorAccentHover};
+    svg, a, button{
+      color: ${(props) => props.theme.colorAccentHover};
+    }
   }
 `;
 
@@ -602,6 +604,17 @@ export const RisingIcon = styled(HiTrendingUp)`
   position: relative;
   top: 5px;
 `;
+
+export const DivHover = styled.div`
+
+&:hover{
+  color: ${(props) => props.theme.colorAccentHover};
+  svg{
+    color: ${(props) => props.theme.colorAccentHover};
+  }
+
+}
+`
 
 export const HomeIcon = styled(HiHome)`
   color: ${(props) => props.theme.text};
