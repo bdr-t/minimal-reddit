@@ -5,7 +5,6 @@ function useComments(link) {
 
     useEffect(()=>{
         const fetchData = async () => {
-          console.log(link)
             const algo = await fetch(link)
               .then((res) => res.json())
               .then((json) =>

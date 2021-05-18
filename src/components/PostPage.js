@@ -10,7 +10,6 @@ import { useEffect, useState } from 'react';
 
 const PostPage = () => {
   const { id, subReddit } = useParams();
-  console.log(`https://www.reddit.com/r/${subReddit}/comments/${id}.json`);
   const token = useSelector((state) => state.authorization.token);
   window.scrollTo(0, 0);
   const [post, setPost] = useState()

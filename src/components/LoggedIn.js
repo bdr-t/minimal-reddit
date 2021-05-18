@@ -47,7 +47,9 @@ const LoggedIn = ({ match, username, user }) => {
       console.log('removing');
       dispatch(remove(ids));
     }
+    console.log('---------OBSERVER------------')
     console.log(observer);
+    console.log(path)
   }, [path]);
 
   useEffect(() => {
@@ -93,14 +95,11 @@ const LoggedIn = ({ match, username, user }) => {
       if (postStatus === 'succeeded' && after) {
         let config;
         if (user) {
-          console.log('algo');
           config = {
             link: `${link}?after=${after}`,
             token,
             afterPosts: after,
           };
-          window.alert(`${link}?after=${after}`);
-          console.log(config);
           dispatch(fetchPosts(config));
         } else {
           config = {
@@ -109,8 +108,6 @@ const LoggedIn = ({ match, username, user }) => {
             afterPosts: after,
           };
 
-          window.alert('dispaching');
-          console.log(config);
           dispatch(fetchPosts(config));
         }
       }
@@ -120,7 +117,6 @@ const LoggedIn = ({ match, username, user }) => {
   const posts = useSelector(selectAllPosts);
 
   while (posts.length < 3 && after) {
-    window.alert('too short');
     const config = {
       link: `${link}?after=${after}`,
       token,

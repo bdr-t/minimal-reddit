@@ -11,7 +11,6 @@ const Notifications = () => {
   useEffect(() => {
     if (token) {
       async function getData() {
-        console.log('algo');
         const config = {
           headers: { Authorization: `Bearer ${token}` },
         };
@@ -30,7 +29,7 @@ const Notifications = () => {
   if (data) {
     content = data.map((x) => {
       if (x.kind === 't1') {
-        console.log(x);
+
         const postId = x.data.parent_id.slice(3);
 
         return (

@@ -18,7 +18,6 @@ const initialState = postsAdapter.getInitialState({
 export const fetchPosts = createAsyncThunk(
   "posts/fetchPosts",
   async ({ link, token}) => {
-    console.log(link)
     let after;
     const config = {
       headers: { Authorization: `Bearer ${token}` },

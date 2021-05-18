@@ -3,7 +3,6 @@ import { useEffect } from 'react';
 import useFetchPosts from '../actions/useFetchPosts';
 
 const PostList = ({ match, user }) => {
-  console.log(match);
   let linkHome = `https://www.reddit.com/.json`;
   let linkSub = `https://www.reddit.com${match ? match.url : null}/.json`;
   let link = match ? linkSub : linkHome;

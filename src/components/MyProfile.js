@@ -32,7 +32,6 @@ const MyProfile = ({name}) => {
         img = data.snoovatar_img ? data.snoovatar_img : data.icon_img
         border = data.snoovatar_img ? '0px' : '50%'
         date = fromUnixTime(data.created).toUTCString().slice(4,16)
-        console.log(date)
         
 
     }

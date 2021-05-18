@@ -19,7 +19,6 @@ function useFetchSubInfo(link, token) {
       const response = await axios
         .get(link, config)
         .then((response) => response.data.data);
-        console.log(response)
       let list = {
         icon: response.icon_img,
         accounts_active: response.accounts_active,
