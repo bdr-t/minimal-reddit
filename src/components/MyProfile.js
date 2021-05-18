@@ -1,6 +1,6 @@
 import {useState, useEffect} from 'react'
 import axios from 'axios'
-import { ProfileContainer, ProfileName, KarmaCreated, SpanColor, LogOutBtn} from '../styledComponents'
+import { ProfileContainer, ProfileName, KarmaCreated, SpanColor, LogOutBtn, NormalText} from '../styledComponents'
 import {fromUnixTime } from 'date-fns'
 import {useHistory, useParams} from 'react-router-dom'
 import {useDispatch} from 'react-redux'
@@ -63,10 +63,10 @@ const MyProfile = ({name}) => {
                 <ProfileName>{data.subreddit.display_name_prefixed}</ProfileName>
                 <KarmaCreated>
                     <div>
-                        <h3>{data.total_karma} karma </h3>
+                        <NormalText style={{fontSize:'20px', fontWeight:'500'}}>{data.total_karma} karma </NormalText>
                     </div>
                     <div>
-                        <h3>Created <SpanColor>{date}</SpanColor></h3>
+                        <NormalText style={{fontSize:'20px', fontWeight:'500'}} >Created <SpanColor>{date}</SpanColor></NormalText>
                     </div>
     
                 </KarmaCreated>

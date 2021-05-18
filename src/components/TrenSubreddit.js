@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Linked, JoinBtn, LinkedNoHover } from '../styledComponents';
+import { Linked, JoinBtn, LinkedNoHover, NormalText } from '../styledComponents';
 import axios from 'axios';
 import { useSelector } from 'react-redux';
 import suscribe from '../actions/suscribe';
@@ -81,11 +81,11 @@ const TrenSubreddit = ({ name }) => {
         <Linked style={{ fontWeight: 700 }} to={`/${subRedditName}/`}>
           {subRedditName}
         </Linked>
-        <p>{subReddit && subReddit.subscribers}</p>
+        <NormalText>{subReddit && subReddit.subscribers}</NormalText>
       </div>
-      {authorization && (
+      {/* {authorization && (
         <JoinBtn onClick={() => handleClick()}>{isSubscriber ? 'leave' : 'join'}</JoinBtn>
-      )}
+      )} */}
       {!authorization && <JoinBtn><LinkedNoHover to="/login">join</LinkedNoHover></JoinBtn>}
     </div>
   );

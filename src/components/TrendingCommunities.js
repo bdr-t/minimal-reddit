@@ -1,7 +1,7 @@
 import axios from 'axios'
 import {useState, useEffect} from 'react'
 import TrenSubreddit from './TrenSubreddit'
-import {TrendingContainer} from '../styledComponents'
+import {TrendingContainer, TrendingH3} from '../styledComponents'
 
 const TrendingCommunities = () => {
     const [subreddits, setSubreddits] = useState()
@@ -32,7 +32,7 @@ const TrendingCommunities = () => {
 
     return ( 
         <TrendingContainer>
-            <h3 style={{textAlign: 'center', padding:'0.5em'}}>Trending Communities</h3>
+            <TrendingH3>Trending Communities</TrendingH3>
             {content}
         </TrendingContainer>
      );

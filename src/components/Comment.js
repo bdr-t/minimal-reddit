@@ -15,6 +15,7 @@ import {
   CommentUpvote,
   ArrowDown,
   ArrowUp,
+  NormalText
 } from '../styledComponents';
 import TimeAgo from './TimeAgo';
 import parseHtml from '../actions/parseHTML';
@@ -110,7 +111,7 @@ const Comment = ({
                   }
                 }}
               />
-              <p style={{ textAlign: 'center' }}>{votes}</p>
+              <NormalText style={{ textAlign: 'center' }}>{votes}</NormalText>
               <ArrowDown
                 focus={focus === false ? 0 : 1}
                 onClick={() => {

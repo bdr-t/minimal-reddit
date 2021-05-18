@@ -1,4 +1,4 @@
-import {Input} from '../styledComponents'
+import {Input, ThridPartDiv} from '../styledComponents'
 import TrendingCommunities from './TrendingCommunities'
 import {useLocation, useParams} from 'react-router-dom'
 import {useSelector} from 'react-redux'
@@ -17,14 +17,14 @@ const ThirdPart = () => {
     
 
     return ( 
-        <div style={{display: 'grid', gridTemplateRows:'60px auto', gap:'50px', height: '100vh', position:'sticky', top:'0'}}>
+        <ThridPartDiv>
             <Input/>
             {!user && !subReddit && <TrendingCommunities/>}
             {!user && subReddit && token && <SubLayer/>}
             {!user && !authorization && subReddit && <SubLayerNot/>}
             {user && <MyProfile name={user}/>}
             
-        </div>
+        </ThridPartDiv>
      );
 }
  

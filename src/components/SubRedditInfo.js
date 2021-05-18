@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux";
-import { TrendingContainer, Text, JoinBtn } from "../styledComponents";
+import { TrendingContainer, Text, JoinBtn, NormalText } from "../styledComponents";
 import { useState } from "react";
 import parseHtml from "../actions/parseHTML";
 import suscribe from "../actions/suscribe";
@@ -70,18 +70,18 @@ const SubReddit = ({data, error, status}) => {
         <div style={{ display: "flex", gap: "0.5em", padding: "1em 1em 0 1em" }}>
           <img width="40" style={{ borderRadius: "50%"}} src={icon} alt="" />
           <div style={{display:'flex', alignItems:'center', gap:'0.5em'}}>
-            <h4>{data.name}</h4>
+            <NormalText style={{fontWeight: '600'}}>{data.name}</NormalText>
             <JoinBtn onClick={()=>handleClick()} style={{padding:'0.25em 0.5em'}}>{isSubscriber ? 'leave' : 'join'}</JoinBtn>
           </div>
         </div>
         <div className="des">
-          <h4 style={{padding: '0.5em 1em'}}>{data.title}</h4>
+          <NormalText style={{padding: '0.5em 1em'}}>{data.title}</NormalText>
 
           <Text>{parseHtml(data.description)}</Text>
         </div>
         <div className="footer" style={{display:'flex', justifyContent:'space-around', paddingBottom:'1em'} }>
-          <h4>{data.subscribers} members</h4>
-          <h4>{data.accounts_active} online</h4>
+          <NormalText>{data.subscribers} members</NormalText>
+          <NormalText>{data.accounts_active} online</NormalText>
         </div>
       </div>
     );

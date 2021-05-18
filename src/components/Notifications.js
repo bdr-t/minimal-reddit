@@ -38,9 +38,9 @@ const Notifications = () => {
             <Container>
               <MessageBy>
                 <span>{x.data.type === 'post_reply' ? 'Post replied' : 'Comment replied'}</span>
-                <Linked>{x.data.link_title}</Linked>
+                {x.data.link_title}
               </MessageBy>
-              <Linked style={{ paddingLeft: '15px', fontSize: '13px' }} to={`/u/${x.data.author}`}>
+              <Linked style={{ paddingLeft: '15px', fontSize: '13px', width:'fit-content'}} to={`/u/${x.data.author}`}>
                 by {x.data.author}
               </Linked>
               <Text>{parseHTML(x.data.body_html)}</Text>
