@@ -1,26 +1,31 @@
-import React from "react";
+import React from 'react';
 // import './App.css'
-import "./App.css";
+import './App.css';
+import { ThemeProvider } from 'styled-components';
+import { lightTheme, darkTheme } from './Themes';
+import {useState} from 'react'
 
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Redirect,
-} from "react-router-dom";
-import PostList from "./components/PostList";
-import Callback from "./components/CallBack";
-import PostPage from './components/PostPage'
-import {AppDiv} from "./styledComponents"
-import NotFound from "./components/NotFound";
-import Login from "./components/Login";
 
+import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
+import PostList from './components/PostList';
+import Callback from './components/CallBack';
+import PostPage from './components/PostPage';
+import { AppDiv } from './styledComponents';
+import NotFound from './components/NotFound';
+import Login from './components/Login';
 
 function App() {
+  const [theme, setTheme] = useState('light');
+  const themeToggler = () => {
+    theme === 'light' ? setTheme('dark') : setTheme('light');
+  };
 
   return (
     <Router>
+      <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
+      <button onClick={themeToggler} >haha</button>
       <AppDiv>
+        
         <Switch>
           <Route
             exact
@@ -60,6 +65,7 @@ function App() {
           <Redirect to="/notFound" />
         </Switch>
       </AppDiv>
+      </ThemeProvider>
     </Router>
   );
 }
