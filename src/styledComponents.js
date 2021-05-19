@@ -31,15 +31,16 @@ const color = {
   colorPrimary700: '#E5E7EB',
   colorPrimary800: '#F3F4F6',
   colorAccentGlow: 'rgba(253,77,77,0.3)',
-  colorAccent: '#10B981',
+  colorAccent: '#8B5CF6',
   colorAccentHover: '#fd6868',
 };
-
-
 
 export const AppDiv = styled.div`
   background: ${(props) => props.theme.colorPrimary800};
   height: 100%;
+  display: flex;
+  justify-content: center;
+  
 `;
 
 export const Button = styled.button`
@@ -130,7 +131,8 @@ export const ThridPartDiv = styled.div`
   height: 100vh;
   position: sticky;
   top: 0;
-  background-color:${(props) => props.theme.colorPrimary800};
+  background-color: ${(props) => props.theme.colorPrimary800};
+  padding-left: 2em;
 `;
 
 export const Container = styled.div`
@@ -278,17 +280,16 @@ export const Input = styled.input`
   border-radius: 8px;
   background-color: ${(props) => props.theme.colorPrimary600};
   height: 30px;
-  width: 80%;
-  place-self: center;
+  width: 300px;
+  align-self: center;
   outline: none;
   border: none;
 `;
 
 export const TrendingContainer = styled.div`
-  justify-self: center;
   background-color: ${(props) => props.theme.colorPrimary700};
   height: fit-content;
-  width: 80%;
+  width: 300px;
   place-content: center;
   border-radius: 8px;
   padding: 0 0 1em 0;
@@ -380,8 +381,9 @@ export const NavContainer = styled.div`
 export const Section = styled.div`
   height: 100%;
   display: grid;
-  grid-template-columns: 1fr 680px 1fr;
+  grid-template-columns: 375px 680px 450px;
   background-color: ${(props) => props.theme.colorPrimary800};
+  
 `;
 
 export const NavLogo = styled.div`
@@ -508,7 +510,9 @@ export const SortingContainer = styled.div`
   &:hover {
     border-bottom: 1px solid ${color.colorAccent};
     color: ${(props) => props.theme.colorAccentHover};
-    svg, a, button{
+    svg,
+    a,
+    button {
       color: ${(props) => props.theme.colorAccentHover};
     }
   }
@@ -606,15 +610,13 @@ export const RisingIcon = styled(HiTrendingUp)`
 `;
 
 export const DivHover = styled.div`
-
-&:hover{
-  color: ${(props) => props.theme.colorAccentHover};
-  svg{
+  &:hover {
     color: ${(props) => props.theme.colorAccentHover};
+    svg {
+      color: ${(props) => props.theme.colorAccentHover};
+    }
   }
-
-}
-`
+`;
 
 export const HomeIcon = styled(HiHome)`
   color: ${(props) => props.theme.text};

@@ -5,7 +5,7 @@ export const darkTheme = {
   colorPrimary600: '#6B7280',
   colorPrimary700: '#374151',
   colorPrimary800: '#1F2937',
-  colorAccentGlow: 'rgb(5, 150, 105,0.3)',
+  colorAccentGlow: 'rgb(109, 40, 217,0.3)',
   colorAccent: '#8B5CF6',
   colorAccentHover: '#A78BFA',
   links: 'lightblue',
@@ -18,7 +18,7 @@ export const lightTheme = {
     colorPrimary600: '#D1D5DB',
     colorPrimary700: '#E5E7EB',
     colorPrimary800: '#F3F4F6',
-    colorAccentGlow: 'rgb(5, 150, 105,0.3)',
+    colorAccentGlow: 'rgb(109, 40, 217,0.3)',
     colorAccent: '#8B5CF6',
     colorAccentHover: '#A78BFA',
     links: 'none'
