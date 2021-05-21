@@ -10,7 +10,7 @@ import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-d
 import PostList from './components/PostList';
 import Callback from './components/CallBack';
 import PostPage from './components/PostPage';
-import { AppDiv } from './styledComponents';
+import { AppDiv, UniversalStyle } from './styledComponents';
 import NotFound from './components/NotFound';
 import Login from './components/Login';
 
@@ -21,7 +21,7 @@ function App() {
   return (
     <Router>
       <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
-      {/* <button onClick={themeToggler} >haha</button> */}
+      <UniversalStyle/>
       <AppDiv>
         
         <Switch>
