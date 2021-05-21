@@ -133,6 +133,9 @@ export const ThridPartDiv = styled.div`
   top: 0;
   background-color: ${(props) => props.theme.colorPrimary800};
   padding-left: 2em;
+  @media (max-width: 500px) {
+    display:none;
+  }
 `;
 
 export const Container = styled.div`
@@ -383,6 +386,10 @@ export const Section = styled.div`
   display: grid;
   grid-template-columns: 375px 680px 450px;
   background-color: ${(props) => props.theme.colorPrimary800};
+
+  @media (max-width: 500px) {
+    grid-template-columns: 1fr;
+  }
   
 `;
 
@@ -395,6 +402,9 @@ export const NavLogo = styled.div`
   display: grid;
   grid-template-rows: auto;
   gap: 50px;
+  @media (max-width: 500px) {
+    display:none;
+  }
 `;
 
 export const BtnSort = styled.h3`

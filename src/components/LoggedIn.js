@@ -91,6 +91,8 @@ const LoggedIn = ({ match, username, user }) => {
   }, [path, subReddit]);
 
   window.onscroll = function (ev) {
+    if(window.innerHeight > 700){
+    }
     if (window.innerHeight + window.pageYOffset >= document.body.offsetHeight * 0.9) {
       if (postStatus === 'succeeded' && after) {
         let config;
