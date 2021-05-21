@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { createGlobalStyle } from 'styled-components';
 import ReactHlsPlayer from 'react-hls-player';
 import { TiArrowDownThick, TiArrowUpThick } from 'react-icons/ti';
 import { HiTrendingUp, HiHome } from 'react-icons/hi';
@@ -35,12 +35,16 @@ const color = {
   colorAccentHover: '#fd6868',
 };
 
+export const UniversalStyle = createGlobalStyle`
+body{
+background-color: ${(props) => props.theme.colorPrimary800};
+}`;
+
 export const AppDiv = styled.div`
   background: ${(props) => props.theme.colorPrimary800};
   height: 100%;
   display: flex;
   justify-content: center;
-  
 `;
 
 export const Button = styled.button`
@@ -134,7 +138,7 @@ export const ThridPartDiv = styled.div`
   background-color: ${(props) => props.theme.colorPrimary800};
   padding-left: 2em;
   @media (max-width: 500px) {
-    display:none;
+    display: none;
   }
 `;
 
@@ -390,7 +394,6 @@ export const Section = styled.div`
   @media (max-width: 500px) {
     grid-template-columns: 1fr;
   }
-  
 `;
 
 export const NavLogo = styled.div`
@@ -403,7 +406,7 @@ export const NavLogo = styled.div`
   grid-template-rows: auto;
   gap: 50px;
   @media (max-width: 500px) {
-    display:none;
+    display: none;
   }
 `;
 
@@ -445,6 +448,10 @@ export const BtnCreate = styled.h3`
   border-radius: 20px;
   :hover {
     color: white;
+  }
+  @media (max-width: 500px) {
+    width: fit-content;
+    font-size: 12px;
   }
 `;
 
@@ -701,4 +708,28 @@ export const TopBtn = styled.button`
     opacity: 0;
     pointer-events: all;
   }
+`;
+
+export const MobileNav = styled.div`
+  display: none;
+  @media (max-width: 500px) {
+    display: flex;
+    width: 100%;
+    height: 60px;
+    background-color: ${(props) => props.theme.colorPrimary800};
+    position: fixed;
+    bottom: 0px;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+  }
+`;
+
+export const MobileFlex = styled.div`
+  width: 100%;
+  height: 100%;
+  display: flex;
+  place-content: center;
+  align-items: center;
 `;
