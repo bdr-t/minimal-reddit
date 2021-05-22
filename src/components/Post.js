@@ -205,7 +205,7 @@ const Post = ({ postId, postNotLeggedIn, token, postFetched }) => {
                 </Linked>
               </NumComments>
             </div>
-            <div style={{ display: 'flex', borderTop: '1px solid #65676b' }}>
+            <div style={{ display: 'flex', borderTop: '1px solid #65676b', wordBreak:'break-all'}} >
               <SubReddit>
                 <img src={icon} width="20px" style={{ borderRadius: '50%' }} alt="" srcset="" />
                 <Linked style={{ fontWeight: 600 }} to={`/r/${post.subreddit}/`}>

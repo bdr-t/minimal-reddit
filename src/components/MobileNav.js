@@ -41,15 +41,17 @@ const Mobile = () => {
         setIcon(icon);
       }
     }
-    getIcon();
-  });
+    if (authorization) {
+      getIcon();
+    }
+  },[]);
 
   return (
     <MobileNav>
       <MobileFlex>
         <div>
           <Linked to="/">
-            <Logo style={{ padding: '0 0 0 2em' }}>MR</Logo>
+            <Logo style={{ padding: '0 0 0 1em' }}>MR</Logo>
           </Linked>
         </div>
         <MobileFlex>
@@ -95,12 +97,12 @@ const Mobile = () => {
       )}
       {!authorization && (
         <Linked to="/login">
-        <Avatar>
-          <div>
-            <AvatarImg class="avatar-img" src={icon} alt="" />
-          </div>
-        </Avatar>
-      </Linked>
+          <Avatar>
+            <div>
+              <AvatarImg class="avatar-img" src={icon} alt="" />
+            </div>
+          </Avatar>
+        </Linked>
       )}
     </MobileNav>
   );

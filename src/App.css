@@ -2,7 +2,7 @@
 @import "~react-image-gallery/styles/css/image-gallery.css";
 
 body {
-  background-color: #E9EAED; 
+  background-color:black; 
   margin: 0;
   padding: 0;
   /* color: white; */
@@ -23,5 +23,11 @@ a {
 .posts-list{
   display: flex;
   flex-direction: column;
+  overflow: hidden;
+  width: 100%;
+}
+
+ul, ol{
+  padding-left: 2em;
 }
 

@@ -38,6 +38,7 @@ const color = {
 export const UniversalStyle = createGlobalStyle`
 body{
 background-color: ${(props) => props.theme.colorPrimary800};
+box-sizing: border-box;
 }`;
 
 export const AppDiv = styled.div`
@@ -65,6 +66,9 @@ export const Linked = styled(Link)`
   &:hover {
     color: ${(props) => props.theme.colorAccentHover};
   }
+  @media (max-width: 500px) {
+    font-size: 13px;
+  }
 `;
 
 export const LinkedNoHover = styled(Link)`
@@ -79,6 +83,9 @@ export const LinkedSort = styled(Link)`
   padding-bottom: 8.8px;
   padding-left: 0.5em;
   color: ${(props) => (props.active === 1 ? color.colorAccent : props.theme.text)};
+  @media (max-width: 500px) {
+    display: none;
+  }
 `;
 
 export const ArrowDown = styled(TiArrowDownThick)`
@@ -130,6 +137,7 @@ export const SubReddit = styled.div`
 
 export const ThridPartDiv = styled.div`
   display: grid;
+  box-sizing: border-box;
   grid-template-rows: 60px auto;
   gap: 50px;
   height: 100vh;
@@ -143,6 +151,7 @@ export const ThridPartDiv = styled.div`
 `;
 
 export const Container = styled.div`
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
   justify-self: center;
@@ -158,8 +167,8 @@ export const Container = styled.div`
   display: hidden;
   @media (max-width: 768px) {
     width: 90%;
-    margin-left: 2em;
-    margin-right: 2em;
+    place-self: center;
+    margin: 8px 0;
   }
 `;
 
@@ -261,6 +270,9 @@ export const UpvotesNum = styled.p`
   font-size: 15px;
   color: ${(props) => props.theme.colorPrimary300};
   margin: 0;
+  @media (max-width: 500px) {
+    font-size: 13px;
+  }
 `;
 
 export const Comments = styled(UpvotesNum)`
@@ -316,6 +328,9 @@ export const ProfileContainer = styled.div`
   width: 100%;
   margin-top: 50px;
   display: flex;
+  @media (max-width: 500px) {
+    flex-direction: column;
+  }
 `;
 export const KarmaCreated = styled.div`
   display: flex;
@@ -390,14 +405,15 @@ export const Section = styled.div`
   display: grid;
   grid-template-columns: 375px 680px 450px;
   background-color: ${(props) => props.theme.colorPrimary800};
-
   @media (max-width: 500px) {
-    grid-template-columns: 1fr;
+    display: flex;
+    overflow-x: hidden;
   }
 `;
 
 export const NavLogo = styled.div`
   width: 250px;
+  box-sizing: border-box;
   height: 100vh;
   position: sticky;
   top: 0;
@@ -732,4 +748,10 @@ export const MobileFlex = styled.div`
   display: flex;
   place-content: center;
   align-items: center;
+`;
+
+export const TopText = styled.div`
+  @media (max-width: 500px) {
+    display: none;
+  }
 `;

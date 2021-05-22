@@ -58,8 +58,11 @@ const LogoNav = () => {
       }
       setUserName(data.data.name);
     }
+    if(authorization){
     getIcon();
-  });
+
+    }
+  },[]);
 
   function handleFocus() {
     if (topFocus === 1) {
