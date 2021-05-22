@@ -35,7 +35,7 @@ const PostList = ({ match }) => {
   return (
     <Section>
       <LogoNav />
-      <div>
+      <div style={{width: '100%'}}>
         <Sort />
         {authorization && userName && <LoggedIn match={match} username={userName} user={user} />}
         {!authorization && <NotLoggedIn match={match} user={user} />}
