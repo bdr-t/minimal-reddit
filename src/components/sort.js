@@ -13,6 +13,7 @@ import {
   TopDropdownDiv,
   TopSortBtn,
   TopBtn,
+  TopText,
   Linked,
 } from '../styledComponents';
 
@@ -39,15 +40,16 @@ const Sort = () => {
     <Sorting>
       <SortingContainer active={activeBest}>
         <SortingElement>
-          <BestIcon active={activeBest} />
+          <Linked to={subReddit ? `/r/${subReddit}/best` : `/best`}><BestIcon active={activeBest} /></Linked>
           <LinkedSort active={activeBest} to={subReddit ? `/r/${subReddit}/best` : `/best`}>
             Best
           </LinkedSort>
         </SortingElement>
       </SortingContainer>
+      
       <SortingContainer active={activeNew}>
         <SortingElement>
-          <NewIcon active={activeNew} />
+        <Linked to={subReddit ? `/r/${subReddit}/new` : `/new`}><NewIcon active={activeNew} /></Linked>
           <LinkedSort active={activeNew} to={subReddit ? `/r/${subReddit}/new` : `/new`}>
             New
           </LinkedSort>
@@ -55,7 +57,7 @@ const Sort = () => {
       </SortingContainer>
       <SortingContainer active={activeHot}>
         <SortingElement>
-          <HotIcon active={activeHot} />
+          <Linked to={subReddit ? `/r/${subReddit}/hot` : `/hot`}><HotIcon active={activeHot} /></Linked> 
           <LinkedSort active={activeHot} to={subReddit ? `/r/${subReddit}/hot` : `/hot`}>
             Hot
           </LinkedSort>
@@ -65,7 +67,8 @@ const Sort = () => {
         <SortingElement>
           <TopIcon active={activeTop} />
           <TopBtn active={activeTop}>
-            Top
+            <TopText>Top</TopText>
+            
             <TopDropdownDiv active={topFocus}>
               <TopSortBtn>
                 <Link to={subReddit ? `/r/${subReddit}/top/day` : `/top/day`}>today</Link>
@@ -88,7 +91,7 @@ const Sort = () => {
       </SortingContainer>
       <SortingContainer active={activeRising}>
         <SortingElement>
-          <RisingIcon active={activeRising} />
+          <Linked to={subReddit ? `/r/${subReddit}/rising` : `/rising`}><RisingIcon active={activeRising} /></Linked>
           <LinkedSort active={activeRising} to={subReddit ? `/r/${subReddit}/rising` : `/rising`}>
             Rising
           </LinkedSort>
