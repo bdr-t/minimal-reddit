@@ -148,6 +148,9 @@ export const ThridPartDiv = styled.div`
   @media (max-width: 500px) {
     display: none;
   }
+  @media (max-width: 1100px) {
+    display: none;
+  }
 `;
 
 export const Container = styled.div`
@@ -166,6 +169,9 @@ export const Container = styled.div`
   margin-bottom: 1em;
   display: hidden;
   @media (max-width: 768px) {
+    width: 100%
+  }
+  @media (max-width: 500px) {
     width: 90%;
     place-self: center;
     margin: 8px 0;
@@ -387,11 +393,11 @@ export const Logo = styled.a`
 export const Nav = styled.div`
   width: 100%;
   display: flex;
+  flex-direction: column;
   margin: 0;
-  height: 55px;
-  justify-content: center;
-  margin-bottom: 2em;
-  background-color: ${(props) => props.theme.colorPrimary800};
+  @media (max-width: 1350px) {
+    gap: 1em;
+  }
 `;
 
 export const NavContainer = styled.div`
@@ -403,11 +409,17 @@ export const NavContainer = styled.div`
 export const Section = styled.div`
   height: 100%;
   display: grid;
-  grid-template-columns: 375px 680px 450px;
+  grid-template-columns: 20% 680px 25%;
   background-color: ${(props) => props.theme.colorPrimary800};
   @media (max-width: 500px) {
     display: flex;
     overflow-x: hidden;
+  }
+  @media (max-width: 1350px) {
+    grid-template-columns: 80px 680px 1fr;
+  }
+  @media (max-width: 768px) {
+    grid-template-columns: 80px 1fr;
   }
 `;
 
@@ -423,6 +435,11 @@ export const NavLogo = styled.div`
   gap: 50px;
   @media (max-width: 500px) {
     display: none;
+  }
+  @media (max-width: 1350px) {
+    justify-self: start;
+    width: 80px;
+    border-right: 2px solid ${(props) => props.theme.colorAccent};
   }
 `;
 
@@ -471,8 +488,17 @@ export const BtnCreate = styled.h3`
   }
 `;
 
+export const CreateLink = styled.a`
+  @media (max-width: 1350px) {
+    display: none;
+  }
+`;
+
 export const Login = styled.a`
   text-decoration: none;
+  @media (max-width: 1350px) {
+    display: none;
+  }
 `;
 
 export const Avatar = styled.div`
@@ -486,6 +512,10 @@ export const Avatar = styled.div`
   &:hover {
     background-color: ${(props) => props.theme.colorAccentGlow};
   }
+  @media (max-width: 1350px) {
+    display: grid;
+    justify-content: center;
+  }
 `;
 
 export const AvatarImg = styled.img`
@@ -497,6 +527,9 @@ export const AvatarImg = styled.img`
 
 export const User = styled.div`
   align-items: center;
+  @media (max-width: 1350px) {
+    display: none;
+  }
 `;
 
 export const Username = styled.h4`
@@ -653,34 +686,96 @@ export const DivHover = styled.div`
 
 export const HomeIcon = styled(HiHome)`
   color: ${(props) => props.theme.text};
+  @media (max-width: 1350px) {
+    height: 30px;
+    width: 30px;
+  }
+  @media (max-width: 500px) {
+    height: 20px;
+    width: 20px;
+  }
 `;
 
 export const PostsIcon = styled(RiBookFill)`
   color: ${(props) => props.theme.text};
+  @media (max-width: 1350px) {
+    height: 30px;
+    width: 30px;
+  }
+  @media (max-width: 500px) {
+    height: 20px;
+    width: 20px;
+  }
 `;
 
 export const SaveIconNav = styled(BsFillBookmarkFill)`
   color: ${(props) => props.theme.text};
+  @media (max-width: 1350px) {
+    height: 30px;
+    width: 30px;
+  }
+  @media (max-width: 500px) {
+    height: 20px;
+    width: 20px;
+  }
 `;
 
 export const UpvotedIcon = styled(BiUpvote)`
   color: ${(props) => props.theme.text};
+  @media (max-width: 1350px) {
+    height: 30px;
+    width: 30px;
+  }
+  @media (max-width: 500px) {
+    height: 20px;
+    width: 20px;
+  }
 `;
 
 export const NotificationIcon = styled(RiNotification4Fill)`
   color: ${(props) => props.theme.text};
+  @media (max-width: 1350px) {
+    height: 30px;
+    width: 30px;
+  }
+  @media (max-width: 500px) {
+    height: 20px;
+    width: 20px;
+  }
 `;
 
 export const MessagesIcon = styled(BiMessageSquareDetail)`
   color: ${(props) => props.theme.text};
+  @media (max-width: 1350px) {
+    height: 30px;
+    width: 30px;
+  }
+  @media (max-width: 500px) {
+    height: 20px;
+    width: 20px;
+  }
 `;
 
 export const ProfileIcon = styled(BsFillPersonFill)`
   color: ${(props) => props.theme.text};
+  @media (max-width: 1350px) {
+    height: 30px;
+    width: 30px;
+  }
+  @media (max-width: 500px) {
+    height: 20px;
+    width: 20px;
+  }
 `;
 
 export const NormalText = styled.p`
   color: ${(props) => props.theme.text};
+`;
+
+export const SortText = styled(NormalText)`
+  @media (max-width: 1350px) {
+    display: none;
+  }
 `;
 
 export const TopDropdownDiv = styled.div`
@@ -752,6 +847,19 @@ export const MobileFlex = styled.div`
 
 export const TopText = styled.div`
   @media (max-width: 500px) {
+    display: none;
+  }
+`;
+
+export const LogoPc = styled(Logo)`
+  @media (max-width: 1350px) {
+    display: none;
+  }
+`;
+
+export const LogoTablet = styled(Logo)`
+  padding: 1em 1em 0 1em;
+  @media (min-width: 1350px) {
     display: none;
   }
 `;

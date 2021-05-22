@@ -19,6 +19,11 @@ import {
   LogOutDropDown,
   LogOutBtn,
   DivHover,
+  LogoPc,
+  LogoTablet,
+  SortText,
+  CreateLink,
+  Nav
 } from '../styledComponents';
 import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
@@ -58,11 +63,10 @@ const LogoNav = () => {
       }
       setUserName(data.data.name);
     }
-    if(authorization){
-    getIcon();
-
+    if (authorization) {
+      getIcon();
     }
-  },[]);
+  }, []);
 
   function handleFocus() {
     if (topFocus === 1) {
@@ -85,15 +89,16 @@ const LogoNav = () => {
     <NavLogo>
       <div style={{ height: '60px' }}>
         <Linked to="/">
-          <Logo>MinimalReddit</Logo>
+          <LogoPc>MinimalReddit</LogoPc>
+          <LogoTablet>MR</LogoTablet>
         </Linked>
       </div>
-      <div class="nav">
+      <Nav>
         <Linked to="/">
           <DivHover>
             <BtnSort>
               <HomeIcon />
-              Home
+              <SortText>Home</SortText>
             </BtnSort>
           </DivHover>
         </Linked>
@@ -101,21 +106,23 @@ const LogoNav = () => {
           <DivHover>
             <BtnSort>
               <SaveIconNav />
-              Saved
+              <SortText>Saved</SortText>
             </BtnSort>
           </DivHover>
         </Linked>
         <Linked to={authorization ? '/upvoted' : '/login'}>
           <DivHover>
             <BtnSort>
-              <UpvotedIcon /> Upvoted
+              <UpvotedIcon />
+              <SortText>Upvoted</SortText>
             </BtnSort>
           </DivHover>
         </Linked>
         <Linked to={authorization ? '/notifications' : '/login'}>
           <DivHover>
             <BtnSort>
-              <NotificationIcon /> Notifications
+              <NotificationIcon />
+              <SortText>Notifications</SortText>
             </BtnSort>
           </DivHover>
         </Linked>
@@ -123,7 +130,7 @@ const LogoNav = () => {
           <DivHover>
             <BtnSort>
               <MessagesIcon />
-              Messages
+              <SortText>Messages</SortText>
             </BtnSort>
           </DivHover>
         </Linked>
@@ -131,7 +138,7 @@ const LogoNav = () => {
           <DivHover>
             <BtnSort>
               <PostsIcon />
-              My posts
+              <SortText>My posts</SortText>
             </BtnSort>
           </DivHover>
         </Linked>
@@ -139,36 +146,36 @@ const LogoNav = () => {
           <DivHover>
             <BtnSort>
               <ProfileIcon />
-              Profile
+              <SortText>Profile</SortText>
             </BtnSort>
           </DivHover>
         </Linked>
 
         {authorization && (
-          <a
+          <CreateLink className='nose'
             style={{ textDecoration: 'none' }}
             rel="noreferrer"
             target="_blank"
             href="https://www.reddit.com/submit"
           >
             <BtnCreate>Create Post</BtnCreate>
-          </a>
+          </CreateLink>
         )}
-      </div>
-      <div>
+      </Nav>
+      <CreateLink>
         {!authorization && (
           <Login href={url}>
             {' '}
             <BtnCreate href={url}>Log in</BtnCreate>
           </Login>
         )}
-      </div>
+      </CreateLink>
       {authorization && (
         <Avatar onClick={() => handleFocus()}>
           <div>
             <AvatarImg class="avatar-img" src={icon} alt="" />
           </div>
-          <User>
+          <User className ='ccc'>
             <Username>
               {userName}
               <br />
