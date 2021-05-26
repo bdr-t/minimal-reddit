@@ -1,17 +1,16 @@
 import { useSelector } from 'react-redux';
 import LoggedIn from './LoggedIn';
 import NotLoggedIn from './NotLoggedIn';
-import {
-  Section,
-} from '../styledComponents';
+import { Section } from '../styledComponents';
 import LogoNav from './LogoNav';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
-import MobileNav from './MobileNav'
+import MobileNav from './MobileNav';
 
 import Sort from './sort';
 import ThirdPart from './ThirdPart';
+import ErrorBoundary from './ErrorBoundary';
 
 const PostList = ({ match }) => {
   const { user } = useParams();
@@ -33,17 +32,19 @@ const PostList = ({ match }) => {
   }, [token]);
 
   return (
-    <Section>
-      <LogoNav />
-      <div style={{width: '100%'}}>
-        <Sort />
-        {authorization && userName && <LoggedIn match={match} username={userName} user={user} />}
-        {!authorization && <NotLoggedIn match={match} user={user} />}
-        <MobileNav/>
-      </div>
+    <ErrorBoundary>
+      <Section>
+        <LogoNav />
+        <div style={{ width: '100%' }}>
+          <Sort />
+          {authorization && userName && <LoggedIn match={match} username={userName} user={user} />}
+          {!authorization && <NotLoggedIn match={match} user={user} />}
+          <MobileNav />
+        </div>
 
-      <ThirdPart />
-    </Section>
+        <ThirdPart />
+      </Section>
+    </ErrorBoundary>
   );
 };
 
