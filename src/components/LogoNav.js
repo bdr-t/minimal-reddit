@@ -42,7 +42,7 @@ const LogoNav = () => {
   const authorization = useSelector((state) => state.authorization.authorization);
   const TYPE = 'code';
   const RANDOM_STRING = 'hdiudou9083jkdsa';
-  const URI = 'http://localhost:3000/callback/';
+  const URI = 'https://minimal-reddit.vercel.app/callback/';
   const DURATION = 'permanent';
   const SCOPE_STRING =
     'identity, edit, flair, history, modconfig, modflair, modlog, modposts, modwiki, mysubreddits, privatemessages, read, report, save, submit, subscribe, vote, wikiedit, wikiread';
