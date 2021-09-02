@@ -139,7 +139,7 @@ export const ThridPartDiv = styled.div`
   display: grid;
   box-sizing: border-box;
   grid-template-rows: 60px auto;
-  gap: 50px;
+  gap: 10px;
   height: 100vh;
   position: sticky;
   top: 0;
@@ -309,6 +309,7 @@ export const Input = styled.input`
   align-self: center;
   outline: none;
   border: none;
+  opacity: 0;
 `;
 
 export const TrendingContainer = styled.div`
@@ -474,7 +475,7 @@ export const JoinBtn = styled.p`
 export const BtnCreate = styled.h3`
   margin-top: 1em;
   padding: 0.5em 1.5em;
-  width: 150px;
+  width: 100px;
   color: white;
   background-color: ${color.colorAccent};
   text-align: center;
@@ -492,6 +493,8 @@ export const CreateLink = styled.a`
   @media (max-width: 1350px) {
     display: none;
   }
+  width: 100%;
+  display: flex;
 `;
 
 export const Login = styled.a`

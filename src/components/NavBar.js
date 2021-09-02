@@ -53,7 +53,7 @@ const NavBar = () => {
     <Nav>
       <NavContainer className="nav-container">
         <Logo href="/">MinimalReddit</Logo>
-        <Input type="text" placeholder="Search.." />
+        {/* <Input type="text" placeholder="Search.." /> */}
         {!authorization && <Login href={url}>Log in</Login>}
         {authorization && <AvatarImg src={icon} alt="" />}
       </NavContainer>

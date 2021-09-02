@@ -15,9 +15,6 @@ const ThirdPart = () => {
   const { subReddit } = useParams();
   const token = useSelector((state) => state.authorization.token);
 
-  function handleClick() {
-    dispatch(changeTheme());
-  }
 
   return (
     <ThridPartDiv>
@@ -26,12 +23,6 @@ const ThirdPart = () => {
       {!user && subReddit && token && <SubLayer />}
       {!user && !authorization && subReddit && <SubLayerNot />}
       {user && <MyProfile name={user} />}
-      <button
-        style={{ height: '60px', width: '70px', justifySelf: 'center' }}
-        onClick={() => handleClick()}
-      >
-        SWITCH
-      </button>
     </ThridPartDiv>
   );
 };

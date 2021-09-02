@@ -1,41 +1,30 @@
-import axios from 'axios'
-import {useState, useEffect} from 'react'
-import TrenSubreddit from './TrenSubreddit'
-import {TrendingContainer, TrendingH3} from '../styledComponents'
+import axios from "axios";
+import { useState, useEffect } from "react";
+import TrenSubreddit from "./TrenSubreddit";
+import { TrendingContainer, TrendingH3 } from "../styledComponents";
 
 const TrendingCommunities = () => {
-    const [subreddits, setSubreddits] = useState()
-    const [status, setStatus] = useState('idle')
+  const [subreddits, setSubreddits] = useState();
+  const [status, setStatus] = useState("idle");
 
-    
+  useEffect(() => {
+    setStatus("loading");
+    setSubreddits(["reddit.com","react", 'computerscience', 'webdev', 'chess',]);
+    setStatus("succeded");
+  }, []);
 
-    useEffect(()=>{
-        const getNames = async() => {
-            const subreddit_names = await axios.get('https://www.reddit.com/api/trending_subreddits.json').then(res=> res.data.subreddit_names)
-            setSubreddits(subreddit_names)
-            setStatus('succeded')
+  let content = "loading";
 
-    
-        }
-        setStatus('loading')
-        getNames()
+  if (status === "succeded") {
+    content = subreddits.map((x) => <TrenSubreddit name={x} />);
+  }
 
-    },[])
+  return (
+    <TrendingContainer>
+      <TrendingH3>Trending Communities</TrendingH3>
+      {content}
+    </TrendingContainer>
+  );
+};
 
-    let content = 'loading'
-
-    if(status === 'succeded'){
-        content = subreddits.map(x => <TrenSubreddit name={x}/>)
-    }
-    
-
-
-    return ( 
-        <TrendingContainer>
-            <TrendingH3>Trending Communities</TrendingH3>
-            {content}
-        </TrendingContainer>
-     );
-}
- 
 export default TrendingCommunities;
